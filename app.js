@@ -70,22 +70,21 @@ app.event("app_home_opened", async ({ event, say }) => {
     text: `Hey there <@${event.user}>!`,
   });
 });
-app.event("app_mention", async ({ event, say }) => {
+
+app.action("create_new_product", async ({ event, say }) => {
   await say({
     blocks: [
       {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `Hey there <@${event.user}>!`,
+        dispatch_action: true,
+        type: "input",
+        element: {
+          type: "plain_text_input",
+          action_id: "product_name",
         },
-        accessory: {
-          type: "button",
-          text: {
-            type: "plain_text",
-            text: "Click Me",
-          },
-          action_id: "button_click",
+        label: {
+          type: "plain_text",
+          text: "Product Name",
+          emoji: true,
         },
       },
     ],
@@ -93,10 +92,33 @@ app.event("app_mention", async ({ event, say }) => {
   });
 });
 
-app.action("button_click", async ({ body, ack, say }) => {
+app.action("product_name", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
-  await say(`<@${body.user.id}> clicked the button`);
+  await say({
+    blocks: [
+      {
+        dispatch_action: true,
+        type: "input",
+        element: {
+          type: "plain_text_input",
+          action_id: "product_name_value",
+        },
+        label: {
+          type: "plain_text",
+          text: "Product Name",
+          emoji: true,
+        },
+      },
+    ],
+    text: `Hey there <@${body.user.id}>!`,
+  });
+});
+
+app.action("product_name_value", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+  await say(`You have entered ${body.value}`);
 });
 
 (async () => {
