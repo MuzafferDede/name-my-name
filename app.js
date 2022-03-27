@@ -14,7 +14,7 @@ const app = new App({
 });
 
 app.event("app_home_opened", async ({ event, client, context }) => {
-  console.log("event");
+  console.log(event, client, context);
 });
 
 // Listens to incoming messages that contain "hello"
