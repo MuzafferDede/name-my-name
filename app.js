@@ -35,7 +35,20 @@ app.message("hello", async ({ message, say }) => {
     text: `Hey there <@${message.user}>!`,
   });
 });
-
+app.event("app_home_opened", async ({ event, say }) => {
+  await say({
+    blocks: [
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: `Hey there <@${event.user}>! Welcome back!`,
+        },
+      },
+    ],
+    text: `Hey there <@${event.user}>!`,
+  });
+});
 app.event("app_mention", async ({ event, say }) => {
   await say({
     blocks: [
