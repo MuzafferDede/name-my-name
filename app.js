@@ -71,26 +71,25 @@ app.event("app_home_opened", async ({ event, say }) => {
   });
 });
 
-app.action("create_new_product", async ({ body, say, ...rest }) => {
-  console.log(body, rest);
-  // await say({
-  //   blocks: [
-  //     {
-  //       dispatch_action: true,
-  //       type: "input",
-  //       element: {
-  //         type: "plain_text_input",
-  //         action_id: "product_name",
-  //       },
-  //       label: {
-  //         type: "plain_text",
-  //         text: "Product Name",
-  //         emoji: true,
-  //       },
-  //     },
-  //   ],
-  //   text: `Hey there <@${event.user}>!`,
-  // });
+app.action("create_new_product", async ({ body, say }) => {
+  await say({
+    blocks: [
+      {
+        dispatch_action: true,
+        type: "input",
+        element: {
+          type: "plain_text_input",
+          action_id: "product_name",
+        },
+        label: {
+          type: "plain_text",
+          text: "Product Name",
+          emoji: true,
+        },
+      },
+    ],
+    text: `Hey there <@${body.message.user}>!`,
+  });
 });
 
 app.action("product_name", async ({ body, ack, say }) => {
@@ -112,11 +111,12 @@ app.action("product_name", async ({ body, ack, say }) => {
         },
       },
     ],
-    text: `Hey there <@${body.user.id}>!`,
+    text: `Hey there <@${body.message.user}>!`,
   });
 });
 
 app.action("product_name_value", async ({ body, ack, say }) => {
+  console.log(body);
   // Acknowledge the action
   await ack();
   await say(`You have entered ${body.value}`);
