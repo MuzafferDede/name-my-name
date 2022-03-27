@@ -13,6 +13,10 @@ const app = new App({
   socketMode: true,
 });
 
+app.event("app_home_opened", async ({ event, client, context }) => {
+  console.log("event");
+});
+
 // Listens to incoming messages that contain "hello"
 app.message("hello", async ({ message, say }) => {
   console.log("saying hi");
