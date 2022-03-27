@@ -104,7 +104,7 @@ app.action("product_name", async ({ body, ack, say }) => {
         type: "input",
         element: {
           type: "plain_text_input",
-          action_id: "product_name_value",
+          action_id: "product_value",
         },
         label: {
           type: "plain_text",
@@ -117,7 +117,7 @@ app.action("product_name", async ({ body, ack, say }) => {
   });
 });
 
-app.action("product_name_value", async ({ body, payload, ack, say }) => {
+app.action("product_value", async ({ body, payload, ack, say }) => {
   // Acknowledge the action
   await ack();
   await say(`You have entered ${payload.value}`);
