@@ -42,8 +42,29 @@ app.event("app_home_opened", async ({ event, say }) => {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `Hey there <@${event.user}>! Welcome back!`,
+          text: `Hey there <@${event.user}>! Welcome back! How can i help you today?`,
         },
+      },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "Create new Product",
+            },
+            action_id: "create_new_product",
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              text: "Create new Project",
+            },
+            action_id: "create_new_project",
+          },
+        ],
       },
     ],
     text: `Hey there <@${event.user}>!`,
