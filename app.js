@@ -13,7 +13,7 @@ const app = new App({
   socketMode: true,
 });
 
-app.message("muzo", async ({ event, client, context }) => {
+app.message("hello", async ({ event, client, context }) => {
   context.log("muzo");
 });
 
