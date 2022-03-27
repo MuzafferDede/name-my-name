@@ -14,7 +14,7 @@ const app = new App({
 });
 
 app.message("hello", async ({ event, client, context }) => {
-  console.log("hello");
+  context.log("hello");
 });
 
 (async () => {
