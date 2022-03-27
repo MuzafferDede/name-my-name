@@ -17,7 +17,7 @@ app.message("muzo", async ({ event, client, context }) => {
   console.log("muzo");
 });
 
-app.message("app_mention", async ({ event, client, context }) => {
+app.event("app_mention", async ({ event, client, context }) => {
   console.log("app mentioned");
 });
 
