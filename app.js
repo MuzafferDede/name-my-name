@@ -14,11 +14,11 @@ const app = new App({
 });
 
 app.message("muzo", async ({ event, client, context }) => {
-  console.log("muzo");
+  await say(`See ya later, <@${message.user}> :wave:`);
 });
 
 app.event("app_mention", async ({ event, client, context }) => {
-  console.log("app mentioned");
+  await say(`What's up?, <@${message.user}> :wave:`);
 });
 
 (async () => {
