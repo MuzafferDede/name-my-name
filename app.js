@@ -13,7 +13,7 @@ const app = new App({
   socketMode: true,
 });
 
-app.event("app_home_opened", async ({ event, client, context }) => {
+app.event("message", async ({ event, client, context }) => {
   try {
     /* view.publish is the method that your app uses to push a view to the Home tab */
     const result = await client.views.publish({
