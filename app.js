@@ -13,8 +13,8 @@ const app = new App({
   socketMode: true,
 });
 
-app.message("muzo", async (payload) => {
-  console.log(payload);
+app.message("muzo", async ({ say }) => {
+  await say("Muzo is the best!");
 });
 
 app.event("app_mention", async (payload) => {
