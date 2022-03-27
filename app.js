@@ -36,7 +36,7 @@ app.message("hello", async ({ message, say }) => {
   });
 });
 
-app.event("app_mention", async (payload) => {
+app.message("hello", async ({ message, say }) => {
   await say({
     blocks: [
       {
