@@ -17,10 +17,6 @@ app.message("hello", async ({ event, client, context }) => {
   console.log("hello");
 });
 
-app.event("app_mention", async ({ event, client, context }) => {
-  console.log("mentioned");
-});
-
 (async () => {
   // Start your app
   await app.start();
