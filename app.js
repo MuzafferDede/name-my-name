@@ -71,7 +71,7 @@ app.event("app_home_opened", async ({ event, say }) => {
   });
 });
 
-app.action("create_new_product", async ({ body, say }) => {
+app.action("create_new_product", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
   await say({
