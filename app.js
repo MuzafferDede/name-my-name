@@ -36,14 +36,14 @@ app.message("hello", async ({ message, say }) => {
   });
 });
 
-app.message("hello", async ({ message, say }) => {
+app.event("app_mention", async ({ event, say }) => {
   await say({
     blocks: [
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `Hey there <@${message.user}>!`,
+          text: `Hey there <@${event.user}>!`,
         },
         accessory: {
           type: "button",
@@ -55,7 +55,7 @@ app.message("hello", async ({ message, say }) => {
         },
       },
     ],
-    text: `Hey there <@${message.user}>!`,
+    text: `Hey there <@${event.user}>!`,
   });
 });
 
