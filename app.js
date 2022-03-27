@@ -117,11 +117,10 @@ app.action("product_name", async ({ body, ack, say }) => {
   });
 });
 
-app.action("product_name_value", async ({ body, value, ack, say, ...rest }) => {
-  console.log(body, rest);
+app.action("product_name_value", async ({ body, payload, ack, say }) => {
   // Acknowledge the action
   await ack();
-  await say(`You have entered ${value}`);
+  await say(`You have entered ${payload.value}`);
 });
 
 (async () => {
