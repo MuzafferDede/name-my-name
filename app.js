@@ -13,8 +13,12 @@ const app = new App({
   socketMode: true,
 });
 
-app.message("hello", async ({ event, client, context }) => {
-  context.log("muzo");
+app.message("muzo", async ({ event, client, context }) => {
+  console.log("muzo");
+});
+
+app.message("app_mention", async ({ event, client, context }) => {
+  console.log("app mentioned");
 });
 
 (async () => {
