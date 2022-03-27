@@ -13,12 +13,12 @@ const app = new App({
   socketMode: true,
 });
 
-app.message("muzo", async ({ event, client, context, say, message }) => {
-  await say(`See ya later, <@${message.user}> :wave:`);
+app.message("muzo", async (payload) => {
+  console.log(payload);
 });
 
-app.event("app_mention", async ({ event, client, context, say, message }) => {
-  await say(`What's up?, <@${message.user}> :wave:`);
+app.event("app_mention", async (payload) => {
+  console.log(payload);
 });
 
 (async () => {
