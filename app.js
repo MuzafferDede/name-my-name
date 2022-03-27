@@ -40,6 +40,12 @@ app.event("app_mention", async (payload) => {
   console.log(payload);
 });
 
+app.action("button_click", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+  await say(`<@${body.user.id}> clicked the button`);
+});
+
 (async () => {
   // Start your app
   await app.start();
