@@ -72,6 +72,8 @@ app.event("app_home_opened", async ({ event, say }) => {
 });
 
 app.action("create_new_product", async ({ body, say }) => {
+  // Acknowledge the action
+  await ack();
   await say({
     blocks: [
       {
@@ -115,8 +117,8 @@ app.action("product_name", async ({ body, ack, say }) => {
   });
 });
 
-app.action("product_name_value", async ({ body, ack, say }) => {
-  console.log(body);
+app.action("product_name_value", async ({ body, ack, say, ...rest }) => {
+  console.log(body, rest);
   // Acknowledge the action
   await ack();
   await say(`You have entered ${body.value}`);
