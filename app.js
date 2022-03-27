@@ -14,7 +14,17 @@ const app = new App({
 });
 
 app.message("muzo", async ({ say }) => {
-  await say("Muzo is the best!");
+  await say({
+    blocks: [
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: ":muzo:",
+        },
+      },
+    ],
+  });
 });
 
 app.event("app_mention", async (payload) => {
