@@ -14,39 +14,54 @@ const app = new App({
 });
 
 app.event("app_home_opened", async ({ event, client, context }) => {
-  console.log(event, client, context);
-});
+  try {
+    /* view.publish is the method that your app uses to push a view to the Home tab */
+    const result = await client.views.publish({
+      /* the user that opened your app's app home */
+      user_id: event.user,
 
-// Listens to incoming messages that contain "hello"
-app.message("hello", async ({ message, say }) => {
-  console.log("saying hi");
-  // say() sends a message to the channel where the event was triggered
-  await say({
-    blocks: [
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `Hey there <@${message.user}>!`,
-        },
-        accessory: {
-          type: "button",
-          text: {
-            type: "plain_text",
-            text: "Click Me",
+      /* the view object that appears in the app home*/
+      view: {
+        type: "home",
+        callback_id: "home_view",
+
+        /* body of the view */
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "*Welcome to your _App's Home_* :tada:",
+            },
           },
-          action_id: "button_click",
-        },
+          {
+            type: "divider",
+          },
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "This button won't do much for now but you can set up a listener for it using the `actions()` method and passing its unique `action_id`. See an example in the `examples` folder within your Bolt app.",
+            },
+          },
+          {
+            type: "actions",
+            elements: [
+              {
+                type: "button",
+                text: {
+                  type: "plain_text",
+                  text: "Click me!",
+                },
+              },
+            ],
+          },
+        ],
       },
-    ],
-    text: `Hey there <@${message.user}>!`,
-  });
-});
-
-app.action("button_click", async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
-  await say(`<@${body.user.id}> clicked the button`);
+    });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 (async () => {
