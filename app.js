@@ -63,12 +63,12 @@ app.event("app_home_opened", async ({ event, say }) => {
   });
 });
 
-app.action("create_new_product", async ({ payload, ack, say, client }) => {
+app.action("create_new_product", async ({ body, ack, say, client }) => {
   // Acknowledge the action
   await ack();
   await client.views.open({
     callback_id: "create_new_product_action",
-    trigger_id: payload.trigger_id,
+    trigger_id: body.trigger_id,
     view: {
       title: {
         type: "plain_text",
