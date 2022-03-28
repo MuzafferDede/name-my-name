@@ -299,7 +299,7 @@ app.view("create_new_product_action", async ({ ack, view }) => {
   await ack({
     response_action: "update",
     view: {
-      callback_id: "create_new_product_action_done",
+      callback_id: "create_new_product_action",
       title: {
         type: "plain_text",
         text: view.state.values.foundable.foundable_action.value,
