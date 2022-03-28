@@ -209,10 +209,9 @@ app.action("create_new_product", async ({ body, ack, say, client }) => {
   });
 });
 
-app.view("create_new_product_action", ({ ack, say, body, view, context }) => {
-  console.log("done");
-  ack();
-  say("ok from callback");
+app.view("create_new_product_action", ({ ack, ...rest }) => {
+  console.log(rest);
+  console.log(ack);
 });
 
 (async () => {
