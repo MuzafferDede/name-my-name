@@ -297,8 +297,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 app.view("create_new_product_action", async ({ ack, view, client }) => {
   console.log("recieved");
   await ack({
-    response_action: "update",
-    view,
+    response_action: "clear",
   });
 });
 
