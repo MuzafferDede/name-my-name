@@ -312,11 +312,17 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           },
         },
         {
+          type: "divider",
+        },
+        {
           type: "section",
           text: {
             type: "plain_text",
             text: `*Project*: ${view.state.values.project.project_select_action.selected_option.text.text}`,
           },
+        },
+        {
+          type: "divider",
         },
         {
           type: "section",
@@ -326,6 +332,9 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           },
         },
         {
+          type: "divider",
+        },
+        {
           type: "section",
           text: {
             type: "plain_text",
@@ -333,11 +342,17 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           },
         },
         {
+          type: "divider",
+        },
+        {
           type: "section",
           text: {
             type: "plain_text",
             text: `*Tag*: ${view.state.values.tag.tag_action.value}`,
           },
+        },
+        {
+          type: "divider",
         },
         {
           type: "section",
