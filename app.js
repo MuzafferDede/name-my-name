@@ -295,7 +295,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 });
 
 app.view("create_new_product_action", ({ ack, view, ...rest }) => {
-  console.log(view.state.values);
+  console.log(view.state.values.product.product_select_action.selected_option);
   console.log(rest);
   ack();
 });
