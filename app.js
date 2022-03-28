@@ -64,11 +64,11 @@ app.event("app_home_opened", async ({ event, say }) => {
 });
 
 app.action("create_new_product", async ({ body, ack, say, client }) => {
-  console.log("create_new_product");
+  console.log(body.trigger_id);
   // Acknowledge the action
   await ack();
   await client.views.open({
-    trigger_id: body.trigger_id,
+    trigger_id: "creating_product",
     view: {
       title: {
         type: "plain_text",
