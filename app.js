@@ -350,6 +350,9 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           ],
         },
         {
+          type: "divider",
+        },
+        {
           type: "context",
           elements: [
             {
