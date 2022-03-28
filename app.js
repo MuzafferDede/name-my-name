@@ -1,4 +1,5 @@
 const { App } = require("@slack/bolt");
+const productSchema = require("../schemas/product.js");
 
 const mongoose = require("mongoose");
 
@@ -111,7 +112,7 @@ app.action("create_new_product", async ({ body, ack, say }) => {
 });
 
 app.action("product_name", async ({ body, payload, ack, say }) => {
-  const ProductModel = mongoose.model("Product");
+  const ProductModel = mongoose.model("Product", productSchema);
 
   const Product = new ProductModel({
     name: payload.value,
