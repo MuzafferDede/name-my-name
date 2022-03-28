@@ -313,21 +313,21 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           type: "section",
           text: {
             type: "plain_text",
-            text: `Product: ${view.state.values.product.product_select_action.selected_option.text}`,
+            text: `Product: ${view.state.values.product.product_select_action.selected_option.text.text}`,
           },
         },
         {
           type: "section",
           text: {
             type: "plain_text",
-            text: `Project: ${view.state.values.project.project_select_action.selected_option.text}`,
+            text: `Project: ${view.state.values.project.project_select_action.selected_option.text.text}`,
           },
         },
         {
           type: "section",
           text: {
             type: "plain_text",
-            text: `Role: ${view.state.values.role.role_select_action.selected_option.text}`,
+            text: `Role: ${view.state.values.role.role_select_action.selected_option.text.text}`,
           },
         },
         {
