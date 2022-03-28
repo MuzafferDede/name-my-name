@@ -4,7 +4,7 @@ const Product = require("./models/product.js");
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.MONGODB_URI, (error, connection) => {
-  console.log(error || `${connection.port} connected`);
+  console.log(error || `Connected to MongoDB on port ${connection.port}`);
 
   return {
     useNewUrlParser: true,
