@@ -295,26 +295,20 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 });
 
 app.view("create_new_product_action", async ({ ack, view, client }) => {
-  console.log(view.state.values);
   await ack({
     response_action: "update",
     view: {
       type: "modal",
       title: {
         type: "plain_text",
-        text: "Successfully created a new foundable",
-      },
-      submit: null,
-      close: {
-        type: "plain_text",
-        text: "Done",
+        text: "Updated view",
       },
       blocks: [
         {
           type: "section",
           text: {
-            type: "mrkdown",
-            text: `Product: ${view.state.values.product.product_select_action.selected_option.text.text}`,
+            type: "plain_text",
+            text: "I've changed and I'll never be the same. You must believe me.",
           },
         },
       ],
