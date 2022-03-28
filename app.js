@@ -365,7 +365,7 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "This is a section block with a button.",
+            text: view.state.values.url.url_action.value,
           },
           accessory: {
             type: "button",
