@@ -309,11 +309,11 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `:rocket: *Product:*\n${view.state.values.product.product_select_action.selected_option.text.text}`,
+              text: `*Product:*\n${view.state.values.product.product_select_action.selected_option.text.text}`,
             },
             {
               type: "mrkdwn",
-              text: `:rocket: *Project:*\n${view.state.values.project.project_select_action.selected_option.text.text}`,
+              text: `*Project:*\n${view.state.values.project.project_select_action.selected_option.text.text}`,
             },
           ],
         },
@@ -325,11 +325,11 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `:rocket: *Role:*\n${view.state.values.role.role_select_action.selected_option.text.text}`,
+              text: `*Role:*\n${view.state.values.role.role_select_action.selected_option.text.text}`,
             },
             {
               type: "mrkdwn",
-              text: `:rocket: *Foundable's name:*\n${view.state.values.foundable.foundable_action.value}`,
+              text: `*Foundable's name:*\n${view.state.values.foundable.foundable_action.value}`,
             },
           ],
         },
@@ -345,7 +345,7 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
             },
             {
               type: "mrkdwn",
-              text: `:rocket: *URL:*\n<${view.state.values.url.url_action.value}|:earth_americas: Open>`,
+              text: `*URL:*\n<${view.state.values.url.url_action.value}|:earth_americas: Open>`,
             },
           ],
         },
