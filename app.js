@@ -294,69 +294,39 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
   });
 });
 
-app.view("create_new_product_action", async ({ ack, view }) => {
-  await ack({
-    response_action: "update",
+app.view("create_new_product_action", async ({ ack, view, client }) => {
+  await ack();
+  client.views.update({
+    view_id: view.id,
     view: {
       title: {
         type: "plain_text",
-        text: view.state.values.foundable.foundable_action.value,
+        text: "Create a new foundable",
       },
       close: {
         type: "plain_text",
-        text: "Close",
+        text: "Cancel",
       },
+      submit: null,
       blocks: [
         {
-          type: "mrkdwn",
-          text:
-            "Product: " +
-            view.state.values.product.product_select_action.selected_option.text
-              .text,
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "mrkdwn",
-          text:
-            "Project: " +
-            view.state.values.project.project_select_action.selected_option.text
-              .text,
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "mrkdwn",
-          text:
-            "Role: " +
-            view.state.values.role.role_select_action.selected_option.text,
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "mrkdwn",
-          text:
-            "Foundable: " + view.state.values.foundable.foundable_action.value,
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "mrkdwn",
-          text: "Foundable: " + view.state.values.tag.tag_action.value,
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "mrkdwn",
-          text: "URL: " + view.state.values.url.url_action.value,
+          type: "section",
+          block_id: "s_block",
+          text: {
+            type: "plain_text",
+            text: "I am but an updated modal",
+            emoji: true,
+          },
+          accessory: {
+            type: "button",
+            action_id: "button_4",
+            text: {
+              type: "plain_text",
+              text: "Click me",
+            },
+          },
         },
       ],
-      type: "modal",
     },
   });
 });
