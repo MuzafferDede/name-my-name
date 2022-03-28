@@ -72,6 +72,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
       },
       blocks: [
         {
+          block_id: "product",
           type: "input",
           element: {
             type: "static_select",
@@ -84,10 +85,26 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
               {
                 text: {
                   type: "plain_text",
-                  text: "*this is plain_text text*",
+                  text: "Good Wallet",
                   emoji: true,
                 },
                 value: "value-0",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "One Account",
+                  emoji: true,
+                },
+                value: "value-1",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Financal Core",
+                  emoji: true,
+                },
+                value: "value-2",
               },
             ],
             action_id: "product_select_action",
@@ -102,6 +119,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
           type: "divider",
         },
         {
+          block_id: "project",
           type: "input",
           element: {
             type: "static_select",
@@ -114,10 +132,18 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
               {
                 text: {
                   type: "plain_text",
-                  text: "*this is plain_text text*",
+                  text: "PGN",
                   emoji: true,
                 },
                 value: "value-0",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "PE",
+                  emoji: true,
+                },
+                value: "value-1",
               },
             ],
             action_id: "project_select_action",
@@ -132,6 +158,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
           type: "divider",
         },
         {
+          block_id: "role",
           type: "input",
           element: {
             type: "static_select",
@@ -144,10 +171,50 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
               {
                 text: {
                   type: "plain_text",
-                  text: "*this is plain_text text*",
+                  text: "PM",
+                  emoji: true,
+                },
+                value: "value-4",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "UX",
                   emoji: true,
                 },
                 value: "value-0",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "UI",
+                  emoji: true,
+                },
+                value: "value-1",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Frontend",
+                  emoji: true,
+                },
+                value: "value-2",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Backend",
+                  emoji: true,
+                },
+                value: "value-3",
+              },
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Avengers",
+                  emoji: true,
+                },
+                value: "value-4",
               },
             ],
             action_id: "role_select_action",
@@ -162,6 +229,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
           type: "divider",
         },
         {
+          block_id: "foundable",
           type: "input",
           element: {
             type: "plain_text_input",
@@ -179,6 +247,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
           },
         },
         {
+          block_id: "tag",
           type: "input",
           element: {
             type: "plain_text_input",
