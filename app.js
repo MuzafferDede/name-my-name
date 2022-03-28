@@ -48,6 +48,24 @@ app.event("app_home_opened", async ({ event, say }) => {
             },
             action_id: "add_new_foundable",
           },
+          {
+            type: "button",
+            style: "primary",
+            text: {
+              type: "plain_text",
+              text: "Search foundables",
+            },
+            action_id: "search_foundable",
+          },
+          {
+            type: "button",
+            style: "danger",
+            text: {
+              type: "plain_text",
+              text: "Manage your foundables",
+            },
+            action_id: "manage_foundable",
+          },
         ],
       },
     ],
@@ -341,7 +359,7 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `:rocket:*Tag:*\n${view.state.values.tag.tag_action.value}`,
+              text: `*Tag:*\n${view.state.values.tag.tag_action.value}`,
             },
             {
               type: "mrkdwn",
