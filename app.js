@@ -296,7 +296,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 
 app.view("create_new_product_action", async (payload) => {
   console.log(payload);
-  await ack();
+  await payload.ack();
 });
 
 (async () => {
