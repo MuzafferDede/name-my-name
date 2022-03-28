@@ -295,11 +295,9 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 });
 
 app.view("create_new_product_action", async ({ ack, view }) => {
-  console.log(view.state.values);
   await ack({
     response_action: "update",
     view: {
-      callback_id: "create_new_product_action",
       title: {
         type: "plain_text",
         text: view.state.values.foundable.foundable_action.value,
