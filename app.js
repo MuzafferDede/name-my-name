@@ -67,9 +67,9 @@ app.action("create_new_product", async ({ body, ack, say, client }) => {
   // Acknowledge the action
   await ack();
   await client.views.open({
-    callback_id: "create_new_product_action",
     trigger_id: body.trigger_id,
     view: {
+      callback_id: "create_new_product_action",
       title: {
         type: "plain_text",
         text: "Create a new foundable",
