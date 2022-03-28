@@ -295,6 +295,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 });
 
 app.view("create_new_product_action", async ({ ack, view, client }) => {
+  console.log(view.state.values);
   await ack({
     response_action: "update",
     view: {
@@ -314,41 +315,6 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           text: {
             type: "plain_text",
             text: `Product: ${view.state.values.product.product_select_action.selected_option.text.text}`,
-          },
-        },
-        {
-          type: "section",
-          text: {
-            type: "plain_text",
-            text: `Project: ${view.state.values.project.project_select_action.selected_option.text.text}`,
-          },
-        },
-        {
-          type: "section",
-          text: {
-            type: "plain_text",
-            text: `Role: ${view.state.values.role.role_select_action.selected_option.text.text}`,
-          },
-        },
-        {
-          type: "section",
-          text: {
-            type: "plain_text",
-            text: `Foundable's name: ${view.state.values.foundable.foundable_action.value}`,
-          },
-        },
-        {
-          type: "section",
-          text: {
-            type: "plain_text",
-            text: `Tag: ${view.state.values.tag.tag_action.value}`,
-          },
-        },
-        {
-          type: "section",
-          text: {
-            type: "plain_text",
-            text: `URL: ${view.state.values.url.url_action.value}`,
           },
         },
       ],
