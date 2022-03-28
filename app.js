@@ -212,7 +212,11 @@ app.action("create_new_product_action", async ({ body, payload, ack, say }) => {
   await ack();
   await say("ok");
 });
-
+app.view("create_new_product_action", ({ ack, say, body, view, context }) => {
+  console.log("done");
+  ack();
+  say("ok from callback");
+});
 app.action("product_name", async ({ body, payload, ack, say }) => {
   const product = new Product({
     name: payload.value,
