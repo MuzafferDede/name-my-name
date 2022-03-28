@@ -295,9 +295,10 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 });
 
 app.view("create_new_product_action", ({ ack, view, ...rest }) => {
-  console.log(view.state.values.product.product_select_action.selected_option);
-  console.log(rest);
-  ack();
+  await ack({
+    response_action: "in_channel",
+    text: `Hey there`,
+  });
 });
 
 (async () => {
