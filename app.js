@@ -298,68 +298,68 @@ app.view("create_new_product_action", async ({ ack, view }) => {
   console.log(view.state.values);
   await ack({
     response_action: "update",
-    // view: {
-    //   callback_id: "create_new_product_action_done",
-    //   title: {
-    //     type: "plain_text",
-    //     text: view.state.values.foundable.foundable_action.value,
-    //   },
-    //   close: {
-    //     type: "plain_text",
-    //     text: "Close",
-    //   },
-    //   blocks: [
-    //     {
-    //       type: "mrkdwn",
-    //       text:
-    //         "Product: " +
-    //         view.state.values.product.product_select_action.selected_option.text
-    //           .text,
-    //     },
-    //     {
-    //       type: "divider",
-    //     },
-    //     {
-    //       type: "mrkdwn",
-    //       text:
-    //         "Project: " +
-    //         view.state.values.project.project_select_action.selected_option.text
-    //           .text,
-    //     },
-    //     {
-    //       type: "divider",
-    //     },
-    //     {
-    //       type: "mrkdwn",
-    //       text:
-    //         "Role: " +
-    //         view.state.values.role.role_select_action.selected_option.text.text,
-    //     },
-    //     {
-    //       type: "divider",
-    //     },
-    //     {
-    //       type: "mrkdwn",
-    //       text:
-    //         "Foundable: " + view.state.values.foundable.foundable_action.value,
-    //     },
-    //     {
-    //       type: "divider",
-    //     },
-    //     {
-    //       type: "mrkdwn",
-    //       text: "Foundable: " + view.state.values.tag.tag_action.value,
-    //     },
-    //     {
-    //       type: "divider",
-    //     },
-    //     {
-    //       type: "mrkdwn",
-    //       text: "URL: " + view.state.values.url.rul_action.value,
-    //     },
-    //   ],
-    //   type: "modal",
-    // },
+    view: {
+      callback_id: "create_new_product_action_done",
+      title: {
+        type: "plain_text",
+        text: view.state.values.foundable.foundable_action.value,
+      },
+      close: {
+        type: "plain_text",
+        text: "Close",
+      },
+      blocks: [
+        {
+          type: "mrkdwn",
+          text:
+            "Product: " +
+            view.state.values.product.product_select_action.selected_option.text
+              .text,
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "mrkdwn",
+          text:
+            "Project: " +
+            view.state.values.project.project_select_action.selected_option.text
+              .text,
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "mrkdwn",
+          text:
+            "Role: " +
+            view.state.values.role.role_select_action.selected_option.text,
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "mrkdwn",
+          text:
+            "Foundable: " + view.state.values.foundable.foundable_action.value,
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "mrkdwn",
+          text: "Foundable: " + view.state.values.tag.tag_action.value,
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "mrkdwn",
+          text: "URL: " + view.state.values.url.url_action.value,
+        },
+      ],
+      type: "modal",
+    },
   });
 });
 
