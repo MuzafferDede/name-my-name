@@ -298,40 +298,7 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
   console.log("recieved");
   await ack({
     response_action: "update",
-    view: {
-      callback_id: "create_new_product_action_2",
-      type: "modal",
-      title: {
-        type: "plain_text",
-        text: "Updated Modal",
-        emoji: true,
-      },
-      close: {
-        type: "plain_text",
-        text: "Close",
-        emoji: true,
-      },
-      submit: null,
-      blocks: [
-        {
-          type: "section",
-          block_id: "s_block",
-          text: {
-            type: "plain_text",
-            text: "I am but an updated modal",
-            emoji: true,
-          },
-          accessory: {
-            type: "button",
-            action_id: "button_4",
-            text: {
-              type: "plain_text",
-              text: "Click me",
-            },
-          },
-        },
-      ],
-    },
+    view,
   });
 });
 
