@@ -295,9 +295,8 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
 });
 
 app.view("create_new_product_action", async ({ ack, view, client }) => {
-  await client.views.update({
-    view_id: view.id,
-    ok: true,
+  await ack({
+    response_action: "update",
     view: {
       type: "modal",
       title: {
