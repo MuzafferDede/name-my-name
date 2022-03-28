@@ -294,11 +294,9 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
   });
 });
 
-app.view("create_new_product_action", ({ ack, view, ...rest }) => {
-  await ack({
-    response_action: "in_channel",
-    text: `Hey there`,
-  });
+app.view("create_new_product_action", async (payload) => {
+  console.log(payload);
+  await ack();
 });
 
 (async () => {
