@@ -339,7 +339,7 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
             },
             {
               type: "mrkdwn",
-              text: `*URL:*\n<${view.state.values.url.url_action.value}>|${view.state.values.url.url_action.value}`,
+              text: `*URL:*\n<${view.state.values.url.url_action.value}>|Open`,
             },
           ],
         },
