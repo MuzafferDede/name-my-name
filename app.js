@@ -301,7 +301,7 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
       type: "modal",
       title: {
         type: "plain_text",
-        text: "Updated view",
+        text: "Foundable created",
       },
       blocks: [
         {
