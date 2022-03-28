@@ -298,6 +298,7 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
   await ack({
     response_action: "update",
     view: {
+      callback_id: "create_new_product_action_2",
       type: "modal",
       title: {
         type: "plain_text",
