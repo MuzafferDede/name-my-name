@@ -301,14 +301,54 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
       type: "modal",
       title: {
         type: "plain_text",
-        text: "Updated view",
+        text: "Successfully created a new foundable",
+      },
+      submit: null,
+      close: {
+        type: "plain_text",
+        text: "Done",
       },
       blocks: [
         {
           type: "section",
           text: {
             type: "plain_text",
-            text: "I've changed and I'll never be the same. You must believe me.",
+            text: `Product: ${view.state.values.product.product_select_action.selected_option.text}`,
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "plain_text",
+            text: `Project: ${view.state.values.project.project_select_action.selected_option.text}`,
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "plain_text",
+            text: `Role: ${view.state.values.role.role_select_action.selected_option.text}`,
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "plain_text",
+            text: `Foundable's name: ${view.state.values.foundable.foundable_action.value}`,
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "plain_text",
+            text: `Tag: ${view.state.values.tag.tag_action.value}`,
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "plain_text",
+            text: `URL: ${view.state.values.url.url_action.value}`,
           },
         },
       ],
