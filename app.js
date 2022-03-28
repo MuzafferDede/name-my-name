@@ -300,15 +300,18 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
   });
   await client.views.update({
     view_id: view.id,
+    ok: true,
     view: {
       type: "modal",
       title: {
         type: "plain_text",
-        text: "Create a new foundable",
+        text: "Updated Modal",
+        emoji: true,
       },
       close: {
         type: "plain_text",
-        text: "Cancel",
+        text: "Close",
+        emoji: true,
       },
       submit: null,
       blocks: [
