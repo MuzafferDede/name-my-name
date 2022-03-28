@@ -67,6 +67,7 @@ app.action("create_new_product", async ({ body, ack, say, client }) => {
   // Acknowledge the action
   await ack();
   await client.views.open({
+    callback_id: "create_new_product_action",
     trigger_id: body.trigger_id,
     view: {
       title: {
@@ -206,6 +207,10 @@ app.action("create_new_product", async ({ body, ack, say, client }) => {
       type: "modal",
     },
   });
+});
+app.action("create_new_product_action", async ({ body, payload, ack, say }) => {
+  await ack();
+  await say("ok");
 });
 
 app.action("product_name", async ({ body, payload, ack, say }) => {
