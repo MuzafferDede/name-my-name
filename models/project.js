@@ -7,6 +7,10 @@ const schema = new mongoose.Schema(
       required: [true, "can't be blank."],
       trim: true,
     },
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -15,4 +19,4 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Product", schema);
+module.exports = mongoose.model("Project", schema);

@@ -26,29 +26,6 @@ const app = new App({
   socketMode: true,
 });
 
-app.message("hello", async ({ message, say }) => {
-  await say({
-    blocks: [
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `Hey there <@${message.user}>!`,
-        },
-        accessory: {
-          type: "button",
-          text: {
-            type: "plain_text",
-            text: "Click Me",
-          },
-          action_id: "button_click",
-        },
-      },
-    ],
-    text: `Hey there <@${message.user}>!`,
-  });
-});
-
 app.event("app_home_opened", async ({ event, say }) => {
   console.log("app opened");
   await say({
@@ -123,7 +100,143 @@ app.action("product_name", async ({ body, payload, ack, say }) => {
     }
   });
   await ack();
-  await say(`You have entered ${product.name}`);
+  await say({
+    title: {
+      type: "plain_text",
+      text: "Create a new foundable",
+    },
+    submit: {
+      type: "plain_text",
+      text: "Submit",
+    },
+    blocks: [
+      {
+        type: "input",
+        element: {
+          type: "multi_static_select",
+          placeholder: {
+            type: "plain_text",
+            text: "Select a product",
+            emoji: true,
+          },
+          options: [
+            {
+              text: {
+                type: "plain_text",
+                text: "*this is plain_text text*",
+                emoji: true,
+              },
+              value: "value-0",
+            },
+          ],
+          action_id: "product_select_action",
+        },
+        label: {
+          type: "plain_text",
+          text: "Product",
+          emoji: true,
+        },
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "input",
+        element: {
+          type: "multi_static_select",
+          placeholder: {
+            type: "plain_text",
+            text: "Select a project",
+            emoji: true,
+          },
+          options: [
+            {
+              text: {
+                type: "plain_text",
+                text: "*this is plain_text text*",
+                emoji: true,
+              },
+              value: "value-0",
+            },
+          ],
+          action_id: "project_select_action",
+        },
+        label: {
+          type: "plain_text",
+          text: "Project",
+          emoji: true,
+        },
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "input",
+        element: {
+          type: "multi_static_select",
+          placeholder: {
+            type: "plain_text",
+            text: "Select a role",
+            emoji: true,
+          },
+          options: [
+            {
+              text: {
+                type: "plain_text",
+                text: "*this is plain_text text*",
+                emoji: true,
+              },
+              value: "value-0",
+            },
+          ],
+          action_id: "role_select_action",
+        },
+        label: {
+          type: "plain_text",
+          text: "Role",
+          emoji: true,
+        },
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "input",
+        element: {
+          type: "plain_text_input",
+          action_id: "thing_name_action",
+          placeholder: {
+            type: "plain_text",
+            text: "e.g. PRD, Design Guideline, Report, etc.",
+            emoji: true,
+          },
+        },
+        label: {
+          type: "plain_text",
+          text: "Foundable's name",
+          emoji: true,
+        },
+      },
+      {
+        type: "input",
+        element: {
+          type: "plain_text_input",
+          action_id: "plain_text_input-action",
+          placeholder: {
+            type: "plain_text",
+            text: "e.g. v1.0, Python, Node.js, etc.",
+            emoji: true,
+          },
+        },
+        label: {
+          type: "plain_text",
+          text: "Tag",
+          emoji: true,
+        },
+      },
+    ],
+    type: "modal",
+  });
 });
 
 (async () => {
