@@ -1,5 +1,21 @@
 const { App } = require("@slack/bolt");
 
+var mongoose = require("mongoose");
+
+var MONGODB_URI = process.env.MONGODB_URL;
+
+const options = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4, // Use IPv4, skip trying IPv6
+};
+
+mongoose.connect(MONGODB_URI, (error, connection) => {
+  console.log(error || `${connection.port} connected`);
+
+  return options;
+});
 /* 
 This sample slack application uses SocketMode
 For the companion getting started setup guide, 
@@ -111,18 +127,3 @@ app.action("product_name", async ({ body, payload, ack, say }) => {
 
   console.log("⚡️ Bolt app is running!");
 })();
-
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
-});
-client.connect((err) => {
-  const collection = client.db("test").collection("devices");
-
-  console.log(collection);
-  // perform actions on the collection object
-  client.close();
-});
