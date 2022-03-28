@@ -361,24 +361,6 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
             text: `*URL*:  <${view.state.values.url.url_action.value}|${view.state.values.url.url_action.value}>`,
           },
         },
-        {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text: view.state.values.url.url_action.value,
-          },
-          accessory: {
-            type: "button",
-            text: {
-              type: "plain_text",
-              text: "Open",
-              emoji: true,
-            },
-            value: "click_me_123",
-            url: view.state.values.url.url_action.value,
-            action_id: "button-action",
-          },
-        },
       ],
     },
   });
