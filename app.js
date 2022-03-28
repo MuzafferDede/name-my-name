@@ -318,6 +318,9 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
           ],
         },
         {
+          type: "divider",
+        },
+        {
           type: "section",
           fields: [
             {
@@ -329,6 +332,9 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
               text: `*Foundable's name:*\n${view.state.values.foundable.foundable_action.value}`,
             },
           ],
+        },
+        {
+          type: "divider",
         },
         {
           type: "section",
