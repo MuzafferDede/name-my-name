@@ -233,7 +233,7 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "thing_name_action",
+            action_id: "foundable_action",
             placeholder: {
               type: "plain_text",
               text: "e.g. PRD, Design Guideline, Report, etc.",
@@ -247,11 +247,14 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
           },
         },
         {
+          type: "divider",
+        },
+        {
           block_id: "tag",
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "plain_text_input-action",
+            action_id: "tag_action",
             placeholder: {
               type: "plain_text",
               text: "e.g. v1.0, Python, Node.js, etc.",
@@ -261,6 +264,27 @@ app.action("add_new_foundable", async ({ body, ack, say, client }) => {
           label: {
             type: "plain_text",
             text: "Tag",
+            emoji: true,
+          },
+        },
+        {
+          type: "divider",
+        },
+        {
+          block_id: "url",
+          type: "input",
+          element: {
+            type: "plain_text_input",
+            action_id: "url_action",
+            placeholder: {
+              type: "plain_text",
+              text: "https://www.example.com/path/to/foundable",
+              emoji: true,
+            },
+          },
+          label: {
+            type: "plain_text",
+            text: "URL",
             emoji: true,
           },
         },
