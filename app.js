@@ -111,10 +111,20 @@ app.action("create_new_product", async ({ body, ack, say }) => {
 });
 
 app.action("product_name", async ({ body, payload, ack, say }) => {
-  console.log("product_name");
-  // Acknowledge the action
+  const ProductModel = mongoose.model("Product");
+
+  const Product = new ProductModel({
+    name: payload.value,
+    // user: user.id,
+  });
+
+  Product.save((err) => {
+    if (err) {
+      return next({ status: 400, error: err.errors });
+    }
+  });
   await ack();
-  await say(`You have entered ${payload.value}`);
+  await say(`You have entered ${Product.name}`);
 });
 
 (async () => {
