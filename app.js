@@ -44,17 +44,9 @@ app.event("app_home_opened", async ({ event, say }) => {
             type: "button",
             text: {
               type: "plain_text",
-              text: "Create new Product",
+              text: "Add new foundable",
             },
-            action_id: "create_new_product",
-          },
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              text: "Create new Project",
-            },
-            action_id: "create_new_project",
+            action_id: "add_new_foundable",
           },
         ],
       },
@@ -63,7 +55,7 @@ app.event("app_home_opened", async ({ event, say }) => {
   });
 });
 
-app.action("create_new_product", async ({ body, ack, say, client }) => {
+app.action("add_new_foundable", async ({ body, ack, say, client }) => {
   // Acknowledge the action
   await ack();
   await client.views.open({
