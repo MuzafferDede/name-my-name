@@ -349,6 +349,17 @@ app.view("create_new_product_action", async ({ ack, view, client }) => {
             },
           ],
         },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `${view.state.values.product.product_select_action.selected_option.text.text}
+            /${view.state.values.project.project_select_action.selected_option.text.text}
+            /${view.state.values.role.role_select_action.selected_option.text.text}
+            /${view.state.values.foundable.foundable_action.value}
+            /${view.state.values.tag.tag_action.value}`,
+          },
+        },
       ],
     },
   });
