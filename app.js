@@ -210,7 +210,7 @@ app.action("create_new_product", async ({ body, ack, say, client }) => {
 });
 
 app.view("create_new_product_action", ({ ack, view }) => {
-  console.log(view.state.values);
+  console.log(view.state.values["product_select_action"]);
   ack();
 });
 
