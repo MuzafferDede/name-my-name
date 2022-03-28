@@ -1,20 +1,16 @@
 const { App } = require("@slack/bolt");
 
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var MONGODB_URI = process.env.MONGODB_URL;
-
-const options = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  family: 4, // Use IPv4, skip trying IPv6
-};
-
-mongoose.connect(MONGODB_URI, (error, connection) => {
+mongoose.connect(process.env.MONGODB_URI, (error, connection) => {
   console.log(error || `${connection.port} connected`);
 
-  return options;
+  return {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    family: 4, // Use IPv4, skip trying IPv6
+  };
 });
 /* 
 This sample slack application uses SocketMode
