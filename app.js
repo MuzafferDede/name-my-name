@@ -117,13 +117,13 @@ app.action("product_name", async ({ body, payload, ack, say }) => {
     // user: user.id,
   });
 
-  Product.save((err) => {
+  product.save((err) => {
     if (err) {
       return next({ status: 400, error: err.errors });
     }
   });
   await ack();
-  await say(`You have entered ${Product.name}`);
+  await say(`You have entered ${product.name}`);
 });
 
 (async () => {
