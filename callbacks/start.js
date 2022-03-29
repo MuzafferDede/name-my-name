@@ -38,7 +38,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Manage your items",
               },
-              action_id: "manage_item",
+              action_id: "manage_items",
             },
           ],
         },
