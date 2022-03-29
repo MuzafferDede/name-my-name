@@ -198,7 +198,7 @@ const callback = async ({ body, ack, client, logger, action }) => {
       text: "Project",
     },
   };
-
+  console.log(action);
   if (action.action_id === "product_selected") {
     blocks = { ...blocks, project };
   }
