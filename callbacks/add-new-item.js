@@ -22,14 +22,12 @@ const callback = async ({ body, ack, client, logger }) => {
             placeholder: {
               type: "plain_text",
               text: "Select a product",
-              emoji: true,
             },
             options: [
               {
                 text: {
                   type: "plain_text",
                   text: "Good Wallet",
-                  emoji: true,
                 },
                 value: "value-0",
               },
@@ -37,7 +35,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "One Account",
-                  emoji: true,
                 },
                 value: "value-1",
               },
@@ -45,7 +42,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "Financal Core",
-                  emoji: true,
                 },
                 value: "value-2",
               },
@@ -55,7 +51,6 @@ const callback = async ({ body, ack, client, logger }) => {
           label: {
             type: "plain_text",
             text: "Product",
-            emoji: true,
           },
         },
         {
@@ -69,14 +64,12 @@ const callback = async ({ body, ack, client, logger }) => {
             placeholder: {
               type: "plain_text",
               text: "Select a project",
-              emoji: true,
             },
             options: [
               {
                 text: {
                   type: "plain_text",
                   text: "PGN",
-                  emoji: true,
                 },
                 value: "value-0",
               },
@@ -84,7 +77,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "PE",
-                  emoji: true,
                 },
                 value: "value-1",
               },
@@ -94,7 +86,6 @@ const callback = async ({ body, ack, client, logger }) => {
           label: {
             type: "plain_text",
             text: "Project",
-            emoji: true,
           },
         },
         {
@@ -108,14 +99,12 @@ const callback = async ({ body, ack, client, logger }) => {
             placeholder: {
               type: "plain_text",
               text: "Select a role",
-              emoji: true,
             },
             options: [
               {
                 text: {
                   type: "plain_text",
                   text: "PM",
-                  emoji: true,
                 },
                 value: "value-4",
               },
@@ -123,7 +112,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "UX",
-                  emoji: true,
                 },
                 value: "value-0",
               },
@@ -131,7 +119,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "UI",
-                  emoji: true,
                 },
                 value: "value-1",
               },
@@ -139,7 +126,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "Frontend",
-                  emoji: true,
                 },
                 value: "value-2",
               },
@@ -147,7 +133,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "Backend",
-                  emoji: true,
                 },
                 value: "value-3",
               },
@@ -155,7 +140,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 text: {
                   type: "plain_text",
                   text: "Avengers",
-                  emoji: true,
                 },
                 value: "value-4",
               },
@@ -165,7 +149,6 @@ const callback = async ({ body, ack, client, logger }) => {
           label: {
             type: "plain_text",
             text: "Role",
-            emoji: true,
           },
         },
         {
@@ -180,13 +163,11 @@ const callback = async ({ body, ack, client, logger }) => {
             placeholder: {
               type: "plain_text",
               text: "e.g. PRD, Design Guideline, Report, etc.",
-              emoji: true,
             },
           },
           label: {
             type: "plain_text",
             text: "item's name",
-            emoji: true,
           },
         },
         {
@@ -201,13 +182,11 @@ const callback = async ({ body, ack, client, logger }) => {
             placeholder: {
               type: "plain_text",
               text: "e.g. v1.0, Python, Node.js, etc.",
-              emoji: true,
             },
           },
           label: {
             type: "plain_text",
             text: "Tag",
-            emoji: true,
           },
         },
         {
@@ -222,13 +201,11 @@ const callback = async ({ body, ack, client, logger }) => {
             placeholder: {
               type: "plain_text",
               text: "https://www.example.com/path/to/item",
-              emoji: true,
             },
           },
           label: {
             type: "plain_text",
             text: "URL",
-            emoji: true,
           },
         },
       ],
