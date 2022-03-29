@@ -3,20 +3,42 @@ const callback = async ({ event, client, logger }) => {
     user_id: event.user,
     view: {
       type: "home",
-      attachments: [
+      blocks: [
         {
-          text: "Who wins the lifetime supply of chocolate?",
-          fallback:
-            "You could be telling the computer exactly what it can do with a lifetime supply of chocolate.",
-          color: "#3AA3E3",
-          attachment_type: "default",
-          callback_id: "select_simple_1234",
-          actions: [
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `Hey there <@${event.user}>! Welcome back! How can i help you today?`,
+          },
+        },
+        {
+          type: "actions",
+          elements: [
             {
-              name: "winners_list",
-              text: "Who should win?",
-              type: "select",
-              data_source: "users",
+              type: "button",
+              text: {
+                type: "plain_text",
+                text: "Add new item",
+              },
+              action_id: "add_new_item",
+            },
+            {
+              type: "button",
+              style: "primary",
+              text: {
+                type: "plain_text",
+                text: "Search items",
+              },
+              action_id: "search_items",
+            },
+            {
+              type: "button",
+              style: "danger",
+              text: {
+                type: "plain_text",
+                text: "Manage your items",
+              },
+              action_id: "manage_items",
             },
           ],
         },
