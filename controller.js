@@ -7,9 +7,12 @@ const controller = (app) => {
 
   app.action("add_new_item", addNewItem);
 
-  app.action("product_selected", ({ ack, action, ...rest }) => {
+  app.action("product_selected", ({ ack, action, view, client }) => {
     ack();
-    console.log(rest);
+    const result = await ack({
+      response_action: "update",
+      view
+    });
   });
 
   app.view("view_new_item", newItem);
