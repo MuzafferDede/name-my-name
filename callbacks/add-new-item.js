@@ -17,17 +17,12 @@ const callback = async ({ body, ack, client, logger }) => {
         {
           block_id: "product",
           type: "input",
-          dispatch_action: true,
           element: {
             type: "static_select",
             placeholder: {
               type: "plain_text",
               text: "Select a product",
             },
-            dispatch_action_config: {
-              trigger_actions_on: ["on_character_entered"],
-            },
-            action_id: "product_selected",
             options: [
               {
                 text: {
