@@ -1,5 +1,6 @@
 const { App } = require("@slack/bolt");
 const Product = require("./models/product.js");
+const start = require("./start.js");
 
 const mongoose = require("mongoose");
 
@@ -26,52 +27,7 @@ const app = new App({
   socketMode: true,
 });
 
-app.event("app_home_opened", async ({ event, say }) => {
-  console.log("app opened");
-  await say({
-    blocks: [
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `Hey there <@${event.user}>! Welcome back! How can i help you today?`,
-        },
-      },
-      {
-        type: "actions",
-        elements: [
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              text: "Add new foundable",
-            },
-            action_id: "add_new_foundable",
-          },
-          {
-            type: "button",
-            style: "primary",
-            text: {
-              type: "plain_text",
-              text: "Search foundables",
-            },
-            action_id: "search_foundable",
-          },
-          {
-            type: "button",
-            style: "danger",
-            text: {
-              type: "plain_text",
-              text: "Manage your foundables",
-            },
-            action_id: "manage_foundable",
-          },
-        ],
-      },
-    ],
-    text: `Hey there <@${event.user}>!`,
-  });
-});
+app.event("app_home_opened", start);
 
 app.action("add_new_foundable", async ({ body, ack, say, client }) => {
   // Acknowledge the action
