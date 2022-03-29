@@ -1,51 +1,35 @@
 const callback = async ({ event, client, logger }) => {
-  await client.views.publish({
-    user_id: event.user,
-    view: {
-      type: "home",
-      blocks: [
-        {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text: `Hey there <@${event.user}>! Welcome back! How can i help you today?`,
+  try {
+    // Call views.publish with the built-in client
+    const result = await client.views.publish({
+      // Use the user ID associated with the event
+      user_id: event.user,
+      view: {
+        // Home tabs must be enabled in your app configuration page under "App Home"
+        type: "home",
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "*Welcome home, <@" + event.user + "> :house:*",
+            },
           },
-        },
-        {
-          type: "actions",
-          elements: [
-            {
-              type: "button",
-              text: {
-                type: "plain_text",
-                text: "Add new foundable",
-              },
-              action_id: "add_new_foundable",
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "Learn how home tabs can be more useful and interactive <https://api.slack.com/surfaces/tabs/using|*in the documentation*>.",
             },
-            {
-              type: "button",
-              style: "primary",
-              text: {
-                type: "plain_text",
-                text: "Search foundables",
-              },
-              action_id: "search_foundable",
-            },
-            {
-              type: "button",
-              style: "danger",
-              text: {
-                type: "plain_text",
-                text: "Manage your foundables",
-              },
-              action_id: "manage_foundable",
-            },
-          ],
-        },
-      ],
-      text: `Hey there <@${event.user}>!`,
-    },
-  });
+          },
+        ],
+      },
+    });
+
+    logger.info(result);
+  } catch (error) {
+    logger.error(error);
+  }
 };
 
 module.exports = callback;
