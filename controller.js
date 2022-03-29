@@ -11,7 +11,13 @@ const controller = (app) => {
     ack();
     const result = await ack({
       response_action: "update",
-      view,
+      view: {
+        ...view,
+        title: {
+          type: "plain_text",
+          text: "New Title created",
+        },
+      },
     });
   });
 
