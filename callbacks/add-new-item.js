@@ -1,4 +1,5 @@
-const callback = async ({ body, ack, client, logger }) => {
+const callback = async ({ body, ack, client, logger, ...rest }) => {
+  console.log(body, rest);
   await ack();
 
   const result = await client.views.open({
@@ -213,8 +214,6 @@ const callback = async ({ body, ack, client, logger }) => {
       type: "modal",
     },
   });
-
-  logger.info(result);
 };
 
 module.exports = callback;
