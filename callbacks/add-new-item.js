@@ -1,5 +1,4 @@
 const callback = async ({ body, ack, client, logger, action }) => {
-  console.log(body, rest);
   await ack();
   let blocks = [
     {
