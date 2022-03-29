@@ -3,6 +3,8 @@ const start = require("./callbacks/start.js");
 const addNewFoundable = require("./callbacks/add-new-foundable.js");
 const createNewProduct = require("./callbacks/create-new-product.js");
 
+const controller = require("./controller.js");
+
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.MONGODB_URI, (error, connection) => {
@@ -28,11 +30,7 @@ const app = new App({
   socketMode: true,
 });
 
-app.event("app_home_opened", start);
-
-app.action("add_new_foundable", addNewFoundable);
-
-app.view("create_new_product_action", createNewProduct);
+controller(app);
 
 (async () => {
   // Start your app
