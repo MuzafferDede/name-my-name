@@ -7,7 +7,7 @@ const callback = async ({ body, ack, client, logger }) => {
       callback_id: "view_new_item",
       title: {
         type: "plain_text",
-        text: "Create a new item",
+        text: "Add new item",
       },
       submit: {
         type: "plain_text",
@@ -48,7 +48,6 @@ const callback = async ({ body, ack, client, logger }) => {
                 value: "value-2",
               },
             ],
-            action_id: "product_select_action",
           },
           label: {
             type: "plain_text",
