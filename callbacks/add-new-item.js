@@ -16,9 +16,7 @@ const callback = async ({ body, ack, client, logger }) => {
       blocks: [
         {
           block_id: "product",
-          action_id: "product_selected",
           type: "input",
-          dispatch_action: true,
           element: {
             type: "static_select",
             dispatch_action_config: {
