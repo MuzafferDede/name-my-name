@@ -1,13 +1,13 @@
 const start = require("./callbacks/start.js");
-const addNewFoundable = require("./callbacks/add-new-foundable.js");
-const createNewProduct = require("./callbacks/create-new-product.js");
+const addNewItem = require("./callbacks/add-new-item.js");
+const newItem = require("./callbacks/new-item.js");
 
 const controller = (app) => {
   app.event("app_home_opened", start);
 
-  app.action("add_new_foundable", addNewFoundable);
+  app.action("add_new_item", addNewItem);
 
-  app.view("create_new_product_action", createNewProduct);
+  app.view("new_item", newItem);
 };
 
 module.exports = controller;

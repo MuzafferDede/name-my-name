@@ -4,10 +4,10 @@ const callback = async ({ body, ack, client, logger }) => {
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
-      callback_id: "create_new_product_action",
+      callback_id: "new_item",
       title: {
         type: "plain_text",
-        text: "Create a new foundable",
+        text: "Create a new item",
       },
       submit: {
         type: "plain_text",
@@ -172,11 +172,11 @@ const callback = async ({ body, ack, client, logger }) => {
           type: "divider",
         },
         {
-          block_id: "foundable",
+          block_id: "item",
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "foundable_action",
+            action_id: "item_action",
             placeholder: {
               type: "plain_text",
               text: "e.g. PRD, Design Guideline, Report, etc.",
@@ -185,7 +185,7 @@ const callback = async ({ body, ack, client, logger }) => {
           },
           label: {
             type: "plain_text",
-            text: "Foundable's name",
+            text: "item's name",
             emoji: true,
           },
         },
@@ -221,7 +221,7 @@ const callback = async ({ body, ack, client, logger }) => {
             action_id: "url_action",
             placeholder: {
               type: "plain_text",
-              text: "https://www.example.com/path/to/foundable",
+              text: "https://www.example.com/path/to/item",
               emoji: true,
             },
           },

@@ -5,7 +5,7 @@ const callback = async ({ ack, view, logger }) => {
       type: "modal",
       title: {
         type: "plain_text",
-        text: "Foundable created",
+        text: "Item created",
       },
       blocks: [
         {
@@ -33,7 +33,7 @@ const callback = async ({ ack, view, logger }) => {
             },
             {
               type: "mrkdwn",
-              text: `*Foundable's name:*\n${view.state.values.foundable.foundable_action.value}`,
+              text: `*item's name:*\n${view.state.values.item.item_action.value}`,
             },
           ],
         },
@@ -61,7 +61,7 @@ const callback = async ({ ack, view, logger }) => {
           elements: [
             {
               type: "mrkdwn",
-              text: `*${view.state.values.product.product_select_action.selected_option.text.text}* / *${view.state.values.project.project_select_action.selected_option.text.text}* / *${view.state.values.role.role_select_action.selected_option.text.text}* / *${view.state.values.foundable.foundable_action.value}* / *${view.state.values.tag.tag_action.value}*`,
+              text: `*${view.state.values.product.product_select_action.selected_option.text.text}* / *${view.state.values.project.project_select_action.selected_option.text.text}* / *${view.state.values.role.role_select_action.selected_option.text.text}* / *${view.state.values.item.item_action.value}* / *${view.state.values.tag.tag_action.value}*`,
             },
           ],
         },

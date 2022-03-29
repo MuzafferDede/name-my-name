@@ -18,27 +18,27 @@ const callback = async ({ event, client, logger }) => {
               type: "button",
               text: {
                 type: "plain_text",
-                text: "Add new foundable",
+                text: "Add new item",
               },
-              action_id: "add_new_foundable",
+              action_id: "add_new_item",
             },
             {
               type: "button",
               style: "primary",
               text: {
                 type: "plain_text",
-                text: "Search foundables",
+                text: "Search items",
               },
-              action_id: "search_foundable",
+              action_id: "search_item",
             },
             {
               type: "button",
               style: "danger",
               text: {
                 type: "plain_text",
-                text: "Manage your foundables",
+                text: "Manage your items",
               },
-              action_id: "manage_foundable",
+              action_id: "manage_item",
             },
           ],
         },
