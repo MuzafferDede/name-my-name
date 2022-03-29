@@ -1,5 +1,6 @@
 const callback = async ({ event, say }) => {
   await say({
+    type: "home",
     blocks: [
       {
         type: "section",
