@@ -8,6 +8,7 @@ const controller = (app) => {
   app.action("add_new_item", addNewItem);
 
   app.action("product_selected", async ({ ack, action, view, client }) => {
+    console.log("product_selected");
     const result = await ack({
       response_action: "update",
       view: {
@@ -17,6 +18,15 @@ const controller = (app) => {
           text: "Item created",
         },
       },
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Hello",
+          },
+        },
+      ],
     });
   });
 
