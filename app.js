@@ -1,6 +1,6 @@
 const { App } = require("@slack/bolt");
 const Product = require("./models/product.js");
-const start = require("./start.js");
+const start = require("./blocks/start.js");
 
 const mongoose = require("mongoose");
 
