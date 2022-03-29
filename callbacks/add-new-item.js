@@ -19,9 +19,6 @@ const callback = async ({ body, ack, client, logger }) => {
           type: "input",
           element: {
             type: "static_select",
-            dispatch_action_config: {
-              trigger_actions_on: ["on_character_entered"],
-            },
             placeholder: {
               type: "plain_text",
               text: "Select a product",
