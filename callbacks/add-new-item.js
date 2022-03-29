@@ -18,7 +18,7 @@ const callback = async ({ body, ack, client, logger }) => {
           block_id: "product",
           type: "input",
           element: {
-            type: "select",
+            type: "static_select",
             placeholder: {
               type: "plain_text",
               text: "Select a product",
