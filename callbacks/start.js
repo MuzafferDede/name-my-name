@@ -43,7 +43,6 @@ const callback = async ({ event, client, logger }) => {
           ],
         },
       ],
-      text: `Hey there <@${event.user}>!`,
     },
   });
   logger.info(result);
