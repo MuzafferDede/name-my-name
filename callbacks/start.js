@@ -29,7 +29,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Search items",
               },
-              action_id: "search_item",
+              action_id: "search_items",
             },
             {
               type: "button",
