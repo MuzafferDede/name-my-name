@@ -1,5 +1,5 @@
-const callback = async ({ ack, view, client }) => {
-  await ack({
+const callback = async ({ ack, view, logger }) => {
+  const result = await ack({
     response_action: "update",
     view: {
       type: "modal",
@@ -68,6 +68,8 @@ const callback = async ({ ack, view, client }) => {
       ],
     },
   });
+
+  logger.info(result);
 };
 
 module.exports = callback;

@@ -1,6 +1,7 @@
-const callback = async ({ body, ack, say, client }) => {
+const callback = async ({ body, ack, client, logger }) => {
   await ack();
-  await client.views.open({
+
+  const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
       callback_id: "create_new_product_action",
@@ -234,6 +235,8 @@ const callback = async ({ body, ack, say, client }) => {
       type: "modal",
     },
   });
+
+  logger.info(result);
 };
 
 module.exports = callback;

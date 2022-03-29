@@ -45,6 +45,7 @@ const callback = async ({ event, client, logger }) => {
       ],
     },
   });
+
   logger.info(result);
 };
 
