@@ -1,3 +1,7 @@
+const start = require("./callbacks/start.js");
+const addNewFoundable = require("./callbacks/add-new-foundable.js");
+const createNewProduct = require("./callbacks/create-new-product.js");
+
 const controller = (app) => {
   app.event("app_home_opened", start);
 

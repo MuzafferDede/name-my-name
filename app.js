@@ -1,11 +1,6 @@
 const { App } = require("@slack/bolt");
-const start = require("./callbacks/start.js");
-const addNewFoundable = require("./callbacks/add-new-foundable.js");
-const createNewProduct = require("./callbacks/create-new-product.js");
-
-const controller = require("./controller.js");
-
 const mongoose = require("mongoose");
+const controller = require("./controller.js");
 
 mongoose.connect(process.env.MONGODB_URI, (error, connection) => {
   console.log(error || `Connected to MongoDB on port ${connection.port}`);
@@ -14,16 +9,10 @@ mongoose.connect(process.env.MONGODB_URI, (error, connection) => {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    family: 4, // Use IPv4, skip trying IPv6
+    family: 4,
   };
 });
-/* 
-This sample slack application uses SocketMode
-For the companion getting started setup guide, 
-see: https://slack.dev/bolt-js/tutorial/getting-started 
-*/
 
-// Initializes your app with your bot token and app token
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   appToken: process.env.SLACK_APP_TOKEN,
@@ -33,7 +22,6 @@ const app = new App({
 controller(app);
 
 (async () => {
-  // Start your app
   await app.start();
 
   console.log("⚡️ Bolt app is running!");
