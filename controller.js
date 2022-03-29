@@ -7,7 +7,10 @@ const controller = (app) => {
 
   app.action("add_new_item", addNewItem);
 
-  app.action("product_selected", addNewItem);
+  app.action("product_selected", ({ ack, action, ...rest }) => {
+    ack();
+    console.log(rest);
+  });
 
   app.view("view_new_item", newItem);
 };
