@@ -7,27 +7,9 @@ const controller = (app) => {
 
   app.action("add_new_item", addNewItem);
 
-  app.action("product_selected", async ({ ack, action, view, client }) => {
-    console.log("product_selected");
-    const result = await ack({
-      response_action: "update",
-      view: {
-        type: "modal",
-        title: {
-          type: "plain_text",
-          text: "Item created",
-        },
-      },
-      blocks: [
-        {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text: "Hello",
-          },
-        },
-      ],
-    });
+  app.action("product_selected", ({ ack, action, view, client }) => {
+    ack();
+    console.log("handle product selection");
   });
 
   app.view("view_new_item", newItem);
