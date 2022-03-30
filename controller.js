@@ -16,7 +16,7 @@ const controller = (app) => {
         trigger_id: body.trigger_id,
         view: {
           type: "modal",
-          ...body.view.blocks,
+          blocks: [...body.view.blocks],
           title: {
             type: "plain_text",
             text: "Hello world",
