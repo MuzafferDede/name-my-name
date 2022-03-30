@@ -66,7 +66,15 @@ const callback = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a project",
             },
-            option_groups: [],
+            options: [
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Select a product first",
+                },
+                value: "",
+              },
+            ],
             action_id: "project_selected",
           },
           label: {
