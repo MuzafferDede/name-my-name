@@ -10,15 +10,26 @@ const controller = (app) => {
   app.action(
     "product_selected",
     async ({ ack, action, body, view, client, context }) => {
+      console.log({ body, view, action, context });
       ack();
       await client.views.push({
         trigger_id: body.trigger_id,
         view: {
-          ...view,
+          type: "modal",
+          callback_id: "view_new_item",
           title: {
             type: "plain_text",
-            text: "Hello World",
+            text: "Hello world",
           },
+          blocks: [
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "*Product*",
+              },
+            },
+          ],
         },
       });
     }
