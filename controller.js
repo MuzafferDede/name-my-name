@@ -3,6 +3,7 @@ const addNewItem = require("./callbacks/add-new-item.js");
 const newItem = require("./callbacks/view-new-item.js");
 const addNewProduct = require("./callbacks/add-new-product.js");
 const addNewProject = require("./callbacks/add-new-project.js");
+const addNewRole = require("./callbacks/add-new-role.js");
 const projects = require("./effects/projects.js");
 
 const controller = (app) => {
@@ -13,6 +14,8 @@ const controller = (app) => {
   app.action("add_new_product", addNewProduct);
 
   app.action("add_new_project", addNewProject);
+
+  app.action("add_new_role", addNewRole);
 
   app.action("product_selected", projects);
 
