@@ -1,4 +1,5 @@
-const callback = async ({ body, ack, client, logger }) => {
+const callback = async ({ body, ack, client, logger }, test) => {
+  console.log(test);
   await ack();
 
   const result = await client.views.open({
