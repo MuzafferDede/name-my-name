@@ -30,7 +30,7 @@ const controller = (app) => {
       ];
 
       const blocks = body.view.blocks.map((block) => {
-        if (block.block_id === "product") {
+        if (block.block_id === "project") {
           block.element.options = projects;
         }
 
