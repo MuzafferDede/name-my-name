@@ -40,6 +40,14 @@ const callback = async ({ event, client, logger }) => {
               },
               action_id: "manage_items",
             },
+            {
+              type: "button",
+              text: {
+                type: "plain_text",
+                text: "Add new product",
+              },
+              action_id: "add_new_product",
+            },
           ],
         },
       ],

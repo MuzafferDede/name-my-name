@@ -19,7 +19,7 @@ const app = new App({
   socketMode: true,
 });
 
-controller(app);
+controller(app, mongoose);
 
 (async () => {
   await app.start();
