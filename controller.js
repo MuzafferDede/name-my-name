@@ -15,7 +15,8 @@ const controller = (app) => {
       await client.views.push({
         trigger_id: body.trigger_id,
         view: {
-          ...body.view,
+          type: "modal",
+          ...body.view.blocks,
           title: {
             type: "plain_text",
             text: "Hello world",
