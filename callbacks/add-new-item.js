@@ -72,7 +72,7 @@ const callback = async ({ body, ack, client, logger }) => {
                   type: "plain_text",
                   text: "Select a product first",
                 },
-                value: "",
+                value: "0",
               },
             ],
             action_id: "project_selected",
