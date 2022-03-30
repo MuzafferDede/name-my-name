@@ -12,22 +12,38 @@ const controller = (app) => {
     async ({ ack, action, body, client, context, logger }) => {
       ack();
 
+      const projects = [
+        {
+          text: {
+            type: "plain_text",
+            text: "PGN",
+          },
+          value: "value-0",
+        },
+        {
+          text: {
+            type: "plain_text",
+            text: "PE",
+          },
+          value: "value-1",
+        },
+      ];
+
+      const blocks = body.view.blocks.map((block) => {
+        if (block.block_id === "products") {
+          block.element.options = projects;
+        }
+
+        return block;
+      });
+
       const result = await client.views.update({
         view_id: body.view.id,
         view: {
           title: body.view.title,
           callback_id: body.view.callback_id,
           submit: body.view.submit,
-          blocks: [
-            {
-              type: "section",
-              text: {
-                type: "mrkdwn",
-                text: "hello World",
-              },
-            },
-            ...body.view.blocks,
-          ],
+          blocks: blocks,
           type: body.view.type,
         },
       });

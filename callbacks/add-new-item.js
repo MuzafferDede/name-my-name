@@ -43,7 +43,7 @@ const callback = async ({ body, ack, client, logger }) => {
               {
                 text: {
                   type: "plain_text",
-                  text: "Financal Core",
+                  text: "Financial Core",
                 },
                 value: "value-2",
               },
@@ -66,22 +66,7 @@ const callback = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a project",
             },
-            options: [
-              {
-                text: {
-                  type: "plain_text",
-                  text: "PGN",
-                },
-                value: "value-0",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "PE",
-                },
-                value: "value-1",
-              },
-            ],
+            options: [],
             action_id: "project_selected",
           },
           label: {
