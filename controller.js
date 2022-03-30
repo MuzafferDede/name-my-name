@@ -7,28 +7,35 @@ const controller = (app) => {
 
   app.action("add_new_item", addNewItem);
 
-  app.action("product_selected", async ({ ack, action, view, client }) => {
-    await ack({
-      response_action: "update",
-      view: {
-        type: "modal",
-        title: {
-          type: "plain_text",
-          text: "Hello there",
-        },
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "What do you want to add?",
-            },
+  app.action(
+    "product_selected",
+    async ({ ack, action, body, view, client, context }) => {
+      await client.views.push({
+        trigger_id: body.trigger_id,
+        view: {
+          callback_id: "view_new_item",
+          title: {
+            type: "plain_text",
+            text: "Hello world",
           },
-        ],
-      },
-    });
-    console.log("handle product selection");
-  });
+          blocks: [
+            {
+              type: "input",
+              block_id: "product",
+              label: {
+                type: "plain_text",
+                text: "Product",
+              },
+              element: {
+                type: "plain_text_input",
+                action_id: "product_selected",
+              },
+            },
+          ],
+        },
+      });
+    }
+  );
 
   app.view("view_new_item", newItem);
 };
