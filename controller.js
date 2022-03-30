@@ -7,8 +7,8 @@ const controller = (app) => {
 
   app.action("add_new_item", addNewItem);
 
-  app.action("product_selected", ({ ack, action, view, client }) => {
-    ack({
+  app.action("product_selected", async ({ ack, action, view, client }) => {
+    await ack({
       response_action: "update",
       view: {
         type: "modal",
