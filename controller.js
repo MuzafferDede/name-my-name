@@ -8,7 +8,25 @@ const controller = (app) => {
   app.action("add_new_item", addNewItem);
 
   app.action("product_selected", ({ ack, action, view, client }) => {
-    ack();
+    ack({
+      response_action: "update",
+      view: {
+        type: "modal",
+        title: {
+          type: "plain_text",
+          text: "Hello there",
+        },
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "What do you want to add?",
+            },
+          },
+        ],
+      },
+    });
     console.log("handle product selection");
   });
 
