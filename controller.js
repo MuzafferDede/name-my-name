@@ -9,21 +9,30 @@ const controller = (app) => {
 
   app.action(
     "product_selected",
-    async ({ ack, action, body, client, context }) => {
-      console.log({ ack, action, body, client, context });
-
+    async ({ ack, action, body, client, context, logger }) => {
       ack();
 
-      await client.views.update({
+      const result = await client.views.update({
         view_id: body.view.id,
         view: {
           title: body.view.title,
           callback_id: body.view.callback_id,
           submit: body.view.submit,
-          blocks: [...body.view.blocks],
+          blocks: [
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "hello World",
+              },
+            },
+            ...body.view.blocks,
+          ],
           type: body.view.type,
         },
       });
+
+      logger.info(result);
     }
   );
 
