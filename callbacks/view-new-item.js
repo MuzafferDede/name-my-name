@@ -13,11 +13,11 @@ const callback = async ({ ack, view, logger }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `*Product:*\n${view.state.values.product.product_select_action.selected_option.text.text}`,
+              text: `*Product:*\n${view.state.values.product.product_selected.selected_option.text.text}`,
             },
             {
               type: "mrkdwn",
-              text: `*Project:*\n${view.state.values.project.project_select_action.selected_option.text.text}`,
+              text: `*Project:*\n${view.state.values.project.project_selected.selected_option.text.text}`,
             },
           ],
         },
@@ -29,7 +29,7 @@ const callback = async ({ ack, view, logger }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `*Role:*\n${view.state.values.role.role_select_action.selected_option.text.text}`,
+              text: `*Role:*\n${view.state.values.role.role_selected.selected_option.text.text}`,
             },
             {
               type: "mrkdwn",
@@ -61,7 +61,7 @@ const callback = async ({ ack, view, logger }) => {
           elements: [
             {
               type: "mrkdwn",
-              text: `*${view.state.values.product.product_select_action.selected_option.text.text}* / *${view.state.values.project.project_select_action.selected_option.text.text}* / *${view.state.values.role.role_select_action.selected_option.text.text}* / *${view.state.values.item.item_action.value}* / *${view.state.values.tag.tag_action.value}*`,
+              text: `*${view.state.values.product.product_selected.selected_option.text.text}* / *${view.state.values.project.project_selected.selected_option.text.text}* / *${view.state.values.role.role_selected.selected_option.text.text}* / *${view.state.values.item.item_action.value}* / *${view.state.values.tag.tag_action.value}*`,
             },
           ],
         },

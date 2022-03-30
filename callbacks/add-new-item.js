@@ -82,7 +82,7 @@ const callback = async ({ body, ack, client, logger }) => {
                 value: "value-1",
               },
             ],
-            action_id: "project_select_action",
+            action_id: "project_selected",
           },
           label: {
             type: "plain_text",
@@ -145,7 +145,7 @@ const callback = async ({ body, ack, client, logger }) => {
                 value: "value-4",
               },
             ],
-            action_id: "role_select_action",
+            action_id: "role_selected",
           },
           label: {
             type: "plain_text",
