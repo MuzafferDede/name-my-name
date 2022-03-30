@@ -24,6 +24,38 @@ const callback = async ({ event, client, logger }) => {
             },
             {
               type: "button",
+              text: {
+                type: "plain_text",
+                text: "Add new product",
+              },
+              action_id: "add_new_product",
+            },
+            {
+              type: "button",
+              text: {
+                type: "plain_text",
+                text: "Add new project",
+              },
+              action_id: "add_new_project",
+            },
+            {
+              type: "button",
+              text: {
+                type: "plain_text",
+                text: "Add new role",
+              },
+              action_id: "add_new_role",
+            },
+          ],
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "actions",
+          elements: [
+            {
+              type: "button",
               style: "primary",
               text: {
                 type: "plain_text",
@@ -39,14 +71,6 @@ const callback = async ({ event, client, logger }) => {
                 text: "Manage your items",
               },
               action_id: "manage_items",
-            },
-            {
-              type: "button",
-              text: {
-                type: "plain_text",
-                text: "Add new product",
-              },
-              action_id: "add_new_product",
             },
           ],
         },
