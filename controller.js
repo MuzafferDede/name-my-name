@@ -15,21 +15,11 @@ const controller = (app) => {
       await client.views.push({
         trigger_id: body.trigger_id,
         view: {
-          type: "modal",
-          callback_id: "view_new_item",
+          ...body.view,
           title: {
             type: "plain_text",
             text: "Hello world",
           },
-          blocks: [
-            {
-              type: "section",
-              text: {
-                type: "mrkdwn",
-                text: "*Product*",
-              },
-            },
-          ],
         },
       });
     }
