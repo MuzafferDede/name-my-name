@@ -17,7 +17,16 @@ const controller = (app) => {
       await client.views.update({
         view_id: body.view.id,
         view: {
-          ...body.view,
+          type: "modal",
+          blocks: [
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "What is the name of the item?",
+              },
+            },
+          ],
         },
       });
     }
