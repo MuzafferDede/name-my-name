@@ -21,15 +21,10 @@ const controller = (app) => {
           },
           blocks: [
             {
-              type: "input",
-              block_id: "product",
-              label: {
-                type: "plain_text",
-                text: "Product",
-              },
-              element: {
-                type: "plain_text_input",
-                action_id: "product_selected",
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "*Product*",
               },
             },
           ],
