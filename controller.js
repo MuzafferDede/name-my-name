@@ -37,6 +37,8 @@ const controller = (app) => {
         return block;
       });
 
+      console.log(blocks);
+
       const result = await client.views.update({
         view_id: body.view.id,
         view: {
