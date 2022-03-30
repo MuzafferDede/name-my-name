@@ -18,6 +18,10 @@ const controller = (app) => {
         view_id: body.view.id,
         view: {
           type: "modal",
+          title: {
+            type: "plain_text",
+            text: "Hello World",
+          },
           blocks: [
             {
               type: "section",
