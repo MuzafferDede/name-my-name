@@ -13,7 +13,8 @@ const controller = (app) => {
 
   app.view("view_new_item", newItem);
 
-  app.view("create_new_product", () => {
+  app.view("create_new_product", ({ ack }) => {
+    ack();
     console.log("hello world");
   });
 
