@@ -9,8 +9,8 @@ const controller = (app) => {
 
   app.action(
     "product_selected",
-    async ({ ack, action, body, view, client, context }) => {
-      console.log({ body, view, action, context });
+    async ({ ack, action, body, view, client, context, ...rest }) => {
+      console.log(rest);
       ack();
       await client.views.push({
         trigger_id: body.trigger_id,
