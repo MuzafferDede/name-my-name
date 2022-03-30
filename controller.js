@@ -14,14 +14,10 @@ const controller = (app) => {
 
       ack();
 
-      await client.views.push({
-        trigger_id: body.trigger_id,
+      await client.views.update({
+        view_id: body.view.id,
         view: {
           ...body.view,
-          title: {
-            type: "plain_text",
-            text: "Hello world",
-          },
         },
       });
     }
