@@ -9,9 +9,11 @@ const controller = (app) => {
 
   app.action(
     "product_selected",
-    async ({ ack, action, body, view, client, context, ...rest }) => {
-      console.log(rest);
+    async ({ ack, action, body, client, context }) => {
+      console.log({ ack, action, body, client, context });
+
       ack();
+
       await client.views.push({
         trigger_id: body.trigger_id,
         view: {
