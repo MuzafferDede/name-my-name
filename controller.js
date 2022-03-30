@@ -17,7 +17,11 @@ const controller = (app) => {
       await client.views.update({
         view_id: body.view.id,
         view: {
-          ...body.view,
+          title: body.view.title,
+          callback_id: body.view.callback_id,
+          submit: body.view.submit,
+          blocks: [...body.view.blocks],
+          type: body.view.type,
         },
       });
     }
