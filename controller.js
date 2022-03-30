@@ -10,7 +10,9 @@ const controller = (app) => {
 
   app.view("view_new_item", newItem);
 
-  app.action("product_selected", projects);
+  app.action("product_selected", projects, () => {
+    console.log("yesss");
+  });
 };
 
 module.exports = controller;
