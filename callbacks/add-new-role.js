@@ -4,10 +4,10 @@ const callback = async ({ body, ack, client, logger }) => {
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
-      callback_id: "create_new_product",
+      callback_id: "create_new_role",
       title: {
         type: "plain_text",
-        text: "Add new product",
+        text: "Add new role",
       },
       submit: {
         type: "plain_text",
@@ -15,19 +15,19 @@ const callback = async ({ body, ack, client, logger }) => {
       },
       blocks: [
         {
-          block_id: "product_name",
+          block_id: "role_name",
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "add_product_action",
+            action_id: "add_role_action",
             placeholder: {
               type: "plain_text",
-              text: "e.g Good Wallet, One Account, Financial Core, etc.",
+              text: "Frontend, Backend, etc.",
             },
           },
           label: {
             type: "plain_text",
-            text: "Product Name",
+            text: "Role Name",
           },
         },
       ],
