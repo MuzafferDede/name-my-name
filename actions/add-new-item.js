@@ -63,6 +63,7 @@ const action = async ({ body, ack, client, logger }) => {
           type: "input",
           element: {
             type: "static_select",
+            action_id: "projectSelected",
             placeholder: {
               type: "plain_text",
               text: "Select a project",
@@ -76,7 +77,6 @@ const action = async ({ body, ack, client, logger }) => {
                 value: "0",
               },
             ],
-            action_id: "projectSelected",
           },
           label: {
             type: "plain_text",
@@ -91,6 +91,7 @@ const action = async ({ body, ack, client, logger }) => {
           type: "input",
           element: {
             type: "static_select",
+            action_id: "roleSelected",
             placeholder: {
               type: "plain_text",
               text: "Select a role",
@@ -139,7 +140,6 @@ const action = async ({ body, ack, client, logger }) => {
                 value: "value-4",
               },
             ],
-            action_id: "roleSelected",
           },
           label: {
             type: "plain_text",
