@@ -55,7 +55,16 @@ const action = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a product",
             },
-            options: productList,
+            options: productList.length
+              ? productList
+              : [
+                  {
+                    text: {
+                      type: "plain_text",
+                      text: "You should select an existing product...",
+                    },
+                  },
+                ],
           },
           label: {
             type: "plain_text",
