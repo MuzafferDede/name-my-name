@@ -22,7 +22,7 @@ const controller = (app) => {
   app.action("productSelected", productSelected);
 
   //Modals
-  app.view("viewNewItem", viewNewItem);
+  app.view("addNewItem", viewNewItem);
 
   app.view("addNewProduct", ({ ack }) => {
     ack();
