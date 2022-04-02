@@ -5,6 +5,8 @@ const addNewProject = require("./actions/add-new-project.js");
 const addNewRole = require("./actions/add-new-role.js");
 const handleNewItem = require("./views/handle-new-item.js");
 const handleNewProduct = require("./views/handle-new-product.js");
+const handleNewProject = require("./views/handle-new-project.js");
+const handleNewRole = require("./views/handle-new-role.js");
 const productSelected = require("./callbacks/product-selected.js");
 
 const controller = (app) => {
@@ -27,15 +29,9 @@ const controller = (app) => {
 
   app.view("handleNewProduct", handleNewProduct);
 
-  app.view("handleNewProject", ({ ack }) => {
-    ack();
-    console.log("Created Project");
-  });
+  app.view("handleNewProject", handleNewProject);
 
-  app.view("handleNewRole", ({ ack }) => {
-    ack();
-    console.log("Created Role");
-  });
+  app.view("handleNewRole", handleNewRole);
 };
 
 module.exports = controller;
