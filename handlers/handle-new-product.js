@@ -4,12 +4,11 @@ const User = require("../models/user");
 const view = async ({ ack, view, body, logger }) => {
   const value = view.state.values.product.productNameDefined.value;
 
-  const user = await User.findAndModify({
-    query: { slackId: body.user.id },
-    update: { $setOnInsert: { slackId: body.user.id } },
-    new: true,
-    upsert: true,
-  });
+  const user = await User.findOneAndUpdate(
+    { slackId: body.user.id },
+    { slackId: body.user.id },
+    { new: true, upsert: true }
+  );
 
   const product = new Product({
     name: value,
