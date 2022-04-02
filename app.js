@@ -19,8 +19,8 @@ const app = new App({
   socketMode: true,
 });
 
-app.use(async ({ logger, next, ...rest }) => {
-  logger.info(rest);
+app.use(async ({ logger, next, ...rest }, others) => {
+  logger.info(rest, others);
   await next();
 });
 
