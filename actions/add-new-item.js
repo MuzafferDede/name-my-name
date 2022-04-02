@@ -10,7 +10,7 @@ const action = async ({ body, ack, client, logger }) => {
 
   const productList = products.map((product) => {
     console.log({ product });
-    if (!product.projects.length) return;
+    if (!product.projects) return;
 
     return {
       text: {
