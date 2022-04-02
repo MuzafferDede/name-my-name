@@ -69,12 +69,11 @@ const action = async ({ body, ack, client, logger }) => {
           element: {
             type: "static_select",
             action_id: "projectSelected",
-            optional: true,
             placeholder: {
               type: "plain_text",
               text: "Select a project",
             },
-            options: [],
+            options: [{ text: { type: "plain_text", text: "Loading..." } }],
           },
           label: {
             type: "plain_text",
