@@ -4,7 +4,8 @@ const callback = async ({ body, ack, client, logger }) => {
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
-      callback_id: "view_new_item",
+      type: "modal",
+      callback_id: "viewNewItem",
       title: {
         type: "plain_text",
         text: "Add new item",
@@ -20,7 +21,7 @@ const callback = async ({ body, ack, client, logger }) => {
           dispatch_action: true,
           element: {
             type: "static_select",
-            action_id: "product_selected",
+            action_id: "productSelected",
             placeholder: {
               type: "plain_text",
               text: "Select a product",
@@ -75,7 +76,7 @@ const callback = async ({ body, ack, client, logger }) => {
                 value: "0",
               },
             ],
-            action_id: "project_selected",
+            action_id: "projectSelected",
           },
           label: {
             type: "plain_text",
@@ -138,7 +139,7 @@ const callback = async ({ body, ack, client, logger }) => {
                 value: "value-4",
               },
             ],
-            action_id: "role_selected",
+            action_id: "roleSelected",
           },
           label: {
             type: "plain_text",
@@ -153,7 +154,7 @@ const callback = async ({ body, ack, client, logger }) => {
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "item_action",
+            action_id: "itemDefined",
             placeholder: {
               type: "plain_text",
               text: "e.g. PRD, Design Guideline, Report, etc.",
@@ -172,7 +173,7 @@ const callback = async ({ body, ack, client, logger }) => {
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "tag_action",
+            action_id: "tagDefined",
             placeholder: {
               type: "plain_text",
               text: "e.g. v1.0, Python, Node.js, etc.",
@@ -191,7 +192,7 @@ const callback = async ({ body, ack, client, logger }) => {
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "url_action",
+            action_id: "urlDefined",
             placeholder: {
               type: "plain_text",
               text: "https://www.example.com/path/to/item",
@@ -203,7 +204,6 @@ const callback = async ({ body, ack, client, logger }) => {
           },
         },
       ],
-      type: "modal",
     },
   });
 

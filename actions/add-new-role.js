@@ -4,10 +4,11 @@ const callback = async ({ body, ack, client, logger }) => {
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
-      callback_id: "create_new_project",
+      callback_id: "create_new_role",
+      type: "modal",
       title: {
         type: "plain_text",
-        text: "Add new project",
+        text: "Add new role",
       },
       submit: {
         type: "plain_text",
@@ -15,23 +16,22 @@ const callback = async ({ body, ack, client, logger }) => {
       },
       blocks: [
         {
-          block_id: "project_name",
+          block_id: "role",
           type: "input",
           element: {
             type: "plain_text_input",
-            action_id: "add_project_action",
+            action_id: "roleNameDefined",
             placeholder: {
               type: "plain_text",
-              text: "e.g PE, PPE, etc.",
+              text: "Frontend, Backend, etc.",
             },
           },
           label: {
             type: "plain_text",
-            text: "Project Name",
+            text: "Role Name",
           },
         },
       ],
-      type: "modal",
     },
   });
 

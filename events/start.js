@@ -20,7 +20,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Add new item",
               },
-              action_id: "add_new_item",
+              action_id: "addNewItem",
             },
             {
               type: "button",
@@ -28,7 +28,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Add new product",
               },
-              action_id: "add_new_product",
+              action_id: "addNewProduct",
             },
             {
               type: "button",
@@ -36,7 +36,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Add new project",
               },
-              action_id: "add_new_project",
+              action_id: "addNewProject",
             },
             {
               type: "button",
@@ -44,7 +44,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Add new role",
               },
-              action_id: "add_new_role",
+              action_id: "addNewRole",
             },
           ],
         },
@@ -61,7 +61,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Search items",
               },
-              action_id: "search_items",
+              action_id: "searchItems",
             },
             {
               type: "button",
@@ -70,7 +70,7 @@ const callback = async ({ event, client, logger }) => {
                 type: "plain_text",
                 text: "Manage your items",
               },
-              action_id: "manage_items",
+              action_id: "manageItems",
             },
           ],
         },

@@ -1,37 +1,40 @@
-const start = require("./callbacks/start.js");
-const addNewItem = require("./callbacks/add-new-item.js");
-const newItem = require("./callbacks/view-new-item.js");
-const addNewProduct = require("./callbacks/add-new-product.js");
-const addNewProject = require("./callbacks/add-new-project.js");
-const addNewRole = require("./callbacks/add-new-role.js");
-const projects = require("./effects/projects.js");
+const start = require("./events/start.js");
+const addNewItem = require("./actions/add-new-item.js");
+const viewNewItem = require("./views/view-new-item.js");
+const addNewProduct = require("./actions/add-new-product.js");
+const addNewProject = require("./actions/add-new-project.js");
+const addNewRole = require("./actions/add-new-role.js");
+const productSelected = require("./callbacks/product-selected.js");
 
 const controller = (app) => {
+  //Events
   app.event("app_home_opened", start);
 
-  app.action("add_new_item", addNewItem);
+  //Actions
+  app.action("addNewItem", addNewItem);
 
-  app.action("add_new_product", addNewProduct);
+  app.action("addNewProduct", addNewProduct);
 
-  app.action("add_new_project", addNewProject);
+  app.action("addNewProject", addNewProject);
 
-  app.action("add_new_role", addNewRole);
+  app.action("addNewRole", addNewRole);
 
-  app.action("product_selected", projects);
+  app.action("productSelected", productSelected);
 
-  app.view("view_new_item", newItem);
+  //Modals
+  app.view("viewNewItem", viewNewItem);
 
-  app.view("create_new_product", ({ ack }) => {
+  app.view("addNewProduct", ({ ack }) => {
     ack();
     console.log("Created Product");
   });
 
-  app.view("create_new_project", ({ ack }) => {
+  app.view("addNewProject", ({ ack }) => {
     ack();
     console.log("Created Project");
   });
 
-  app.view("create_new_role", ({ ack }) => {
+  app.view("addNewRole", ({ ack }) => {
     ack();
     console.log("Created Role");
   });

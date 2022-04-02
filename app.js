@@ -19,10 +19,11 @@ const app = new App({
   socketMode: true,
 });
 
-app.use(async (client, context, logger, payload, next) => {
-  console.log("hello", { client, context, logger, payload });
-  await next();
-});
+// app.use(
+//   async ({ body, payload, action, say, ack, context, client, logger }) => {
+//     await next();
+//   }
+// );
 
 controller(app, mongoose);
 
