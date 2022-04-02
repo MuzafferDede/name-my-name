@@ -25,9 +25,8 @@ const callback = async ({ ack, body, action, client, logger, ...rest }) => {
             {
               text: {
                 type: "plain_text",
-                text: "No projects found",
+                text: "You should select an existing project...",
               },
-              value: "0",
             },
           ];
     }
