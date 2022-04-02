@@ -16,8 +16,6 @@ const action = async ({ body, ack, client, logger }) => {
     };
   });
 
-  console.log({ products, productList });
-
   const roles = await Role.find({});
 
   const roleList = roles.map((role) => {
@@ -55,16 +53,7 @@ const action = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a product",
             },
-            options: productList.length
-              ? productList
-              : [
-                  {
-                    text: {
-                      type: "plain_text",
-                      text: "You should select an existing product...",
-                    },
-                  },
-                ],
+            options: productList,
           },
           label: {
             type: "plain_text",
