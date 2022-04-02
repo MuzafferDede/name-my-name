@@ -2,6 +2,7 @@ const Project = require("../models/project");
 
 const callback = async ({ ack, body, client, logger, ...rest }) => {
   ack();
+  console.log(rest);
 
   const projects = [
     {
