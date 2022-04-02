@@ -3,6 +3,7 @@ const Project = require("../models/project");
 
 const callback = async ({ ack, body, action, client, logger, ...rest }) => {
   ack();
+
   const projects = await Project.find({
     product: action.selected_option.value,
   });
@@ -19,7 +20,7 @@ const callback = async ({ ack, body, action, client, logger, ...rest }) => {
 
   const blocks = body.view.blocks.map((block) => {
     if (block.block_id === "project") {
-      block.element.options = projects;
+      block.element.options = projectList;
     }
 
     return block;

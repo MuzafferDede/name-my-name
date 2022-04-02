@@ -1,5 +1,19 @@
+const Product = require("../models/product");
+
 const action = async ({ body, ack, client, logger }) => {
   await ack();
+
+  const products = await Product.find({});
+
+  const productList = products.map((product) => {
+    return {
+      text: {
+        type: "plain_text",
+        text: product.name,
+      },
+      value: product._id,
+    };
+  });
 
   const result = await client.views.open({
     trigger_id: body.trigger_id,
@@ -26,29 +40,7 @@ const action = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a product",
             },
-            options: [
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Good Wallet",
-                },
-                value: "value-0",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "One Account",
-                },
-                value: "value-1",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Financial Core",
-                },
-                value: "value-2",
-              },
-            ],
+            options: productList,
           },
           label: {
             type: "plain_text",
