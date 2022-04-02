@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const Role = require("../models/role");
 
 const action = async ({ body, ack, client, logger }) => {
   await ack();
@@ -12,6 +13,18 @@ const action = async ({ body, ack, client, logger }) => {
         text: product.name,
       },
       value: product._id,
+    };
+  });
+
+  const roles = await Role.find({});
+
+  const roleList = roles.map((role) => {
+    return {
+      text: {
+        type: "plain_text",
+        text: role.name,
+      },
+      value: role._id,
     };
   });
 
@@ -88,50 +101,7 @@ const action = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a role",
             },
-            options: [
-              {
-                text: {
-                  type: "plain_text",
-                  text: "PM",
-                },
-                value: "value-4",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "UX",
-                },
-                value: "value-0",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "UI",
-                },
-                value: "value-1",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Frontend",
-                },
-                value: "value-2",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Backend",
-                },
-                value: "value-3",
-              },
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Avengers",
-                },
-                value: "value-4",
-              },
-            ],
+            options: roleList,
           },
           label: {
             type: "plain_text",

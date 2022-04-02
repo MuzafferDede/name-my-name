@@ -1,4 +1,3 @@
-const action = require("../actions/add-new-item");
 const Project = require("../models/project");
 
 const callback = async ({ ack, body, action, client, logger, ...rest }) => {
