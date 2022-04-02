@@ -53,7 +53,15 @@ const action = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a product",
             },
-            options: productList,
+            options: [
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Select a product",
+                },
+              },
+              ...productList,
+            ],
           },
           label: {
             type: "plain_text",
