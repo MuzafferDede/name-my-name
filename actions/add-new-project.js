@@ -1,5 +1,20 @@
+const Product = require("./models/product");
+
 const callback = async ({ body, ack, client, logger }) => {
   await ack();
+
+  const products = await Product.find({});
+
+  const productList = products.map((product) => {
+    return {
+      text: {
+        type: "plain_text",
+        text: product.name,
+        emoji: true,
+      },
+      value: product._id,
+    };
+  });
 
   const result = await client.views.open({
     trigger_id: body.trigger_id,
@@ -15,6 +30,24 @@ const callback = async ({ body, ack, client, logger }) => {
         text: "Submit",
       },
       blocks: [
+        {
+          block_id: "product",
+          type: "input",
+          dispatch_action: true,
+          element: {
+            type: "static_select",
+            action_id: "projectProductSelected",
+            placeholder: {
+              type: "plain_text",
+              text: "Select a product",
+            },
+            options: productList,
+          },
+          label: {
+            type: "plain_text",
+            text: "Product",
+          },
+        },
         {
           block_id: "project",
           type: "input",

@@ -2,6 +2,8 @@ const Project = require("../models/project");
 const User = require("../models/user");
 
 const view = async ({ ack, view, body, logger }) => {
+  const product =
+    view.state.values.product.projectProductSelected.selected_option.text.value;
   const value = view.state.values.project.projectNameDefined.value;
 
   const user = await User.findOneAndUpdate(
@@ -12,6 +14,7 @@ const view = async ({ ack, view, body, logger }) => {
 
   const project = new Project({
     name: value,
+    product: product,
     user: user._id,
   });
 
