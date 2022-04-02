@@ -3,9 +3,9 @@ const addNewItem = require("./actions/add-new-item.js");
 const addNewProduct = require("./actions/add-new-product.js");
 const addNewProject = require("./actions/add-new-project.js");
 const addNewRole = require("./actions/add-new-role.js");
-const productSelected = require("./callbacks/product-selected.js");
 const handleNewItem = require("./views/handle-new-item.js");
 const handleNewProduct = require("./views/handle-new-product.js");
+const productSelected = require("./callbacks/product-selected.js");
 
 const controller = (app) => {
   //Events
@@ -23,16 +23,16 @@ const controller = (app) => {
   app.action("productSelected", productSelected);
 
   //Modals
-  app.view("addNewItem", handleNewItem);
+  app.view("handleNewItem", handleNewItem);
 
-  app.view("addNewProduct", handleNewProduct);
+  app.view("handleNewProduct", handleNewProduct);
 
-  app.view("addNewProject", ({ ack }) => {
+  app.view("handleNewProject", ({ ack }) => {
     ack();
     console.log("Created Project");
   });
 
-  app.view("addNewRole", ({ ack }) => {
+  app.view("handleNewRole", ({ ack }) => {
     ack();
     console.log("Created Role");
   });
