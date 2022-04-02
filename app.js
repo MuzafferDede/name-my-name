@@ -31,7 +31,7 @@ app.use(
     logger,
     next,
   }) => {
-    logger.info(payload);
+    logger.info({ body, payload, action });
     await next();
   }
 );
