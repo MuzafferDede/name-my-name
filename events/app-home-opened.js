@@ -1,4 +1,4 @@
-const callback = async ({ event, client, logger }) => {
+const event = async ({ event, client, logger }) => {
   const result = await client.views.publish({
     user_id: event.user,
     view: {
@@ -81,4 +81,4 @@ const callback = async ({ event, client, logger }) => {
   logger.info(result);
 };
 
-module.exports = callback;
+module.exports = event;

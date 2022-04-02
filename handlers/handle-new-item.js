@@ -1,4 +1,4 @@
-const view = async ({ ack, view, logger }) => {
+const handler = async ({ ack, view, logger }) => {
   const result = await ack({
     response_action: "update",
     view: {
@@ -72,4 +72,4 @@ const view = async ({ ack, view, logger }) => {
   logger.info(result);
 };
 
-module.exports = view;
+module.exports = handler;

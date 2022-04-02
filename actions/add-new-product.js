@@ -1,4 +1,4 @@
-const callback = async ({ body, ack, client, logger }) => {
+const action = async ({ body, ack, client, logger }) => {
   await ack();
 
   const result = await client.views.open({
@@ -38,4 +38,4 @@ const callback = async ({ body, ack, client, logger }) => {
   logger.info(result);
 };
 
-module.exports = callback;
+module.exports = action;

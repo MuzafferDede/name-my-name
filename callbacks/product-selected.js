@@ -1,4 +1,6 @@
-const effect = async ({ ack, body, client, logger }) => {
+const Project = require("../models/project");
+
+const callback = async ({ ack, body, client, logger, ...rest }) => {
   ack();
 
   const projects = [
@@ -40,4 +42,4 @@ const effect = async ({ ack, body, client, logger }) => {
   logger.info(result);
 };
 
-module.exports = effect;
+module.exports = callback;

@@ -1,7 +1,7 @@
 const Product = require("../models/product");
 const User = require("../models/user");
 
-const view = async ({ ack, view, body, logger }) => {
+const handler = async ({ ack, view, body, logger }) => {
   const value = view.state.values.product.productNameDefined.value;
 
   const user = await User.findOneAndUpdate(
@@ -47,4 +47,4 @@ const view = async ({ ack, view, body, logger }) => {
   });
 };
 
-module.exports = view;
+module.exports = handler;

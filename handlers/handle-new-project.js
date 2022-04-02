@@ -1,7 +1,7 @@
 const Project = require("../models/project");
 const User = require("../models/user");
 
-const view = async ({ ack, view, body, logger }) => {
+const handler = async ({ ack, view, body, logger }) => {
   const product =
     view.state.values.product.projectProductSelected.selected_option.value;
   const value = view.state.values.project.projectNameDefined.value;
@@ -50,4 +50,4 @@ const view = async ({ ack, view, body, logger }) => {
   });
 };
 
-module.exports = view;
+module.exports = handler;

@@ -1,4 +1,4 @@
-const start = require("./events/start.js");
+const start = require("./events/app-home-opened.js");
 const addNewItem = require("./actions/add-new-item.js");
 const addNewProduct = require("./actions/add-new-product.js");
 const addNewProject = require("./actions/add-new-project.js");
