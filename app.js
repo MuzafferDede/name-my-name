@@ -20,7 +20,7 @@ const app = new App({
 });
 
 app.use(async (client, context, logger, payload, next) => {
-  log(client, context, logger, payload);
+  console.log("hello", { client, context, logger, payload });
   await next();
 });
 
