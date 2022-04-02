@@ -1,25 +1,21 @@
+const action = require("../actions/add-new-item");
 const Project = require("../models/project");
 
-const callback = async ({ ack, body, client, logger, ...rest }) => {
+const callback = async ({ ack, body, action, client, logger, ...rest }) => {
   ack();
-  console.log(rest);
+  const projects = await Project.find({
+    product: action.selected_option.value,
+  });
 
-  const projects = [
-    {
+  const projectList = projects.map((project) => {
+    return {
       text: {
         type: "plain_text",
-        text: "PGN",
+        text: project.name,
       },
-      value: "value-0",
-    },
-    {
-      text: {
-        type: "plain_text",
-        text: "PE",
-      },
-      value: "value-1",
-    },
-  ];
+      value: project._id,
+    };
+  });
 
   const blocks = body.view.blocks.map((block) => {
     if (block.block_id === "project") {
