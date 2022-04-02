@@ -19,6 +19,11 @@ const app = new App({
   socketMode: true,
 });
 
+app.use(async (client, context, logger, payload, next) => {
+  log(client, context, logger, payload);
+  await next();
+});
+
 controller(app, mongoose);
 
 (async () => {
