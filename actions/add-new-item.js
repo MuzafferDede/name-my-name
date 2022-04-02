@@ -7,7 +7,7 @@ const action = async ({ body, ack, client, logger }) => {
   await ack();
 
   const products = await Product.find({ projects: { $exists: true } });
-
+  console.log({ products });
   const productList = products.map((product) => {
     return {
       text: {
