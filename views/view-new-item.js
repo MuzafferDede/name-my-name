@@ -61,7 +61,7 @@ const callback = async ({ ack, view, logger }) => {
           elements: [
             {
               type: "mrkdwn",
-              text: `*${view.state.values.product.productSelected.selected_option.text.text}* / *${view.state.values.project.projectSelected.selected_option.text.text}* / *${view.state.values.role.roleSelected.selected_option.text.text}* / *${view.state.values.item.item_action.value}* / *${view.state.values.tag.tag_action.value}*`,
+              text: `*${view.state.values.product.productSelected.selected_option.text.text}* / *${view.state.values.project.projectSelected.selected_option.text.text}* / *${view.state.values.role.roleSelected.selected_option.text.text}* / *${view.state.values.item.itemDefined.value}* / *${view.state.values.tag.tagDefined.value}*`,
             },
           ],
         },
