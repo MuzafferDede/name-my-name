@@ -6,8 +6,6 @@ const action = async ({ body, ack, client, logger }) => {
 
   const products = await Product.find({});
 
-  console.log({ products });
-
   const productList = products.map((product) => {
     return {
       text: {
@@ -17,6 +15,8 @@ const action = async ({ body, ack, client, logger }) => {
       value: product._id,
     };
   });
+
+  console.log({ products, productList });
 
   const roles = await Role.find({});
 
