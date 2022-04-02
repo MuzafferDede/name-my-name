@@ -4,7 +4,9 @@ const Role = require("../models/role");
 const action = async ({ body, ack, client, logger }) => {
   await ack();
 
-  const products = await Product.find({ projects: { $exists: true } });
+  const products = await Product.find({
+    projects: { $gte: [{ $size: "$arr" }, 1] },
+  });
 
   const productList = products.map((product) => {
     return {
