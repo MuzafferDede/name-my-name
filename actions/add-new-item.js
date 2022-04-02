@@ -1,6 +1,4 @@
 const Product = require("../models/product");
-const project = require("../models/project");
-const Project = require("../models/project");
 const Role = require("../models/role");
 
 const action = async ({ body, ack, client, logger }) => {
