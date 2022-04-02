@@ -7,10 +7,10 @@ const view = async ({ ack, view, logger }) => {
     name: value,
   });
 
-  product.save((err) => {
-    if(err) {
-     await ack("Error saving product");
-     return;
+  product.save(async (err) => {
+    if (err) {
+      await ack("Error saving product");
+      return;
     }
 
     const result = await ack({
@@ -34,10 +34,9 @@ const view = async ({ ack, view, logger }) => {
         ],
       },
     });
-  
+
     logger.info(result);
   });
-  
 };
 
 module.exports = view;
