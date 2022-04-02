@@ -4,7 +4,7 @@ const action = async ({ body, ack, client, logger }) => {
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
-      action_id: "handleNewItem",
+      callback_id: "handleNewItem",
       type: "modal",
       title: {
         type: "plain_text",
