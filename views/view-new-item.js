@@ -13,27 +13,11 @@ const callback = async ({ ack, view, logger }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `*Product:*\n${view.state.values.product.product_selected.selected_option.text.text}`,
+              text: `*Product:*\n${view.state.values.product.productSelected.selected_option.text.text}`,
             },
             {
               type: "mrkdwn",
-              text: `*Project:*\n${view.state.values.project.project_selected.selected_option.text.text}`,
-            },
-          ],
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "section",
-          fields: [
-            {
-              type: "mrkdwn",
-              text: `*Role:*\n${view.state.values.role.role_selected.selected_option.text.text}`,
-            },
-            {
-              type: "mrkdwn",
-              text: `*item's name:*\n${view.state.values.item.item_action.value}`,
+              text: `*Project:*\n${view.state.values.project.projectSelected.selected_option.text.text}`,
             },
           ],
         },
@@ -45,11 +29,27 @@ const callback = async ({ ack, view, logger }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `*Tag:*\n${view.state.values.tag.tag_action.value}`,
+              text: `*Role:*\n${view.state.values.role.roleSelected.selected_option.text.text}`,
             },
             {
               type: "mrkdwn",
-              text: `*URL:*\n<${view.state.values.url.url_action.value}|:earth_americas: Open>`,
+              text: `*item's name:*\n${view.state.values.item.itemDefined.value}`,
+            },
+          ],
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          fields: [
+            {
+              type: "mrkdwn",
+              text: `*Tag:*\n${view.state.values.tag.tagDefined.value}`,
+            },
+            {
+              type: "mrkdwn",
+              text: `*URL:*\n<${view.state.values.url.urlDefined.value}|:earth_americas: Open>`,
             },
           ],
         },
@@ -61,7 +61,7 @@ const callback = async ({ ack, view, logger }) => {
           elements: [
             {
               type: "mrkdwn",
-              text: `*${view.state.values.product.product_selected.selected_option.text.text}* / *${view.state.values.project.project_selected.selected_option.text.text}* / *${view.state.values.role.role_selected.selected_option.text.text}* / *${view.state.values.item.item_action.value}* / *${view.state.values.tag.tag_action.value}*`,
+              text: `*${view.state.values.product.productSelected.selected_option.text.text}* / *${view.state.values.project.projectSelected.selected_option.text.text}* / *${view.state.values.role.roleSelected.selected_option.text.text}* / *${view.state.values.item.item_action.value}* / *${view.state.values.tag.tag_action.value}*`,
             },
           ],
         },
