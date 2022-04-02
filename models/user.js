@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema(
   {
-    slackID: {
+    slackId: {
       type: String,
       required: [true, "can't be blank."],
       trim: true,
