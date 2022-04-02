@@ -1,10 +1,19 @@
 const Project = require("../models/project");
+const User = require("../models/user");
 
 const view = async ({ ack, view, logger }) => {
   const value = view.state.values.project.projectNameDefined.value;
 
+  const user = await User.findAndModify({
+    query: { slackId: view.user.id },
+    update: { $setOnInsert: { slackId: view.user.id } },
+    new: true,
+    upsert: true,
+  });
+
   const project = new Project({
     name: value,
+    user: user._id,
   });
 
   project.save(async (err) => {
