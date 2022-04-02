@@ -8,6 +8,7 @@ const handler = async ({ ack, view, body, logger }) => {
 
   const user = await User.findOneAndUpdate(
     { slackId: body.user.id },
+    { slackId: body.user.id },
     { new: true, upsert: true }
   );
 

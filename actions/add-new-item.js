@@ -5,7 +5,7 @@ const action = async ({ body, ack, client, logger }) => {
   await ack();
 
   const products = await Product.find({
-    projects: { $gte: [{ $size: "$arr" }, 1] },
+    projects: { $gt: [] },
   });
 
   const productList = products.map((product) => {
