@@ -4,8 +4,8 @@ const callback = async ({ body, ack, client, logger }) => {
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
+      callback_id: "addNewItem",
       type: "modal",
-      callback_id: "viewNewItem",
       title: {
         type: "plain_text",
         text: "Add new item",

@@ -29,8 +29,8 @@ const effect = async ({ ack, body, client, logger }) => {
   const result = await client.views.update({
     view_id: body.view.id,
     view: {
-      title: body.view.title,
       callback_id: body.view.callback_id,
+      title: body.view.title,
       submit: body.view.submit,
       blocks: blocks,
       type: body.view.type,
