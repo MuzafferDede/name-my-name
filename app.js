@@ -20,7 +20,17 @@ const app = new App({
 });
 
 app.use(
-  async ({ body, payload, action, say, ack, context, client, logger }) => {
+  async ({
+    body,
+    payload,
+    action,
+    say,
+    ack,
+    context,
+    client,
+    logger,
+    next,
+  }) => {
     logger.info(payload);
     await next();
   }
