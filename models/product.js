@@ -11,6 +11,8 @@ const schema = new mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Project",
+        nullable: true,
+        default: null,
       },
     ],
     user: {
