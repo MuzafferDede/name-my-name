@@ -21,7 +21,7 @@ const app = new App({
 
 app.use(
   async ({ body, payload, action, say, ack, context, client, logger }) => {
-    console.log(payload);
+    logger.info(payload);
     await next();
   }
 );
