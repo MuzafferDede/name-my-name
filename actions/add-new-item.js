@@ -69,19 +69,12 @@ const action = async ({ body, ack, client, logger }) => {
           element: {
             type: "static_select",
             action_id: "projectSelected",
+            optional: true,
             placeholder: {
               type: "plain_text",
               text: "Select a project",
             },
-            options: [
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Select a product first",
-                },
-                value: "0",
-              },
-            ],
+            options: [],
           },
           label: {
             type: "plain_text",
@@ -133,6 +126,7 @@ const action = async ({ body, ack, client, logger }) => {
         {
           block_id: "tag",
           type: "input",
+          optional: true,
           element: {
             type: "plain_text_input",
             action_id: "tagDefined",
