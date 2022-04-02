@@ -6,6 +6,8 @@ const action = async ({ body, ack, client, logger }) => {
 
   const products = await Product.find({});
 
+  console.log({ products });
+
   const productList = products.map((product) => {
     return {
       text: {
