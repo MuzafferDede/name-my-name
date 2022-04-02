@@ -20,7 +20,17 @@ const callback = async ({ ack, body, action, client, logger, ...rest }) => {
 
   const blocks = body.view.blocks.map((block) => {
     if (block.block_id === "project") {
-      block.element.options = projectList;
+      block.element.options = projectList.length
+        ? projectList
+        : [
+            {
+              text: {
+                type: "plain_text",
+                text: "No projects found",
+              },
+              value: "0",
+            },
+          ];
     }
 
     return block;
