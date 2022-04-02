@@ -6,12 +6,9 @@ const Role = require("../models/role");
 const action = async ({ body, ack, client, logger }) => {
   await ack();
 
-  const products = await Product.find();
+  const products = await Product.find({ projects: { $size: { $gt: 1 } } });
 
   const productList = products.map((product) => {
-    console.log({ product });
-    if (!product.projects.length) return;
-
     return {
       text: {
         type: "plain_text",
