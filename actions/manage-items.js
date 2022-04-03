@@ -14,7 +14,7 @@ const action = async ({ body, ack, client, logger }) => {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Product:*\n${item.product.name}`,
+        text: `*Product:*\n${item.name}`,
       },
       accessory: {
         type: "button",
