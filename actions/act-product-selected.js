@@ -6,7 +6,7 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     (block) => block.block_id === "project"
   );
 
-  const projects = await Project.find({
+  const product = await Product.find({
     _id: action.selected_option.value,
   });
 
