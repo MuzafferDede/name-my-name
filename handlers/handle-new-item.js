@@ -2,6 +2,8 @@ const Item = require("../models/item");
 const User = require("../models/user");
 
 const handler = async ({ ack, body, view, logger }) => {
+  const user = User.findOne({ slackId: body.user.id });
+
   const item = new Item({
     name: view.state.values.item.itemDefined.value,
     url: view.state.values.url.urlDefined.value,
@@ -9,7 +11,7 @@ const handler = async ({ ack, body, view, logger }) => {
     product: view.state.values.product.productSelected.selected_option.value,
     project: view.state.values.project.projectSelected.selected_option.value,
     role: view.state.values.role.roleSelected.selected_option.value,
-    user: User.findOne({ slackId: body.user_id })._id,
+    user: user.slackId,
   });
 
   item.save().then(async (item) => {
