@@ -1,7 +1,8 @@
 const Product = require("../models/product");
 
-const callback = async ({ ack, body, action, client, logger, ...rest }) => {
+const callback = async ({ ack, value, ...rest }) => {
   const products = await Product.find({
+    name: { $regex: value },
     projects: { $gt: [] },
   });
 
