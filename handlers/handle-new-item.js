@@ -10,6 +10,8 @@ const handler = async ({ ack, body, view, logger }) => {
     { new: true, upsert: true }
   );
 
+  console.log(user);
+
   const item = new Item({
     name: state.item.itemDefined.value,
     url: state.url.urlDefined.value,
@@ -20,10 +22,13 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
+  console.log(item);
   await item.save((err, newItem) => {
     user.items.push(newItem._id);
     user.save();
   });
+
+  console.log(user);
 
   await Item.findOne({ _id: item._id })
     .populate({ path: "product", select: "name" })
