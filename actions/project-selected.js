@@ -1,6 +1,6 @@
 const Project = require("../models/project");
 
-const callback = async ({ ack, payload, body, ...rest }) => {
+const action = async ({ ack, payload, body, ...rest }) => {
   console.log(rest, payload.view.state.values);
   // console.log(b);
   // const projects = await Project.find({
@@ -20,4 +20,4 @@ const callback = async ({ ack, payload, body, ...rest }) => {
   // });
 };
 
-module.exports = callback;
+module.exports = action;
