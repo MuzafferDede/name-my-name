@@ -16,42 +16,27 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     };
   });
 
+  const blocks = body.view.blocks.map((block) => {
+    if (block.block_id === "project") {
+      return {
+        ...block,
+        element: {
+          ...block.element,
+          options: projectOptions,
+        },
+      };
+    }
+
+    return block;
+  });
+
   await client.views.update({
     view_id: body.view.id,
     view: {
       title: body.view.title,
       callback_id: body.view.callback_id,
       submit: body.view.submit,
-      blocks: [
-        {
-          block_id: "project",
-          type: "input",
-          dispatch_action: true,
-          element: {
-            type: "static_select",
-            action_id: "projectSelected",
-            placeholder: {
-              type: "plain_text",
-              text: "Select a project",
-            },
-            options: [
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Select a project",
-                },
-                value: "0",
-              },
-              ...projectOptions,
-            ],
-          },
-          label: {
-            type: "plain_text",
-            text: "Project",
-          },
-        },
-        ...body.view.blocks.filter((block) => block.block_id !== "project"),
-      ],
+      blocks,
       type: body.view.type,
     },
   });
