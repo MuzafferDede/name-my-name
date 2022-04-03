@@ -2,8 +2,6 @@ const User = require("../models/user");
 const Item = require("../models/item");
 
 const action = async ({ body, ack, client, action, logger, ...rest }) => {
-  await ack();
-
   if (action.action_id === "deleteItem") {
     await Item.findOneAndRemove({ _id: action.value });
 
@@ -40,6 +38,8 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       },
     };
   });
+
+  await ack();
 
   if (action.action_id === "deleteItem") {
     await client.views.update({
