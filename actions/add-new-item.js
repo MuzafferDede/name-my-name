@@ -57,7 +57,6 @@ const action = async ({ body, ack, client, logger }) => {
           element: {
             type: "static_select",
             action_id: "projectSelected",
-            min_query_length: 0,
             placeholder: {
               type: "plain_text",
               text: "Select a project",
@@ -68,7 +67,7 @@ const action = async ({ body, ack, client, logger }) => {
                   type: "plain_text",
                   text: "Select a project",
                 },
-                value: "",
+                value: "0",
               },
             ],
           },
