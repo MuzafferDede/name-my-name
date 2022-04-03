@@ -35,7 +35,7 @@ const controller = (app) => {
   //Callbacks
   app.action("productSelected", productSelected);
 
-  app.action("projectSelected", projectSelected);
+  app.options("projectSelected", projectSelected);
 };
 
 module.exports = controller;
