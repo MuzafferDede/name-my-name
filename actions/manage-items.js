@@ -3,7 +3,7 @@ const User = require("../models/user");
 const action = async ({ body, ack, client, logger }) => {
   await ack();
 
-  const items = User.find({
+  const items = await User.find({
     slackId: body.user.id,
   })
     .populate("items")
