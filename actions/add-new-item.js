@@ -53,7 +53,6 @@ const action = async ({ body, ack, client, logger }) => {
         {
           block_id: "project",
           type: "input",
-          dispatch_action: true,
           element: {
             type: "static_select",
             action_id: "projectSelected",
