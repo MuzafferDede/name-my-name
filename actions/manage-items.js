@@ -21,33 +21,38 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .exec();
 
   const blocks = user.items.map((item) => {
-    return {
-      type: "section",
-      text: {
-        type: "mrkdwn",
-        text: `*Item:*\n${item.name}`,
-      },
-      accessory: {
-        action_id: "deleteItem",
-        type: "button",
+    return (
+      {
+        type: "section",
         text: {
-          type: "plain_text",
-          text: "Delete",
+          type: "mrkdwn",
+          text: `*Item:*\n${item.name}`,
         },
-        value: item._id,
-        confirm: {
-          title: {
-            type: "plain_text",
-            text: "Are you sure?",
-          },
+        accessory: {
+          action_id: "deleteItem",
+          type: "button",
           text: {
             type: "plain_text",
-            text: "This will delete the item from your list.",
+            text: "Delete",
           },
-          style: "danger",
+          value: item._id,
+          confirm: {
+            title: {
+              type: "plain_text",
+              text: "Are you sure?",
+            },
+            text: {
+              type: "plain_text",
+              text: "This will delete the item from your list.",
+            },
+            style: "danger",
+          },
         },
       },
-    };
+      {
+        type: "divider",
+      }
+    );
   });
 
   const items = blocks.length
