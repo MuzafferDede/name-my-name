@@ -22,7 +22,7 @@ const callback = async (all) => {
     });
   }
 
-  console.log(all.body.view);
+  console.log(all.body.view.state.values);
   await ack();
 };
 
