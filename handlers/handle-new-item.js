@@ -20,8 +20,9 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
+  console.log("yes", item.product);
   user.items.push(item);
-
+  console.log("maybe", item.product);
   await item.save();
 
   await Item.findOne(item)
