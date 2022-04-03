@@ -1,7 +1,7 @@
 const Project = require("../models/project");
 
 const action = async ({ ack, payload, body, ...rest }) => {
-  console.log(payload.view.state.values);
+  console.log(payload);
 
   await ack();
 };
