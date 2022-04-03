@@ -77,8 +77,6 @@ const event = async ({ event, client, logger }) => {
       ],
     },
   });
-
-  logger.info(result);
 };
 
 module.exports = event;

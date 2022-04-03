@@ -68,8 +68,6 @@ const handler = async ({ ack, view, logger }) => {
       ],
     },
   });
-
-  logger.info(result);
 };
 
 module.exports = handler;

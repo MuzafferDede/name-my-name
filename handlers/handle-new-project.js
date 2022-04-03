@@ -53,8 +53,6 @@ const handler = async ({ ack, view, body, logger }) => {
         ],
       },
     });
-
-    logger.info(result);
   });
 };
 

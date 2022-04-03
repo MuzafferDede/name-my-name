@@ -156,8 +156,6 @@ const action = async ({ body, ack, client, logger }) => {
       ],
     },
   });
-
-  logger.info(result);
 };
 
 module.exports = action;
