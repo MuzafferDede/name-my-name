@@ -31,6 +31,7 @@ const handler = async ({ ack, view, body, logger }) => {
 
     product.projects.push(project);
 
+    product.save();
     const result = await ack({
       response_action: "update",
       view: {
