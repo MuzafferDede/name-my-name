@@ -7,13 +7,12 @@ const schema = new mongoose.Schema(
       required: [true, "can't be blank."],
       trim: true,
     },
-    projects: {
-      bsonType: "array",
-      items: {
+    projects: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Project",
       },
-    },
+    ],
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
