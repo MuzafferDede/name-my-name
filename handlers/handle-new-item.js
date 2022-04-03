@@ -12,8 +12,8 @@ const handler = async ({ ack, body, view, logger }) => {
     user: User.findOne({ slackId: body.user.id })._id,
   });
 
-  item.save().then((item) => {
-    const result = await ack({
+  item.save().then(async (item) => {
+    await ack({
       response_action: "update",
       view: {
         type: "modal",
@@ -95,8 +95,6 @@ const handler = async ({ ack, body, view, logger }) => {
       },
     });
   });
-
-  
 };
 
 module.exports = handler;
