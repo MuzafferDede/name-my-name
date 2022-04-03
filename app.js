@@ -23,7 +23,9 @@ app.use(async ({ logger, context, client, say, ack, next, ...rest }) => {
   logger.info(rest);
   await next();
 });
-
+app.action("projectSelected", () => {
+  console.log("arrived");
+});
 controller(app, mongoose);
 
 (async () => {
