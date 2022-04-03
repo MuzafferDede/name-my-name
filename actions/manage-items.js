@@ -53,7 +53,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   const items = blocks.length
     ? blocks.reduce((acc, block, index) => {
         if (index % 2 === 0) {
-          return [...acc, block, { type: "divider" }];
+          return [...acc, { type: "divider" }, block];
         }
 
         return [...acc, block];
