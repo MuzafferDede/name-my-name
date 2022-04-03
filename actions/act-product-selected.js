@@ -51,7 +51,7 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     },
   });
 
-  console.log(result);
+  console.log(result.view.blocks);
 };
 
 module.exports = action;
