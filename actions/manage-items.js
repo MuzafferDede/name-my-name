@@ -1,9 +1,17 @@
 const User = require("../models/user");
 
-const action = async ({ body, ack, client, logger, ...rest }) => {
+const action = async ({ body, ack, client, action, logger, ...rest }) => {
   await ack();
 
-  console.log(body, rest);
+  if (action.action_id === "deleteItem") {
+    const itemId = action.value;
+
+    const user = await User.findOne({ slackId: body.user.id });
+
+    user.items.pull({ _id: itemId });
+
+    await user.save();
+  }
 
   const user = await User.findOne({
     slackId: body.user.id,
