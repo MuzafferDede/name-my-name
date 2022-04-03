@@ -27,7 +27,7 @@ const callback = async (all) => {
       test: "yes",
     },
   });
-  console.log(all.body.view.state.values);
+  console.log(state, all.body.view.state.values);
 };
 
 module.exports = callback;
