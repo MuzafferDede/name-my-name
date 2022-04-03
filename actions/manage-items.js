@@ -10,7 +10,6 @@ const action = async ({ body, ack, client, logger }) => {
         type: "plain_text",
         text: "Your items",
       },
-      submit: null,
       blocks: [
         {
           block_id: "role",
