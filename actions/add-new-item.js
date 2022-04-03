@@ -1,22 +1,7 @@
-const Product = require("../models/product");
 const Role = require("../models/role");
 
 const action = async ({ body, ack, client, logger }) => {
   await ack();
-
-  const products = await Product.find({
-    projects: { $gt: [] },
-  });
-
-  const productList = products.map((product) => {
-    return {
-      text: {
-        type: "plain_text",
-        text: product.name,
-      },
-      value: product._id,
-    };
-  });
 
   const roles = await Role.find({});
 
@@ -49,21 +34,12 @@ const action = async ({ body, ack, client, logger }) => {
           type: "input",
           dispatch_action: true,
           element: {
-            type: "static_select",
+            type: "external_select",
             action_id: "productSelected",
             placeholder: {
               type: "plain_text",
               text: "Select a product",
             },
-            options: [
-              {
-                text: {
-                  type: "plain_text",
-                  text: "Select a product",
-                },
-              },
-              ...productList,
-            ],
           },
           label: {
             type: "plain_text",

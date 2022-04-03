@@ -1,14 +1,17 @@
 const start = require("./events/app-home-opened.js");
+
 const addNewItem = require("./actions/add-new-item.js");
 const addNewProduct = require("./actions/add-new-product.js");
 const addNewProject = require("./actions/add-new-project.js");
 const addNewRole = require("./actions/add-new-role.js");
+
 const handleNewItem = require("./handlers/handle-new-item.js");
 const handleNewProduct = require("./handlers/handle-new-product.js");
 const handleNewProject = require("./handlers/handle-new-project.js");
 const handleNewRole = require("./handlers/handle-new-role.js");
-const productSelected = require("./callbacks/product-selected.js");
-const projectSelected = require("./callbacks/project-selected.js");
+
+const productSelected = require("./options/product-selected.js");
+const projectSelected = require("./options/project-selected.js");
 
 const controller = (app) => {
   //Events
@@ -32,8 +35,8 @@ const controller = (app) => {
 
   app.view("handleNewRole", handleNewRole);
 
-  //Callbacks
-  app.action("productSelected", productSelected);
+  //Options
+  app.options("productSelected", productSelected);
 
   app.options("projectSelected", projectSelected);
 };
