@@ -22,8 +22,12 @@ const callback = async (all) => {
     });
   }
 
+  await ack({
+    state: {
+      test: "yes",
+    },
+  });
   console.log(all.body.view.state.values);
-  await ack();
 };
 
 module.exports = callback;
