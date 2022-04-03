@@ -9,6 +9,8 @@ const action = async ({ body, ack, client, logger }) => {
     .populate("items")
     .exec();
 
+  console.log(user.items);
+
   const blocks = user.items.map((item) => {
     return {
       type: "section",
