@@ -14,7 +14,7 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-  await item.save();
+  await Promise.resolve(item.save);
 
   const newItem = await Item.findOne({ _id: item._id }).exec();
 
