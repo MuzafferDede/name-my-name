@@ -64,7 +64,7 @@ const handler = async ({ ack, body, view, logger }) => {
               },
               {
                 type: "mrkdwn",
-                text: `*item's name:*\n${item.name}`,
+                text: `*Item's name:*\n${item.name}`,
               },
             ],
           },
