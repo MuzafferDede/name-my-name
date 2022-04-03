@@ -6,7 +6,7 @@ const addNewItem = require("./actions/add-new-item.js");
 const addNewProduct = require("./actions/add-new-product.js");
 const addNewProject = require("./actions/add-new-project.js");
 const addNewRole = require("./actions/add-new-role.js");
-const projectSelected = require("./actions/project-selected.js");
+const actProductSelected = require("./actions/act-product-selected.js");
 
 // handlers
 const handleNewItem = require("./handlers/handle-new-item.js");
@@ -15,7 +15,7 @@ const handleNewProject = require("./handlers/handle-new-project.js");
 const handleNewRole = require("./handlers/handle-new-role.js");
 
 // options
-const productSelected = require("./options/product-selected.js");
+const productOptions = require("./options/product-options.js");
 
 const controller = (app) => {
   //Events
@@ -30,7 +30,7 @@ const controller = (app) => {
 
   app.action("addNewRole", addNewRole);
 
-  app.action("projectSelected", projectSelected);
+  app.action("productSelected", actProductSelected);
 
   //Modals
   app.view("handleNewItem", handleNewItem);
@@ -42,7 +42,7 @@ const controller = (app) => {
   app.view("handleNewRole", handleNewRole);
 
   //Options
-  app.options("productSelected", productSelected);
+  app.options("productSelected", productOptions);
 };
 
 module.exports = controller;

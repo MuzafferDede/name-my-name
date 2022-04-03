@@ -1,6 +1,6 @@
 const Product = require("../models/product");
 
-const option = async ({ ack, payload, ...rest }) => {
+const options = async ({ ack, payload, ...rest }) => {
   const products = await Product.find({
     name: { $regex: payload.value, $options: "i" },
     projects: { $gt: [] },
@@ -20,4 +20,4 @@ const option = async ({ ack, payload, ...rest }) => {
   });
 };
 
-module.exports = option;
+module.exports = options;
