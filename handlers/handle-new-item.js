@@ -2,7 +2,7 @@ const Item = require("../models/item");
 const User = require("../models/user");
 
 const handler = async ({ ack, body, view, logger }) => {
-  const user = User.findOne({ slackId: body.user.id }).exec();
+  const user = await User.findOne({ slackId: body.user.id }).exec();
   console.log(user);
   const item = new Item({
     name: view.state.values.item.itemDefined.value,
