@@ -55,13 +55,22 @@ const action = async ({ body, ack, client, logger }) => {
           type: "input",
           dispatch_action: true,
           element: {
-            type: "external_select",
+            type: "static_select",
             action_id: "projectSelected",
             min_query_length: 0,
             placeholder: {
               type: "plain_text",
               text: "Select a project",
             },
+            options: [
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Select a project",
+                },
+                value: "",
+              },
+            ],
           },
           label: {
             type: "plain_text",
