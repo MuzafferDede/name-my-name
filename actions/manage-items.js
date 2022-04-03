@@ -55,12 +55,13 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       response_action: "update",
       ...payload.view,
     };
-
+    console.log(payload);
     await ack(payload);
     return;
   }
+  console.log(payload);
 
-  ack();
+  await ack();
   const result = await client.views.open(payload);
 };
 
