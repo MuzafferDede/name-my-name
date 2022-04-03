@@ -2,6 +2,8 @@ const User = require("../models/user");
 const Item = require("../models/item");
 
 const action = async ({ body, ack, client, action, logger, ...rest }) => {
+  await ack();
+
   const user = await User.findOne({
     slackId: body.user.id,
   })
@@ -51,32 +53,19 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
 
     await user.save();
 
-    payload = {
-      response_action: "update",
+    const result = await client.views.update({
+      view_id: body.view.id,
       view: {
-        type: "modal",
-        title: {
-          type: "plain_text",
-          text: "Your items",
-        },
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Item deleted*",
-            },
-          },
-        ],
+        title: body.view.title,
+        callback_id: body.view.callback_id,
+        blocks,
+        type: body.view.type,
       },
-    };
-    console.log(payload);
-    await ack(payload);
+    });
     return;
   }
   console.log(payload);
 
-  await ack();
   const result = await client.views.open(payload);
 };
 
