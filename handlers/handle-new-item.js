@@ -26,10 +26,10 @@ const handler = async ({ ack, body, view, logger }) => {
   });
 
   await Item.findOne({ _id: item._id })
-    .populate("product")
-    .populate("project")
-    .populate("role")
-    .populate("user")
+    .populate({ path: "product", select: "name" })
+    .populate({ path: "project", select: "name" })
+    .populate({ path: "role", select: "name" })
+    .populate({ path: "user", select: "slackId" })
     .exec(async (err, savedItem) => {
       console.log(savedItem);
       await ack({
