@@ -4,11 +4,11 @@ const User = require("../models/user");
 const handler = async ({ ack, body, view, logger }) => {
   const item = new Item({
     name: view.state.values.item.itemDefined.value,
-    url: view.state.values.item.itemUrl.value,
-    tag: view.state.values.item.itemTag.value,
-    product: view.state.values.item.product.selected_option.value,
-    project: view.state.values.item.project.selected_option.value,
-    role: view.state.values.item.role.selected_option.value,
+    url: view.state.values.url.urlDefined.value,
+    tag: view.state.values.tag.tagDefined.value,
+    product: view.state.values.product.productSelected.selected_option.value,
+    project: view.state.values.project.projectSelected.selected_option.value,
+    role: view.state.values.role.roleSelected.selected_option.value,
     user: User.findOne({ slackId: body.user.id })._id,
   });
 
