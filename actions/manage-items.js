@@ -23,9 +23,6 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   const blocks = user.items.map((item) => {
     return (
       {
-        type: "divider",
-      },
-      {
         type: "section",
         text: {
           type: "mrkdwn",
@@ -51,6 +48,9 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
             style: "danger",
           },
         },
+      },
+      {
+        type: "divider",
       }
     );
   });
