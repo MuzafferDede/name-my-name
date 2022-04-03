@@ -30,7 +30,7 @@ const handler = async ({ ack, body, view, logger }) => {
             fields: [
               {
                 type: "mrkdwn",
-                text: `*Product:*\n${item.name}`,
+                text: `*Product:*\n${item.product.name}`,
               },
               {
                 type: "mrkdwn",
@@ -66,7 +66,7 @@ const handler = async ({ ack, body, view, logger }) => {
               },
               {
                 type: "mrkdwn",
-                text: `*URL:*\n<${item.rul}|:earth_americas: Open>`,
+                text: `*URL:*\n<${item.url}|:earth_americas: Open>`,
               },
             ],
           },
