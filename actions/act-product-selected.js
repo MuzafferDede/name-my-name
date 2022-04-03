@@ -50,7 +50,7 @@ const action = async ({ ack, body, action, client, ...rest }) => {
             text: "Project",
           },
         },
-        ...body.view.blocks,
+        ...body.view.blocks.filter((block) => block.block_id !== "project"),
       ],
       type: body.view.type,
     },
