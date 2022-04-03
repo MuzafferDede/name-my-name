@@ -42,7 +42,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
           },
           text: {
             type: "plain_text",
-            text: "Yes, delete this item",
+            text: "This will delete the item from your list.",
           },
           style: "danger",
         },
