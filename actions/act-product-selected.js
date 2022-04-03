@@ -10,7 +10,7 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     _id: action.selected_option.value,
   });
 
-  console.log(projects);
+  console.log(product, projectBlock);
 
   return await ack();
 
