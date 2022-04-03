@@ -20,38 +20,40 @@ const handler = async ({ ack, view, body, logger }) => {
     user: user._id,
   });
 
-  project.save(async (err) => {
-    if (err) {
-      await ack("Error saving project");
-      return;
-    }
+  project
+    .save(async (err) => {
+      if (err) {
+        await ack("Error saving project");
+        return;
+      }
+    })
+    .then(async (savedProduct) => {
+      savedProduct.projects.push(project);
 
-    product.projects.push(project);
-
-    const result = await ack({
-      response_action: "update",
-      view: {
-        type: "modal",
-        title: {
-          type: "plain_text",
-          text: "Project created",
-        },
-        blocks: [
-          {
-            type: "section",
-            fields: [
-              {
-                type: "mrkdwn",
-                text: `*Project:*\n${project.name}`,
-              },
-            ],
+      const result = await ack({
+        response_action: "update",
+        view: {
+          type: "modal",
+          title: {
+            type: "plain_text",
+            text: "Project created",
           },
-        ],
-      },
-    });
+          blocks: [
+            {
+              type: "section",
+              fields: [
+                {
+                  type: "mrkdwn",
+                  text: `*Project:*\n${project.name}`,
+                },
+              ],
+            },
+          ],
+        },
+      });
 
-    logger.info(result);
-  });
+      logger.info(result);
+    });
 };
 
 module.exports = handler;
