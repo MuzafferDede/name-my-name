@@ -1,5 +1,6 @@
 const callback = async ({ ack, body, action, client, logger, ...rest }) => {
   console.log("arrived");
+  await ack();
 
   return {
     options: [
