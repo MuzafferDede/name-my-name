@@ -54,7 +54,12 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     payload = {
       response_action: "update",
       view: {
-        ...payload.view,
+        type: "modal",
+        title: {
+          type: "plain_text",
+          text: "Your items",
+        },
+        blocks,
       },
     };
     console.log(payload);
