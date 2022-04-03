@@ -1,5 +1,3 @@
-const 
-
 const action = async ({ body, ack, client, logger }) => {
   await ack();
 
