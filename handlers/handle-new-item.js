@@ -14,7 +14,7 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-  await item.save((err,item) => {
+   item.save((err,item) => {
     const newItem = await Item.findOne({ _id: item._id }).exec();
 
     console.log(newItem);
