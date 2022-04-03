@@ -15,7 +15,11 @@ const handler = async ({ ack, body, view, logger }) => {
   });
 
   await item.save();
-  console.log(item.product);
+
+  const newItem = await Item.findOne({ _id: item._id }).exec();
+
+  console.log(newItem);
+
   await ack({
     response_action: "update",
     view: {
@@ -30,27 +34,11 @@ const handler = async ({ ack, body, view, logger }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `*Product:*\n${item.product.name}`,
+              text: `*Product:*\n${newItem.product.name}`,
             },
             {
               type: "mrkdwn",
-              text: `*Project:*\n${item.project.name}`,
-            },
-          ],
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "section",
-          fields: [
-            {
-              type: "mrkdwn",
-              text: `*Role:*\n${item.role.name}`,
-            },
-            {
-              type: "mrkdwn",
-              text: `*item's name:*\n${item.name}`,
+              text: `*Project:*\n${newItem.project.name}`,
             },
           ],
         },
@@ -62,11 +50,27 @@ const handler = async ({ ack, body, view, logger }) => {
           fields: [
             {
               type: "mrkdwn",
-              text: `*Tag:*\n${item.tag}`,
+              text: `*Role:*\n${newItem.role.name}`,
             },
             {
               type: "mrkdwn",
-              text: `*URL:*\n<${item.url}|:earth_americas: Open>`,
+              text: `*item's name:*\n${newItem.name}`,
+            },
+          ],
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "section",
+          fields: [
+            {
+              type: "mrkdwn",
+              text: `*Tag:*\n${newItem.tag}`,
+            },
+            {
+              type: "mrkdwn",
+              text: `*URL:*\n<${newItem.url}|:earth_americas: Open>`,
             },
           ],
         },
@@ -78,7 +82,7 @@ const handler = async ({ ack, body, view, logger }) => {
           elements: [
             {
               type: "mrkdwn",
-              text: `*Created by:*\n<@${item.user.slackId}>`,
+              text: `*Created by:*\n<@${newItem.user.slackId}>`,
             },
           ],
         },
@@ -90,7 +94,7 @@ const handler = async ({ ack, body, view, logger }) => {
           elements: [
             {
               type: "mrkdwn",
-              text: `*Created at:*\n${item.createdAt}`,
+              text: `*Created at:*\n${newItem.createdAt}`,
             },
           ],
         },
