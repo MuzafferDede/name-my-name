@@ -1,4 +1,5 @@
 const Project = require("../models/project");
+const Product = require("../models/product");
 const User = require("../models/user");
 
 const handler = async ({ ack, view, body, logger }) => {
