@@ -1,9 +1,13 @@
 const Project = require("../models/project");
 
-const action = async ({ ack, payload, body, ...rest }) => {
-  console.log({ payload, body, rest });
-
-  await ack();
+const action = async ({ ack, body, action, ...rest }) => {
+  await ack({
+    response_action: "update",
+    view: {
+      type: "modal",
+      callback_id: "handleNewItem",
+    },
+  });
 };
 
 module.exports = action;
