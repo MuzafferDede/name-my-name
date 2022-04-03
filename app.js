@@ -20,7 +20,7 @@ const app = new App({
 });
 
 app.use(async ({ logger, context, client, say, ack, next, ...rest }) => {
-  logger.info({ context, client, rest });
+  //logger.info({ context, client, rest });
   await next();
 });
 
