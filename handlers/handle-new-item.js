@@ -20,11 +20,12 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-  await item.save(() => {
-    user.items.push(item._id);
+  await item.save((err, newItem) => {
+    user.items.push(newItem._id);
     user.save();
   });
 
+  console.log(item);
   await Item.findOne({ _id: item._id })
     .populate("product")
     .populate("project")
