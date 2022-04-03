@@ -33,9 +33,7 @@ const controller = (app) => {
   app.view("handleNewRole", handleNewRole);
 
   //Callbacks
-  app.action("productSelected", productSelected);
-
-  app.action("projects", projects);
+  app.action("productSelected", projects);
 };
 
 module.exports = controller;
