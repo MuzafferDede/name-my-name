@@ -24,14 +24,14 @@ const handler = async ({ ack, body, view, logger }) => {
   user.items.push(item);
   console.log("maybe", item.product);
   await item.save();
-
+  console.log("come on", item.product);
   await Item.findOne(item)
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
     .populate({ path: "role", select: "name" })
     .populate({ path: "user", select: "slackId" })
     .exec(async (err, newItem) => {
-      console.log("maybe", item.product);
+      console.log("if not", item.product);
       await ack({
         response_action: "update",
         view: {
