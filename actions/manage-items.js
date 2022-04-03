@@ -12,19 +12,10 @@ const action = async ({ body, ack, client, logger }) => {
       },
       blocks: [
         {
-          block_id: "role",
-          type: "input",
-          element: {
-            type: "plain_text_input",
-            action_id: "roleNameDefined",
-            placeholder: {
-              type: "plain_text",
-              text: "Frontend, Backend, etc.",
-            },
-          },
-          label: {
-            type: "plain_text",
-            text: "Role Name",
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "Select an item to manage",
           },
         },
       ],
