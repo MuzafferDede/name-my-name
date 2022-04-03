@@ -75,7 +75,7 @@ const handler = async ({ ack, body, view, logger }) => {
             elements: [
               {
                 type: "mrkdwn",
-                text: `*Created by:*\n${item.user.name}`,
+                text: `*Created by:*\n<@${item.user.slackId}>`,
               },
             ],
           },
