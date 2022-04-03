@@ -6,11 +6,11 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     (block) => block.block_id === "project"
   );
 
-  const product = await Product.find({
-    _id: action.selected_option.value,
+  const projects = await Project.find({
+    product: action.selected_option.value,
   });
 
-  console.log(product, projectBlock);
+  console.log(projects);
 
   return await ack();
 
