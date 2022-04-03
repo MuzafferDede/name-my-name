@@ -10,9 +10,15 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     product: action.selected_option.value,
   });
 
-  console.log(projects);
-
-  return await ack();
+  const projectOptions = projects.map((project) => {
+    return {
+      text: {
+        type: "plain_text",
+        text: project.name,
+      },
+      value: project._id,
+    };
+  });
 
   await client.views.update({
     view_id: body.view.id,
@@ -22,11 +28,8 @@ const action = async ({ ack, body, action, client, ...rest }) => {
       submit: body.view.submit,
       blocks: [
         {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text: "hello World",
-          },
+          ...projectBlock,
+          options: projectOptions,
         },
         ...body.view.blocks,
       ],
