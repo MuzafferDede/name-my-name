@@ -35,6 +35,12 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
           text: "Delete",
         },
         value: item._id,
+        confirm: {
+          title: {
+            type: "plain_text",
+            text: "Are you sure?",
+          },
+        },
       },
     };
   });
