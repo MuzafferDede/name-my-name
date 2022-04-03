@@ -1,19 +1,22 @@
 const Item = require("../models/item");
 const User = require("../models/user");
-const Product = require("../models/product");
-const Project = require("../models/project");
-const Role = require("../models/role");
 
 const handler = async ({ ack, body, view, logger }) => {
-  const user = await User.findOne({ slackId: body.user.id }).exec();
+  const state = view.state.values;
+
+  const user = await User.findOneAndUpdate(
+    { slackId: body.user.id },
+    { slackId: body.user.id },
+    { new: true, upsert: true }
+  );
 
   const item = new Item({
-    name: view.state.values.item.itemDefined.value,
-    url: view.state.values.url.urlDefined.value,
-    tag: view.state.values.tag.tagDefined.value,
-    product: view.state.values.product.productSelected.selected_option.value,
-    project: view.state.values.project.projectSelected.selected_option.value,
-    role: view.state.values.role.roleSelected.selected_option.value,
+    name: state.item.itemDefined.value,
+    url: state.url.urlDefined.value,
+    tag: state.tag.tagDefined.value,
+    product: state.product.productSelected.selected_option.value,
+    project: state.project.projectSelected.selected_option.value,
+    role: state.role.roleSelected.selected_option.value,
     user: user._id,
   });
 

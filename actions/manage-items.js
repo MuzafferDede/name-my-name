@@ -1,5 +1,15 @@
+const User = require("../models/user");
+
 const action = async ({ body, ack, client, logger }) => {
   await ack();
+
+  const items = User.find({
+    slackId: body.user.id,
+  })
+    .populate("items")
+    .exec();
+
+  logger.info(items);
 
   const result = await client.views.open({
     trigger_id: body.trigger_id,
