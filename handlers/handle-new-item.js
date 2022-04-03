@@ -20,12 +20,9 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-  await item.save((err) => {
-    user.items.push(item._id);
-    user.save();
-  });
+  user.items.push(item);
 
-  console.log(user);
+  await item.save();
 
   await Item.findOne({ _id: item._id })
     .populate({ path: "product", select: "name" })
@@ -33,7 +30,6 @@ const handler = async ({ ack, body, view, logger }) => {
     .populate({ path: "role", select: "name" })
     .populate({ path: "user", select: "slackId" })
     .exec(async (err) => {
-      console.log({ error: err, item: item });
       await ack({
         response_action: "update",
         view: {
