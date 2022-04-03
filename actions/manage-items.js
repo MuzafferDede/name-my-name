@@ -1,14 +1,17 @@
 const User = require("../models/user");
+const Item = require("../models/item");
 
 const action = async ({ body, ack, client, action, logger, ...rest }) => {
   await ack();
 
   if (action.action_id === "deleteItem") {
-    const itemId = action.value;
+    await Item.findOneAndRemove({ _id: action.value });
 
     const user = await User.findOne({ slackId: body.user.id });
 
-    user.items.pull({ _id: itemId });
+    user.items = user.items.filter(
+      (item) => item._id.toString() !== action.value
+    );
 
     await user.save();
   }
