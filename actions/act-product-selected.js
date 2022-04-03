@@ -2,6 +2,8 @@ const Product = require("../models/product");
 const Project = require("../models/project");
 
 const action = async ({ ack, body, action, client, ...rest }) => {
+  await ack();
+
   const projects = await Project.find({
     product: action.selected_option.value,
   });
