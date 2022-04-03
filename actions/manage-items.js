@@ -1,7 +1,9 @@
 const User = require("../models/user");
 
-const action = async ({ body, ack, client, logger }) => {
+const action = async ({ body, ack, client, logger, ...rest }) => {
   await ack();
+
+  console.log(body, rest);
 
   const user = await User.findOne({
     slackId: body.user.id,
@@ -9,22 +11,20 @@ const action = async ({ body, ack, client, logger }) => {
     .populate("items")
     .exec();
 
-  console.log(user.items);
-
   const blocks = user.items.map((item) => {
     return {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Product:*\n${item.name}`,
+        text: `*Item:*\n${item.name}`,
       },
       accessory: {
+        action_id: "deleteItem",
         type: "button",
         text: {
           type: "plain_text",
           text: "Delete",
         },
-        action_id: "delete-item",
         value: item._id,
       },
     };

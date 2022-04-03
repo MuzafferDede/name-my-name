@@ -34,6 +34,7 @@ const controller = (app) => {
   app.action("productSelected", actProductSelected);
 
   app.action("manageItems", manageItems);
+  app.action("deleteItem", manageItems);
 
   //Modals
   app.view("handleNewItem", handleNewItem);
