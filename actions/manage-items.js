@@ -40,6 +40,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
             type: "plain_text",
             text: "Are you sure?",
           },
+          style: "danger",
         },
       },
     };
