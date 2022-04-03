@@ -9,8 +9,6 @@ const action = async ({ body, ack, client, logger }) => {
     .populate("items")
     .exec();
 
-  logger.info(user);
-
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {

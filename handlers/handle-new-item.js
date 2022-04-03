@@ -26,13 +26,13 @@ const handler = async ({ ack, body, view, logger }) => {
 
   console.log(item.user);
 
-  await Item.findOne({ _id: item._id })
+  await Item.findOne(item)
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
     .populate({ path: "role", select: "name" })
     .populate({ path: "user", select: "slackId" })
-    .exec(async (err) => {
-      console.log(item.user);
+    .exec(async (err, newItem) => {
+      console.log(newItem);
 
       await ack({
         response_action: "update",
