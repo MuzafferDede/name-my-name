@@ -17,7 +17,7 @@ const handler = async ({ ack, body, view, logger }) => {
   await item.save(async (err, item) => {
     const newItem = await Item.findOne({ _id: item._id }).exec();
 
-    console.log(newItem);
+    console.log(newItem.product);
 
     await ack({
       response_action: "update",
