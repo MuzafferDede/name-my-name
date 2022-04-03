@@ -4,6 +4,8 @@ const callback = async (all) => {
   const { ack, payload, state, ...rest } = all;
 
   console.log(all);
+  await ack();
+  return;
   const products = await Product.find({
     name: { $regex: payload.value, $options: "i" },
     projects: { $gt: [] },
