@@ -53,7 +53,9 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
 
     payload = {
       response_action: "update",
-      ...payload.view,
+      view: {
+        ...payload.view,
+      },
     };
     console.log(payload);
     await ack(payload);
