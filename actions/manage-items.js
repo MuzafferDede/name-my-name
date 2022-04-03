@@ -40,6 +40,10 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
             type: "plain_text",
             text: "Are you sure?",
           },
+          text: {
+            type: "plain_text",
+            text: "This will delete the item from your list.",
+          },
           style: "danger",
         },
       },
@@ -53,7 +57,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "You have no items",
+            text: "You have no items.",
           },
         },
       ];
