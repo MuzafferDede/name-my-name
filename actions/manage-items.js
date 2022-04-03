@@ -41,7 +41,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     };
   });
 
-  const result = await client.views.open({
+  let payload = {
     trigger_id: body.trigger_id,
     view: {
       callback_id: "handleManageItems",
@@ -52,7 +52,16 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       },
       blocks,
     },
-  });
+  };
+
+  if (action.action_id === "handleManageItems") {
+    payload = {
+      response_action: "update",
+      ...payload.view,
+    };
+  }
+
+  const result = await client.views.open(payload);
 };
 
 module.exports = action;
