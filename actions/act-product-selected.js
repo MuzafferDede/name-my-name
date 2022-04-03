@@ -40,7 +40,7 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     return block;
   });
 
-  await client.views.update({
+  const result = await client.views.update({
     view_id: body.view.id,
     view: {
       title: body.view.title,
@@ -50,6 +50,8 @@ const action = async ({ ack, body, action, client, ...rest }) => {
       type: body.view.type,
     },
   });
+
+  console.log(result);
 };
 
 module.exports = action;
