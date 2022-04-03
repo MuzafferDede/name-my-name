@@ -104,7 +104,7 @@ const handler = async ({ ack, body, view, logger }) => {
             elements: [
               {
                 type: "mrkdwn",
-                text: `*Created at:*\n${createdAt}`,
+                text: `*Created at:*\n${item.createdAt}`,
               },
             ],
           },
