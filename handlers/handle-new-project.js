@@ -5,11 +5,10 @@ const User = require("../models/user");
 const handler = async ({ ack, view, body, logger }) => {
   const projectProductSelected =
     view.state.values.product.projectProductSelected.selected_option.value;
+
   const value = view.state.values.project.projectNameDefined.value;
 
   const product = await Product.findOne({ _id: projectProductSelected });
-
-  console.log({ product });
 
   const user = await User.findOneAndUpdate(
     { slackId: body.user.id },
@@ -32,6 +31,7 @@ const handler = async ({ ack, view, body, logger }) => {
     product.projects.push(project);
 
     product.save();
+
     const result = await ack({
       response_action: "update",
       view: {
