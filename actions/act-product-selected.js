@@ -16,13 +16,22 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     };
   });
 
+  const initial = {
+    text: {
+      type: "plain_text",
+      text: "Select a project",
+    },
+    value: "0",
+  };
+
   const blocks = body.view.blocks.map((block) => {
     if (block.block_id === "project") {
       return {
         ...block,
         element: {
           ...block.element,
-          options: projectOptions,
+          options: [initial, ...projectOptions],
+          initial_option: initial,
         },
       };
     }
