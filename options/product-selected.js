@@ -1,26 +1,28 @@
 const Product = require("../models/product");
 
 const callback = async (all) => {
-  console.log(all);
-  const { ack, payload, state, ...rest } = all;
+  const { ack, body, payload, state, ...rest } = all;
+  if (payload.type === "block_suggestion") {
+    const products = await Product.find({
+      name: { $regex: payload.value, $options: "i" },
+      projects: { $gt: [] },
+    });
 
-  const products = await Product.find({
-    name: { $regex: payload.value, $options: "i" },
-    projects: { $gt: [] },
-  });
+    const productList = products.map((product) => {
+      return {
+        text: {
+          type: "plain_text",
+          text: product.name,
+        },
+        value: product._id,
+      };
+    });
+    return await ack({
+      options: productList,
+    });
+  }
 
-  const productList = products.map((product) => {
-    return {
-      text: {
-        type: "plain_text",
-        text: product.name,
-      },
-      value: product._id,
-    };
-  });
-  await ack({
-    options: productList,
-  });
+  console.log({ payload: payload.view.state, state });
 };
 
 module.exports = callback;
