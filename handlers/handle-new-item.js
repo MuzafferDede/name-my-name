@@ -9,7 +9,7 @@ const handler = async ({ ack, body, view, logger }) => {
     product: view.state.values.product.productSelected.selected_option.value,
     project: view.state.values.project.projectSelected.selected_option.value,
     role: view.state.values.role.roleSelected.selected_option.value,
-    user: User.findOne({ slackId: body.user.id })._id,
+    user: User.findOne({ slackId: body.user_id })._id,
   });
 
   item.save().then(async (item) => {
