@@ -32,6 +32,7 @@ const handler = async ({ ack, body, view, logger }) => {
     .populate({ path: "user", select: "slackId" })
     .exec(async (err, newItem) => {
       console.log("if not", item.product);
+      console.log("well now tell me", newItem.product);
       await ack({
         response_action: "update",
         view: {
