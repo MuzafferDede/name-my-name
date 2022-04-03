@@ -20,7 +20,10 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-  await item.save();
+  await item.save(() => {
+    user.items.push(item._id);
+    user.save();
+  });
 
   await Item.findOne({ _id: item._id })
     .populate("product")
