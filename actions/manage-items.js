@@ -37,15 +37,7 @@ const action = async ({ body, ack, client, logger }) => {
         type: "plain_text",
         text: "Your items",
       },
-      blocks: [
-        {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text: "Select an item to manage",
-          },
-        },
-      ],
+      blocks,
     },
   });
 };
