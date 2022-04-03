@@ -6,6 +6,10 @@ const action = async ({ ack, body, action, ...rest }) => {
     view: {
       type: "modal",
       callback_id: "handleNewItem",
+      title: {
+        type: "plain_text",
+        text: "Hello World",
+      },
     },
   });
 };
