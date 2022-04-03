@@ -46,6 +46,18 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     };
   });
 
+  const items = blocks.length
+    ? blocks
+    : [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: "You have no items",
+          },
+        },
+      ];
+
   await ack();
 
   if (action.action_id === "deleteItem") {
@@ -54,7 +66,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       view: {
         title: body.view.title,
         callback_id: body.view.callback_id,
-        blocks,
+        blocks: items,
         type: body.view.type,
       },
     });
@@ -70,7 +82,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
         type: "plain_text",
         text: "Your items",
       },
-      blocks,
+      blocks: items,
     },
   });
 };
