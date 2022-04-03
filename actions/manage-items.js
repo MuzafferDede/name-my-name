@@ -56,7 +56,8 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       ...payload.view,
     };
 
-    return await ack(payload);
+    await ack(payload);
+    return;
   }
 
   ack();
