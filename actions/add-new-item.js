@@ -75,7 +75,7 @@ const action = async ({ body, ack, client, logger }) => {
         },
         {
           block_id: "project",
-          type: "actions",
+          type: "input",
           element: {
             type: "external_select",
             action_id: "projectSelected",
@@ -83,6 +83,14 @@ const action = async ({ body, ack, client, logger }) => {
               type: "plain_text",
               text: "Select a project",
             },
+            options: [
+              {
+                text: {
+                  type: "plain_text",
+                  text: "You should select an existing project...",
+                },
+              },
+            ],
           },
           label: {
             type: "plain_text",
