@@ -1,5 +1,8 @@
 const Item = require("../models/item");
 const User = require("../models/user");
+const Product = require("../models/product");
+const Project = require("../models/project");
+const Role = require("../models/role");
 
 const handler = async ({ ack, body, view, logger }) => {
   const user = await User.findOne({ slackId: body.user.id }).exec();
@@ -15,9 +18,17 @@ const handler = async ({ ack, body, view, logger }) => {
   });
 
   await item.save(async (err, item) => {
-    const newItem = await Item.findOne({ _id: item._id }).exec();
+    const product = await Product.findOne({
+      _id: item.product,
+    }).exec();
 
-    console.log(newItem.product);
+    const project = await Project.findOne({
+      _id: item.project,
+    }).exec();
+
+    const role = await Role.findOne({
+      _id: item.role,
+    }).exec();
 
     await ack({
       response_action: "update",
@@ -33,27 +44,11 @@ const handler = async ({ ack, body, view, logger }) => {
             fields: [
               {
                 type: "mrkdwn",
-                text: `*Product:*\n${newItem.product.name}`,
+                text: `*Product:*\n${product.name}`,
               },
               {
                 type: "mrkdwn",
-                text: `*Project:*\n${newItem.project.name}`,
-              },
-            ],
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            fields: [
-              {
-                type: "mrkdwn",
-                text: `*Role:*\n${newItem.role.name}`,
-              },
-              {
-                type: "mrkdwn",
-                text: `*item's name:*\n${newItem.name}`,
+                text: `*Project:*\n${project.name}`,
               },
             ],
           },
@@ -65,11 +60,27 @@ const handler = async ({ ack, body, view, logger }) => {
             fields: [
               {
                 type: "mrkdwn",
-                text: `*Tag:*\n${newItem.tag}`,
+                text: `*Role:*\n${role.name}`,
               },
               {
                 type: "mrkdwn",
-                text: `*URL:*\n<${newItem.url}|:earth_americas: Open>`,
+                text: `*item's name:*\n${item.name}`,
+              },
+            ],
+          },
+          {
+            type: "divider",
+          },
+          {
+            type: "section",
+            fields: [
+              {
+                type: "mrkdwn",
+                text: `*Tag:*\n${item.tag}`,
+              },
+              {
+                type: "mrkdwn",
+                text: `*URL:*\n<${item.url}|:earth_americas: Open>`,
               },
             ],
           },
@@ -81,7 +92,7 @@ const handler = async ({ ack, body, view, logger }) => {
             elements: [
               {
                 type: "mrkdwn",
-                text: `*Created by:*\n<@${newItem.user.slackId}>`,
+                text: `*Created by:*\n<@${user.slackId}>`,
               },
             ],
           },
@@ -93,7 +104,7 @@ const handler = async ({ ack, body, view, logger }) => {
             elements: [
               {
                 type: "mrkdwn",
-                text: `*Created at:*\n${newItem.createdAt}`,
+                text: `*Created at:*\n${createdAt}`,
               },
             ],
           },
