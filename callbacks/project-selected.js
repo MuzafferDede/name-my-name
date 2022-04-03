@@ -1,8 +1,6 @@
 const callback = async ({ ack, body, action, client, logger, ...rest }) => {
   console.log("arrived");
-  await ack();
-
-  return {
+  await ack({
     options: [
       {
         text: {
@@ -11,7 +9,7 @@ const callback = async ({ ack, body, action, client, logger, ...rest }) => {
         },
       },
     ],
-  };
+  });
 };
 
 module.exports = callback;
