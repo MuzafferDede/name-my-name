@@ -3,8 +3,7 @@ const Product = require("../models/product");
 const options = async ({ ack, payload, ...rest }) => {
   const products = await Product.find({
     name: {
-      $regex: payload.value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"),
-      $options: "i",
+      $text: { $search: payload.value },
     },
     projects: { $gt: [] },
   });
