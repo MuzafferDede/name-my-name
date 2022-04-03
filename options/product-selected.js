@@ -22,7 +22,7 @@ const callback = async (all) => {
     });
   }
 
-  console.log(all);
+  console.log(all.body.state);
   await ack();
 };
 
