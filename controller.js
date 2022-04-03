@@ -6,6 +6,7 @@ const addNewItem = require("./actions/add-new-item.js");
 const addNewProduct = require("./actions/add-new-product.js");
 const addNewProject = require("./actions/add-new-project.js");
 const addNewRole = require("./actions/add-new-role.js");
+const manageItems = require("./actions/manage-items.js");
 const actProductSelected = require("./actions/act-product-selected.js");
 
 // handlers
@@ -31,6 +32,8 @@ const controller = (app) => {
   app.action("addNewRole", addNewRole);
 
   app.action("productSelected", actProductSelected);
+
+  app.action("manageItems", manageItems);
 
   //Modals
   app.view("handleNewItem", handleNewItem);
