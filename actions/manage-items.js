@@ -59,7 +59,15 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
           type: "plain_text",
           text: "Your items",
         },
-        blocks,
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "*Item deleted*",
+            },
+          },
+        ],
       },
     };
     console.log(payload);
