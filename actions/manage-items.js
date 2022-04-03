@@ -3,13 +3,13 @@ const User = require("../models/user");
 const action = async ({ body, ack, client, logger }) => {
   await ack();
 
-  const user = await User.find({
+  const user = await User.findOne({
     slackId: body.user.id,
   })
     .populate("items")
     .exec();
 
-  logger.info(user.items);
+  logger.info(user);
 
   const result = await client.views.open({
     trigger_id: body.trigger_id,
