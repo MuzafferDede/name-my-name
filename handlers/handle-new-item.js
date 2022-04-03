@@ -20,19 +20,16 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-  console.log("yes", item.product);
   user.items.push(item);
-  console.log("maybe", item.product);
+
   await item.save();
-  console.log("come on", item.product);
+
   await Item.findOne(item)
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
     .populate({ path: "role", select: "name" })
     .populate({ path: "user", select: "slackId" })
     .exec(async (err, newItem) => {
-      console.log("if not", item.product);
-      console.log("well now tell me", newItem.product);
       await ack({
         response_action: "update",
         view: {
