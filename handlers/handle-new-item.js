@@ -15,6 +15,7 @@ const handler = async ({ ack, body, view, logger }) => {
   });
 
   await item.save();
+  console.log(item.product);
   await ack({
     response_action: "update",
     view: {
