@@ -19,7 +19,6 @@ const action = async ({ ack, body, action, client, ...rest }) => {
         },
         ...body.view.blocks,
       ],
-      blocks: blocks,
       type: body.view.type,
     },
   });
