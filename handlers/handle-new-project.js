@@ -8,6 +8,8 @@ const handler = async ({ ack, view, body, logger }) => {
 
   const product = await Project.findOne({ _id: projectProductSelected });
 
+  console.log({ product });
+
   const user = await User.findOneAndUpdate(
     { slackId: body.user.id },
     { slackId: body.user.id },
@@ -20,40 +22,36 @@ const handler = async ({ ack, view, body, logger }) => {
     user: user._id,
   });
 
-  project
-    .save(async (err) => {
-      if (err) {
-        await ack("Error saving project");
-        return;
-      }
-    })
-    .then(async (savedProduct) => {
-      savedProduct.projects.push(project);
+  project.save(async (err) => {
+    if (err) {
+      await ack("Error saving project");
+      return;
+    }
 
-      const result = await ack({
-        response_action: "update",
-        view: {
-          type: "modal",
-          title: {
-            type: "plain_text",
-            text: "Project created",
-          },
-          blocks: [
-            {
-              type: "section",
-              fields: [
-                {
-                  type: "mrkdwn",
-                  text: `*Project:*\n${project.name}`,
-                },
-              ],
-            },
-          ],
+    const result = await ack({
+      response_action: "update",
+      view: {
+        type: "modal",
+        title: {
+          type: "plain_text",
+          text: "Project created",
         },
-      });
-
-      logger.info(result);
+        blocks: [
+          {
+            type: "section",
+            fields: [
+              {
+                type: "mrkdwn",
+                text: `*Project:*\n${project.name}`,
+              },
+            ],
+          },
+        ],
+      },
     });
+
+    logger.info(result);
+  });
 };
 
 module.exports = handler;
