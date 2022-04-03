@@ -6,7 +6,7 @@ const handler = async ({ ack, view, body, logger }) => {
     view.state.values.product.projectProductSelected.selected_option.value;
   const value = view.state.values.project.projectNameDefined.value;
 
-  const product = await Project.findOne({ _id: projectProductSelected });
+  const product = await Product.findOne({ _id: projectProductSelected });
 
   console.log({ product });
 
@@ -27,6 +27,8 @@ const handler = async ({ ack, view, body, logger }) => {
       await ack("Error saving project");
       return;
     }
+
+    product.projects.push(project);
 
     const result = await ack({
       response_action: "update",
