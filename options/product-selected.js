@@ -22,7 +22,8 @@ const callback = async (all) => {
     });
   }
 
-  console.log({ payload: payload.view.state, state });
+  console.log(all);
+  await ack();
 };
 
 module.exports = callback;
