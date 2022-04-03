@@ -33,7 +33,7 @@ const action = async ({ body, ack, client, logger }) => {
           block_id: "product",
           type: "input",
           dispatch_action: true,
-          min_query_length: 0,
+          min_query_length: 1,
           element: {
             type: "external_select",
             action_id: "productSelected",
@@ -54,7 +54,7 @@ const action = async ({ body, ack, client, logger }) => {
           block_id: "project",
           type: "input",
           dispatch_action: true,
-          min_query_length: 0,
+          min_query_length: 1,
           element: {
             type: "external_select",
             action_id: "projectSelected",
