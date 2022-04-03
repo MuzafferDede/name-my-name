@@ -14,11 +14,11 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-   item.save((err,item) => {
+  await item.save(async (err, item) => {
     const newItem = await Item.findOne({ _id: item._id }).exec();
 
     console.log(newItem);
-  
+
     await ack({
       response_action: "update",
       view: {
@@ -101,8 +101,6 @@ const handler = async ({ ack, body, view, logger }) => {
       },
     });
   });
-
-
 };
 
 module.exports = handler;
