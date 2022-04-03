@@ -21,7 +21,6 @@ const action = async ({ ack, body, action, client, ...rest }) => {
       type: "plain_text",
       text: "Select a project",
     },
-    value: "0",
   };
 
   const blocks = body.view.blocks.map((block) => {
