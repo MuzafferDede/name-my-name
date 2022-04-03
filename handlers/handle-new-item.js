@@ -17,8 +17,9 @@ const handler = async ({ ack, body, view, logger }) => {
     product: state.product.productSelected.selected_option.value,
     project: state.project.projectSelected.selected_option.value,
     role: state.role.roleSelected.selected_option.value,
-    user: user._id,
   });
+
+  item.user = user;
 
   await item.save((err, newItem) => {
     user.items.push(newItem._id);
