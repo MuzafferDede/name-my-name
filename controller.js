@@ -34,6 +34,7 @@ const controller = (app) => {
 
   //Callbacks
   app.action("productSelected", productSelected);
+
   app.action("projectSelected", projectSelected);
 };
 
