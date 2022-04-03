@@ -2,8 +2,6 @@ const User = require("../models/user");
 const Item = require("../models/item");
 
 const action = async ({ body, ack, client, action, logger, ...rest }) => {
-  await ack();
-
   const user = await User.findOne({
     slackId: body.user.id,
   })
@@ -67,6 +65,8 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   console.log(payload);
 
   const result = await client.views.open(payload);
+
+  await ack();
 };
 
 module.exports = action;
