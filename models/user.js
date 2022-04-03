@@ -7,6 +7,12 @@ const schema = new mongoose.Schema(
       required: [true, "can't be blank."],
       trim: true,
     },
+    items: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Item",
+      },
+    ],
   },
   { timestamps: true }
 );
