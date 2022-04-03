@@ -8,7 +8,7 @@ const handleNewProduct = require("./handlers/handle-new-product.js");
 const handleNewProject = require("./handlers/handle-new-project.js");
 const handleNewRole = require("./handlers/handle-new-role.js");
 const productSelected = require("./callbacks/product-selected.js");
-const projects = require("./options/projects.js");
+const projectSelected = require("./callbacks/project-selected.js");
 
 const controller = (app) => {
   //Events
@@ -33,7 +33,8 @@ const controller = (app) => {
   app.view("handleNewRole", handleNewRole);
 
   //Callbacks
-  app.action("productSelected", projects);
+  app.action("productSelected", productSelected);
+  app.action("projectSelected", projectSelected);
 };
 
 module.exports = controller;
