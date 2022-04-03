@@ -1,7 +1,7 @@
 const Project = require("../models/project");
 
 const action = async ({ ack, payload, body, ...rest }) => {
-  console.log(rest, payload.view.state.values);
+  console.log(rest, payload, body);
   // console.log(b);
   // const projects = await Project.find({
   //   name: { $regex: payload.value, $options: "i" },
