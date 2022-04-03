@@ -10,8 +10,6 @@ const handler = async ({ ack, body, view, logger }) => {
     { new: true, upsert: true }
   );
 
-  console.log(user);
-
   const item = new Item({
     name: state.item.itemDefined.value,
     url: state.url.urlDefined.value,
@@ -22,9 +20,8 @@ const handler = async ({ ack, body, view, logger }) => {
     user: user._id,
   });
 
-  console.log(item);
-  await item.save((err, newItem) => {
-    user.items.push(newItem._id);
+  await item.save((err) => {
+    user.items.push(item._id);
     user.save();
   });
 
@@ -35,8 +32,8 @@ const handler = async ({ ack, body, view, logger }) => {
     .populate({ path: "project", select: "name" })
     .populate({ path: "role", select: "name" })
     .populate({ path: "user", select: "slackId" })
-    .exec(async (err, savedItem) => {
-      console.log({ error: err, savedItem: savedItem });
+    .exec(async (err) => {
+      console.log({ error: err, item: item });
       await ack({
         response_action: "update",
         view: {
@@ -51,27 +48,11 @@ const handler = async ({ ack, body, view, logger }) => {
               fields: [
                 {
                   type: "mrkdwn",
-                  text: `*Product:*\n${savedItem.product.name}`,
+                  text: `*Product:*\n${item.product.name}`,
                 },
                 {
                   type: "mrkdwn",
-                  text: `*Project:*\n${savedItem.project.name}`,
-                },
-              ],
-            },
-            {
-              type: "divider",
-            },
-            {
-              type: "section",
-              fields: [
-                {
-                  type: "mrkdwn",
-                  text: `*Role:*\n${savedItem.role.name}`,
-                },
-                {
-                  type: "mrkdwn",
-                  text: `*Item's name:*\n${savedItem.name}`,
+                  text: `*Project:*\n${item.project.name}`,
                 },
               ],
             },
@@ -83,11 +64,27 @@ const handler = async ({ ack, body, view, logger }) => {
               fields: [
                 {
                   type: "mrkdwn",
-                  text: `*Tag:*\n${savedItem.tag}`,
+                  text: `*Role:*\n${item.role.name}`,
                 },
                 {
                   type: "mrkdwn",
-                  text: `*URL:*\n<${savedItem.url}|:earth_americas: Open>`,
+                  text: `*Item's name:*\n${item.name}`,
+                },
+              ],
+            },
+            {
+              type: "divider",
+            },
+            {
+              type: "section",
+              fields: [
+                {
+                  type: "mrkdwn",
+                  text: `*Tag:*\n${item.tag}`,
+                },
+                {
+                  type: "mrkdwn",
+                  text: `*URL:*\n<${item.url}|:earth_americas: Open>`,
                 },
               ],
             },
@@ -99,7 +96,7 @@ const handler = async ({ ack, body, view, logger }) => {
               elements: [
                 {
                   type: "mrkdwn",
-                  text: `*Created by:*\n<@${savedItem.user.slackId}>`,
+                  text: `*Created by:*\n<@${item.user.slackId}>`,
                 },
               ],
             },
@@ -111,7 +108,7 @@ const handler = async ({ ack, body, view, logger }) => {
               elements: [
                 {
                   type: "mrkdwn",
-                  text: `*Created at:*\n${savedItem.createdAt}`,
+                  text: `*Created at:*\n${item.createdAt}`,
                 },
               ],
             },
