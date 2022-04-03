@@ -3,7 +3,7 @@ const User = require("../models/user");
 
 const handler = async ({ ack, body, view, logger }) => {
   const user = User.findOne({ slackId: body.user.id });
-  console.log(user, body.user);
+  console.log(user);
   const item = new Item({
     name: view.state.values.item.itemDefined.value,
     url: view.state.values.url.urlDefined.value,
