@@ -2,10 +2,6 @@ const Product = require("../models/product");
 const Project = require("../models/project");
 
 const action = async ({ ack, body, action, client, ...rest }) => {
-  const projectBlock = body.view.blocks.find(
-    (block) => block.block_id === "project"
-  );
-
   const projects = await Project.find({
     product: action.selected_option.value,
   });
@@ -28,8 +24,31 @@ const action = async ({ ack, body, action, client, ...rest }) => {
       submit: body.view.submit,
       blocks: [
         {
-          ...projectBlock,
-          options: projectOptions,
+          block_id: "project",
+          type: "input",
+          dispatch_action: true,
+          element: {
+            type: "static_select",
+            action_id: "projectSelected",
+            placeholder: {
+              type: "plain_text",
+              text: "Select a project",
+            },
+            options: [
+              {
+                text: {
+                  type: "plain_text",
+                  text: "Select a project",
+                },
+                value: "0",
+              },
+              ...projectOptions,
+            ],
+          },
+          label: {
+            type: "plain_text",
+            text: "Project",
+          },
         },
         ...body.view.blocks,
       ],
