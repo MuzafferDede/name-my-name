@@ -75,7 +75,7 @@ const action = async ({ body, ack, client, logger }) => {
         },
         {
           block_id: "project",
-          type: "input",
+          type: "actions",
           element: {
             type: "external_select",
             action_id: "projectSelected",
