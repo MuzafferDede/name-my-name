@@ -11,7 +11,7 @@ const handler = async ({ ack, body, view, logger }) => {
     product: view.state.values.product.productSelected.selected_option.value,
     project: view.state.values.project.projectSelected.selected_option.value,
     role: view.state.values.role.roleSelected.selected_option.value,
-    user: user.slackId,
+    user: user._id,
   });
 
   item.save().then(async (item) => {
