@@ -24,6 +24,8 @@ const handler = async ({ ack, body, view, logger }) => {
 
   await item.save();
 
+  console.log(item.user);
+
   await Item.findOne({ _id: item._id })
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
