@@ -26,8 +26,6 @@ const controller = (app) => {
 
   app.action("addNewRole", addNewRole);
 
-  app.action("productSelected", productSelected);
-
   //Modals
   app.view("handleNewItem", handleNewItem);
 
