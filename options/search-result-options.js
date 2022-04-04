@@ -15,11 +15,11 @@ const options = async ({ ack, payload, ...rest }) => {
         type: "plain_text",
         text: truncate(
           item.name +
-            " - " +
+            "  | " +
             item.product.name +
-            " - " +
+            " / " +
             item.project.name +
-            " - " +
+            " / " +
             item.role.name
         ),
       },
