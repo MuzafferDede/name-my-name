@@ -45,7 +45,7 @@ const handler = async ({ ack, view, client, body, logger }) => {
 
     await client.chat.postMessage({
       channel: "general",
-      text: `${user.slackId} created a new role: *${role.name}*`,
+      text: `<@${user.slackId}> created a new role: *${role.name}*`,
     });
   });
 };
