@@ -1,7 +1,7 @@
 const Item = require("../models/item");
 
 const action = async ({ ack, action, logger }) => {
-  await Item.findOne({ _id: action.value })
+  await Item.findOne({ _id: action.selected_option.value })
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
     .populate({ path: "role", select: "name" })
