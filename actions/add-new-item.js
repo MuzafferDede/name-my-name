@@ -22,7 +22,6 @@ const action = async ({ body, ack, client, logger }) => {
           type: "plain_text",
           text: "No roles found",
         },
-        value: "",
       },
     ];
   }
