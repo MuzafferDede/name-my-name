@@ -11,7 +11,7 @@ const options = async ({ ack, payload, ...rest }) => {
   const itemList = items.map((item) => {
     return {
       text: {
-        type: "mrkdwn",
+        type: "plain_text",
         text:
           item.product.name +
           " - " +
