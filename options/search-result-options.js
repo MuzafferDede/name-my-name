@@ -13,7 +13,15 @@ const options = async ({ ack, payload, ...rest }) => {
     return {
       text: {
         type: "plain_text",
-        text: truncate(item.role.name),
+        text: truncate(
+          item.name +
+            "  | " +
+            item.product.name +
+            " / " +
+            item.project.name +
+            " / " +
+            item.role.name
+        ),
       },
       value: item._id,
     };
@@ -26,7 +34,7 @@ const options = async ({ ack, payload, ...rest }) => {
   });
 };
 
-const truncate = (str, length = 75) => {
+const truncate = (str, length = 70) => {
   if (str.length > length) {
     return str.substring(0, length) + "...";
   }
