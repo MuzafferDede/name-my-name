@@ -3,7 +3,7 @@ const Item = require("../models/item");
 const options = async ({ ack, payload, ...rest }) => {
   const value = RegExp(payload.value, "i");
 
-  const items = await Item.find({ $or: [{ name: { $regex: value } }] })
+  const items = await Item.find({ name: { $regex: value } })
     .populate("product")
     .populate("project");
 
