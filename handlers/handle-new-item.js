@@ -1,7 +1,7 @@
 const Item = require("../models/item");
 const User = require("../models/user");
 
-const handler = async ({ ack, body, view, logger }) => {
+const handler = async ({ ack, body, client, view, logger }) => {
   const state = view.state.values;
 
   const user = await User.findOneAndUpdate(
@@ -112,6 +112,11 @@ const handler = async ({ ack, body, view, logger }) => {
             },
           ],
         },
+      });
+
+      await client.chat.postMassage({
+        channel: "general",
+        text: `New item created: ${newItem.name}`,
       });
     });
 };
