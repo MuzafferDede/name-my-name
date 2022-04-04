@@ -6,8 +6,7 @@ const options = async ({ ack, payload, ...rest }) => {
   const items = await Item.find({ name: { $regex: value } })
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
-    .populate({ path: "role", select: "name" })
-    .exec();
+    .populate({ path: "role", select: "name" });
 
   console.log(items);
   const itemList = items.map((item) => {
