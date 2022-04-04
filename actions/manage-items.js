@@ -7,6 +7,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .populate("items")
     .exec();
 
+  console.log(user);
   if (!user) {
     await ack({
       response_action: "errors",

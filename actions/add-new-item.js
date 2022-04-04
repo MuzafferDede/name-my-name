@@ -26,7 +26,6 @@ const action = async ({ body, ack, client, logger }) => {
     ];
   }
 
-  console.log(roleList);
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
