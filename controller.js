@@ -44,7 +44,7 @@ const controller = (app) => {
 
   //Options
   app.options("productSelected", productOptions);
-  app.options("searchResultOptions", searchResultOptions);
+  app.options("searchResult", searchResultOptions);
 };
 
 module.exports = controller;

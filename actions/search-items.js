@@ -13,11 +13,11 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       blocks: [
         {
           type: "input",
-          block_id: "searchResult",
+          block_id: "search",
           dispatch_action: true,
           element: {
             type: "external_select",
-            action_id: "searchResultOptions",
+            action_id: "searchResult",
             placeholder: {
               type: "plain_text",
               text: "Search for an item",
