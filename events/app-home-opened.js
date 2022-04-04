@@ -8,7 +8,15 @@ const event = async ({ event, client, logger }) => {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: `Hey there <@${event.user}>! Welcome back! How can i help you today?`,
+            text: `Hey there <@${event.user}>, *Good* to have you back! How can i help you today?`,
+          },
+        },
+        {
+          type: "header",
+          text: {
+            type: "plain_text",
+            text: "Items",
+            emoji: true,
           },
         },
         {
@@ -22,6 +30,19 @@ const event = async ({ event, client, logger }) => {
               },
               action_id: "addNewItem",
             },
+          ],
+        },
+        {
+          type: "header",
+          text: {
+            type: "plain_text",
+            text: "Products/Projects/Roles",
+            emoji: true,
+          },
+        },
+        {
+          type: "actions",
+          elements: [
             {
               type: "button",
               text: {
@@ -50,6 +71,14 @@ const event = async ({ event, client, logger }) => {
         },
         {
           type: "divider",
+        },
+        {
+          type: "header",
+          text: {
+            type: "plain_text",
+            text: "Actions",
+            emoji: true,
+          },
         },
         {
           type: "actions",
