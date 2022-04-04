@@ -3,12 +3,7 @@ const Item = require("../models/item");
 const options = async ({ ack, payload, ...rest }) => {
   const value = RegExp(payload.value, "i");
 
-  const items = await Item.find({
-    $or: [
-      { name: { $regex: value } },
-      { product: { name: { $regex: value } } },
-    ],
-  })
+  const items = await Item.find({ $or: [{ name: { $regex: value } }] })
     .populate("product")
     .populate("project");
 
@@ -17,7 +12,7 @@ const options = async ({ ack, payload, ...rest }) => {
     return {
       text: {
         type: "plain_text",
-        text: item.name,
+        text: item.name + " / " + item.product.name + " / " + item.project.name,
       },
       value: item._id,
     };
