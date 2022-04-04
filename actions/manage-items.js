@@ -22,7 +22,6 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       ],
     })
     .exec();
-  console.log(user);
 
   if (!user) {
     await ack({
@@ -33,7 +32,6 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     });
     return;
   }
-  console.log(user);
   await ack();
 
   const blocks = user.items.map((item) => {
@@ -41,9 +39,9 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Item:*\n${item.name}\n${item.product.name}/${
-          item.project.name
-        }/${item.role.name}/${item.name}/${item.tag ? `/${item.tag}` : ""}`,
+        text: `*Item:* ${item.name}\n
+        ${item.product.name}/${item.project.name}/${item.role.name}/${item.name}
+        ${item.tag ? `/${item.tag}` : ""}`,
       },
       accessory: {
         action_id: "deleteItem",
