@@ -13,14 +13,15 @@ const options = async ({ ack, payload, ...rest }) => {
     return {
       text: {
         type: "plain_text",
-        text:
+        text: truncate(
           item.product.name +
-          " - " +
-          item.project.name +
-          " - " +
-          item.role.name +
-          " / " +
-          item.name,
+            " - " +
+            item.project.name +
+            " - " +
+            item.role.name +
+            " / " +
+            item.name
+        ),
       },
       value: item._id,
     };
@@ -31,6 +32,13 @@ const options = async ({ ack, payload, ...rest }) => {
   return await ack({
     options: itemList,
   });
+};
+
+const truncate = (str, length = 30) => {
+  if (str.length > length) {
+    return str.substring(0, length) + "...";
+  }
+  return str;
 };
 
 module.exports = options;
