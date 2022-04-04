@@ -43,6 +43,8 @@ const handler = async ({ ack, view, client, body, logger }) => {
       },
     });
 
+    console.log(client);
+
     await client.chat.postMassage({
       channel: "general",
       text: `New product: ${product.name} by <@${user.slackId}>`,
