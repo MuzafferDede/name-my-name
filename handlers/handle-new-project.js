@@ -32,7 +32,7 @@ const handler = async ({ ack, view, body, logger }) => {
 
     product.save();
 
-    const result = await ack({
+    await ack({
       response_action: "update",
       view: {
         type: "modal",
@@ -52,6 +52,11 @@ const handler = async ({ ack, view, body, logger }) => {
           },
         ],
       },
+    });
+
+    await client.chat.postMessage({
+      channel: "general",
+      text: `${user.slackId} created a new project: *${project.name}*`,
     });
   });
 };

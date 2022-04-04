@@ -45,7 +45,7 @@ const handler = async ({ ack, say, view, client, body, logger }) => {
 
     await client.chat.postMessage({
       channel: "general",
-      text: `New product: ${product.name} by <@${user.slackId}>`,
+      text: `${user.slackId} created a new product: *${product.name}*`,
     });
   });
 };
