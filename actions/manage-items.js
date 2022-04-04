@@ -11,7 +11,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     await ack({
       errors: [
         {
-          name: "email_address",
+          name: "manageItems",
           error: "Sorry, this isn’t a valid email",
         },
       ],
