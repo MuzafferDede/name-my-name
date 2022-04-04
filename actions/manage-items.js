@@ -4,7 +4,24 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   const user = await User.findOne({
     slackId: body.user.id,
   })
-    .populate("items")
+    .populate({
+      path: "items",
+      populate: {
+        path: "product",
+      },
+    })
+    .populate({
+      path: "items",
+      populate: {
+        path: "project",
+      },
+    })
+    .populate({
+      path: "items",
+      populate: {
+        path: "role",
+      },
+    })
     .exec();
   console.log(user);
 
