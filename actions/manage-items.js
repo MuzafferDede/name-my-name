@@ -36,17 +36,13 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
 
   const blocks = user.items.map((item) => {
     return {
-      type: "context",
-      elements: [
-        {
-          type: "mrkdwn",
-          text: `*Item:* ${item.name}\n
-          ${item.product.name}/${item.project.name}/${item.role.name}/${
-            item.name
-          }
-          ${item.tag ? `/${item.tag}` : ""}`,
-        },
-      ],
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: `*Item:* ${item.name}\n${item.product.name}/${
+          item.project.name
+        }/${item.role.name}/${item.name}${item.tag ? `/${item.tag}` : ""}`,
+      },
       accessory: {
         action_id: "deleteItem",
         type: "button",
