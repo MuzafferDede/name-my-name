@@ -4,7 +4,7 @@ const User = require("../models/user");
 
 const handler = async ({ ack, view, body, logger }) => {
   const projectProductSelected =
-    view.state.values.product.projectProductSelected.selected_option.value;
+    view.state.values.product.productSelected.selected_option.value;
 
   const value = view.state.values.project.projectNameDefined.value;
 
