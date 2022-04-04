@@ -23,6 +23,7 @@ const action = async ({ body, ack, client, logger }) => {
           element: {
             type: "external_select",
             action_id: "productSelected",
+            min_query_length: 0,
             placeholder: {
               type: "plain_text",
               text: "Select a product",
