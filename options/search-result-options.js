@@ -5,14 +5,21 @@ const options = async ({ ack, payload, ...rest }) => {
 
   const items = await Item.find({ name: { $regex: value } })
     .populate("product")
-    .populate("project");
+    .populate("project")
+    .populate("role");
 
-  console.log(items);
   const itemList = items.map((item) => {
     return {
       text: {
         type: "plain_text",
-        text: item.product.name + " / " + item.project.name + " / " + item.name,
+        text:
+          item.product.name +
+          " - " +
+          item.project.name +
+          " - " +
+          item.role.name +
+          " / " +
+          item.name,
       },
       value: item._id,
     };
