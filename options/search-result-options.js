@@ -9,7 +9,6 @@ const options = async ({ ack, payload, ...rest }) => {
     .populate({ path: "role", select: "name" })
     .exec();
 
-  console.log(items);
   const itemList = items.map((item) => {
     return {
       text: {
@@ -26,6 +25,8 @@ const options = async ({ ack, payload, ...rest }) => {
       value: item._id,
     };
   });
+
+  console.log(itemList);
 
   return await ack({
     options: itemList,
