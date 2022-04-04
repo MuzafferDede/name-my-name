@@ -1,48 +1,94 @@
-const Role = require("../models/role");
-const User = require("../models/user");
+const Item = require("../models/item");
 
-const handler = async ({ ack, view, body, logger }) => {
-  const value = view.state.values.role.roleNameDefined.value;
-
-  const user = await User.findOneAndUpdate(
-    { slackId: body.user.id },
-    { slackId: body.user.id },
-    { new: true, upsert: true }
-  );
-
-  const role = new Role({
-    name: value,
-    user: user._id,
-  });
-
-  role.save(async (err) => {
-    if (err) {
-      await ack("Error saving role");
-      return;
-    }
-
-    const result = await ack({
-      response_action: "update",
-      view: {
-        type: "modal",
-        title: {
-          type: "plain_text",
-          text: "Role created",
-        },
-        blocks: [
-          {
-            type: "section",
-            fields: [
-              {
-                type: "mrkdwn",
-                text: `*Role:*\n${role.name}`,
-              },
-            ],
+const handler = async ({ ack, action, logger }) => {
+  await Item.findOne({ _id: action.value })
+    .populate({ path: "product", select: "name" })
+    .populate({ path: "project", select: "name" })
+    .populate({ path: "role", select: "name" })
+    .populate({ path: "user", select: "slackId" })
+    .exec(async (err, newItem) => {
+      await ack({
+        response_action: "update",
+        view: {
+          type: "modal",
+          title: {
+            type: "plain_text",
+            text: "Item created",
           },
-        ],
-      },
+          blocks: [
+            {
+              type: "section",
+              fields: [
+                {
+                  type: "mrkdwn",
+                  text: `*Product:*\n${newItem.product.name}`,
+                },
+                {
+                  type: "mrkdwn",
+                  text: `*Project:*\n${newItem.project.name}`,
+                },
+              ],
+            },
+            {
+              type: "divider",
+            },
+            {
+              type: "section",
+              fields: [
+                {
+                  type: "mrkdwn",
+                  text: `*Role:*\n${newItem.role.name}`,
+                },
+                {
+                  type: "mrkdwn",
+                  text: `*Item's name:*\n${newItem.name}`,
+                },
+              ],
+            },
+            {
+              type: "divider",
+            },
+            {
+              type: "section",
+              fields: [
+                {
+                  type: "mrkdwn",
+                  text: `*Tag:*\n${newItem.tag}`,
+                },
+                {
+                  type: "mrkdwn",
+                  text: `*URL:*\n<${newItem.url}|:earth_americas: Open>`,
+                },
+              ],
+            },
+            {
+              type: "divider",
+            },
+            {
+              type: "context",
+              elements: [
+                {
+                  type: "mrkdwn",
+                  text: `*Created by:*\n<@${newItem.user.slackId}>`,
+                },
+              ],
+            },
+            {
+              type: "divider",
+            },
+            {
+              type: "context",
+              elements: [
+                {
+                  type: "mrkdwn",
+                  text: `*Created at:*\n${newItem.createdAt}`,
+                },
+              ],
+            },
+          ],
+        },
+      });
     });
-  });
 };
 
 module.exports = handler;
