@@ -1,7 +1,7 @@
 const Product = require("../models/product");
 const User = require("../models/user");
 
-const handler = async ({ ack, view, body, logger }) => {
+const handler = async ({ ack, view, client, body, logger }) => {
   const value = view.state.values.product.productNameDefined.value;
 
   const user = await User.findOneAndUpdate(
@@ -41,6 +41,11 @@ const handler = async ({ ack, view, body, logger }) => {
           },
         ],
       },
+    });
+
+    await client.chat.postMassage({
+      channel: "general",
+      text: `New product: ${product.name} by <@${user.slackId}>`,
     });
   });
 };
