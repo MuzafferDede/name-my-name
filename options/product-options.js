@@ -1,10 +1,14 @@
 const Product = require("../models/product");
 
 const options = async ({ ack, payload, ...rest }) => {
+  const value = new RegExp(payload.value, "i");
+
   const products = await Product.find({
-    name: { $regex: new RegExp(payload.value), $options: "i" },
+    name: { $regex: value },
     projects: { $gt: [] },
   });
+
+  console.log(products);
 
   const productList = products.map((product) => {
     return {
