@@ -18,7 +18,8 @@ const options = async ({ ack, payload, ...rest }) => {
           $options: "i",
         },
       },
-    ]);
+    ])
+    .exec();
 
   const itemList = items.map((item) => {
     return {
