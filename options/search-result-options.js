@@ -12,7 +12,7 @@ const options = async ({ ack, payload, ...rest }) => {
     return {
       text: {
         type: "plain_text",
-        text: item.name + " / " + item.product.name + " / " + item.project.name,
+        text: item.product.name + " / " + item.project.name + " / " + item.name,
       },
       value: item._id,
     };
