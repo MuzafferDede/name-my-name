@@ -6,7 +6,7 @@ const options = async ({ ack, payload, ...rest }) => {
   const items = await Item.find()
     .populate("product")
     .populate("project")
-    .or([{ name: { $regex: value } }, { "product.name": { $regex: value } }]);
+    .or([{ "product.name": { $regex: value } }]);
 
   console.log(items);
   const itemList = items.map((item) => {
