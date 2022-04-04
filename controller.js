@@ -34,13 +34,13 @@ const controller = (app) => {
   app.action("manageItems", manageItems);
   app.action("deleteItem", manageItems);
   app.action("searchItems", searchItems);
+  app.action("search", handleSearchItem);
 
   //Modals
   app.view("handleNewItem", handleNewItem);
   app.view("handleNewProduct", handleNewProduct);
   app.view("handleNewProject", handleNewProject);
   app.view("handleNewRole", handleNewRole);
-  app.view("handleSearchItem", handleSearchItem);
 
   //Options
   app.options("productSelected", productOptions);
