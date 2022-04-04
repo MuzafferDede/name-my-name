@@ -6,21 +6,20 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   })
     .populate({
       path: "items",
-      populate: {
-        path: "product",
-      },
-    })
-    .populate({
-      path: "items",
-      populate: {
-        path: "project",
-      },
-    })
-    .populate({
-      path: "items",
-      populate: {
-        path: "role",
-      },
+      populate: [
+        {
+          path: "product",
+          model: "Product",
+        },
+        {
+          path: "project",
+          model: "Project",
+        },
+        {
+          path: "role",
+          model: "Role",
+        },
+      ],
     })
     .exec();
   console.log(user);
