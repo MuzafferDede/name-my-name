@@ -3,15 +3,17 @@ const Role = require("../models/role");
 const action = async ({ body, ack, client, logger }) => {
   await ack();
 
-  const roles = await Role.find({}).map((role) => {
-    return {
-      text: {
-        type: "plain_text",
-        text: role.name,
-      },
-      value: role._id,
-    };
-  });
+  const roles = await Role.find()
+    .exec()
+    .map((role) => {
+      return {
+        text: {
+          type: "plain_text",
+          text: role.name,
+        },
+        value: role._id,
+      };
+    });
 
   const roleList = roles.length
     ? roles
