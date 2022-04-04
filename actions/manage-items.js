@@ -22,7 +22,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
 
   await ack();
 
-  if (!user) return;
+  if (!user?.items) return;
 
   const blocks = user.items.map((item) => {
     return {
