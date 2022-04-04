@@ -6,6 +6,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   })
     .populate("items")
     .exec();
+  console.log(user);
 
   if (!user) {
     await ack({
@@ -16,9 +17,8 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     });
     return;
   }
-  console.log(user.items);
+  console.log(user);
   await ack();
-  console.log(user.items);
 
   const blocks = user.items.map((item) => {
     return {
