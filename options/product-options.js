@@ -5,7 +5,6 @@ const options = async ({ ack, payload, ...rest }) => {
 
   const products = await Product.find({
     name: { $regex: value },
-    projects: { $gt: [] },
   });
 
   console.log(products);
