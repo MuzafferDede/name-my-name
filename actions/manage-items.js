@@ -7,6 +7,19 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .populate("items")
     .exec();
 
+  if (!user) {
+    await ack({
+      response_action: "errors",
+      errors: [
+        {
+          name: "user",
+          message: "User not found",
+        },
+      ],
+    });
+
+    return;
+  }
   await ack();
 
   const blocks = user.items.map((item) => {
