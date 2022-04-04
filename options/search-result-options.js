@@ -7,6 +7,8 @@ const options = async ({ ack, payload, ...rest }) => {
     .populate("product")
     .populate("project")
     .or([{ name: { $regex: value } }]);
+
+  console.log(items);
   const itemList = items.map((item) => {
     return {
       text: {
