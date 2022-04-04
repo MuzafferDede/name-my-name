@@ -19,6 +19,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   await ack();
 
   const blocks = user.items.map((item) => {
+    console.log(item);
     return {
       type: "section",
       text: {
