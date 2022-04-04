@@ -1,6 +1,7 @@
 const User = require("../models/user");
 
 const action = async ({ body, ack, client, action, logger, ...rest }) => {
+  console.log(rest);
   const user = await User.findOne({
     slackId: body.user.id,
   })
@@ -8,16 +9,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .exec();
 
   if (!user) {
-    await ack({
-      response_action: "errors",
-      errors: [
-        {
-          name: "user",
-          message: "User not found",
-        },
-      ],
-    });
-
+    await ack();
     return;
   }
   await ack();
