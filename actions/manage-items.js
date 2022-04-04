@@ -16,10 +16,11 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     });
     return;
   }
+  console.log(user.items);
   await ack();
+  console.log(user.items);
 
   const blocks = user.items.map((item) => {
-    console.log(item.product);
     return {
       type: "section",
       text: {
