@@ -11,20 +11,15 @@ const options = async ({ ack, payload, ...rest }) => {
   const itemList = items.map((item) => {
     return {
       text: {
-        type: "context",
-        elements: [
-          {
-            type: "mrkdwn",
-            text:
-              item.product.name +
-              " - " +
-              item.project.name +
-              " - " +
-              item.role.name +
-              " / " +
-              item.name,
-          },
-        ],
+        type: "mrkdwn",
+        text:
+          item.product.name +
+          " - " +
+          item.project.name +
+          " - " +
+          item.role.name +
+          " / " +
+          item.name,
       },
       value: item._id,
     };
