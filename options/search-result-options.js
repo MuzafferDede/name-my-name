@@ -5,15 +5,15 @@ const options = async ({ ack, payload, ...rest }) => {
     .populate("product")
     .populate("project")
     .or([
-      { name: { $regex: new RegExp(payload.value), $options: "i" } },
+      { name: { $regex: `/${payload.value}/`, $options: "i" } },
       {
         product: {
-          name: { $regex: new RegExp(payload.value), $options: "i" },
+          name: { $regex: `/${payload.value}/`, $options: "i" },
         },
       },
       {
         project: {
-          name: { $regex: new RegExp(payload.value), $options: "i" },
+          name: { $regex: `/${payload.value}/`, $options: "i" },
         },
       },
     ])
