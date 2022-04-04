@@ -1,7 +1,7 @@
-const Product = require("../models/product");
+const Item = require("../models/item");
 
 const options = async ({ ack, payload, ...rest }) => {
-  const products = await Product.find()
+  const items = await Item.find()
     .populate("product")
     .populate("project")
     .or([
@@ -20,18 +20,18 @@ const options = async ({ ack, payload, ...rest }) => {
       },
     ]);
 
-  const productList = products.map((product) => {
+  const itemList = items.map((item) => {
     return {
       text: {
         type: "plain_text",
-        text: product.name,
+        text: item.name,
       },
-      value: product._id,
+      value: item._id,
     };
   });
 
   return await ack({
-    options: productList,
+    options: itemList,
   });
 };
 
