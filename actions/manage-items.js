@@ -20,7 +20,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .populate("items")
     .exec();
 
-  const blocks = user.items.map((item) => {
+  const blocks = (user.items || []).map((item) => {
     return {
       type: "section",
       text: {
