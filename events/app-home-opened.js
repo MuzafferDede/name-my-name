@@ -5,6 +5,7 @@ const event = async ({ event, client, logger }) => {
       type: "home",
       blocks: [
         {
+          block_id: "home_header",
           type: "section",
           text: {
             type: "mrkdwn",

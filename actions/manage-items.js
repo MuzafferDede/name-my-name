@@ -9,12 +9,10 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
 
   if (!user) {
     await ack({
-      errors: [
-        {
-          name: "manageItems",
-          error: "Sorry, this isn’t a valid email",
-        },
-      ],
+      response_action: "errors",
+      errors: {
+        home_header: "User not found",
+      },
     });
     return;
   }
