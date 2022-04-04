@@ -18,6 +18,7 @@ const action = async ({ body, ack, client, logger }) => {
   !roleList.length &&
     roleList.push([{ text: { type: "plain_text", text: "No roles" } }]);
 
+  console.log(roleList);
   const result = await client.views.open({
     trigger_id: body.trigger_id,
     view: {
