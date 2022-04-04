@@ -7,7 +7,6 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .populate("items")
     .exec();
 
-  console.log(user);
   if (!user) {
     await ack({
       response_action: "errors",
@@ -20,18 +19,14 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
   await ack();
 
   const blocks = user.items.map((item) => {
-    console.log(item);
+    console.log(item.product);
     return {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Item:*\n
-        ${item.name}\n 
-        ${item.product.name}/
-        ${item.project.name}/
-        ${item.role.name}/
-        ${item.name}/
-        ${item.tag ? `/${item.tag}` : ""}`,
+        text: `*Item:*\n${item.name}\n${item.product.name}/${
+          item.project.name
+        }/${item.role.name}/${item.name}/${item.tag ? `/${item.tag}` : ""}`,
       },
       accessory: {
         action_id: "deleteItem",
