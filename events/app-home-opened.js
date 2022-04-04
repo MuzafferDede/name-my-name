@@ -12,6 +12,9 @@ const event = async ({ event, client, logger }) => {
           },
         },
         {
+          type: "divider",
+        },
+        {
           type: "header",
           text: {
             type: "plain_text",
@@ -31,6 +34,43 @@ const event = async ({ event, client, logger }) => {
               action_id: "addNewItem",
             },
           ],
+        },
+        {
+          type: "divider",
+        },
+        {
+          type: "header",
+          text: {
+            type: "plain_text",
+            text: "Actions",
+            emoji: true,
+          },
+        },
+        {
+          type: "actions",
+          elements: [
+            {
+              type: "button",
+              style: "primary",
+              text: {
+                type: "plain_text",
+                text: "Search items",
+              },
+              action_id: "searchItems",
+            },
+            {
+              type: "button",
+              style: "danger",
+              text: {
+                type: "plain_text",
+                text: "Manage your items",
+              },
+              action_id: "manageItems",
+            },
+          ],
+        },
+        {
+          type: "divider",
         },
         {
           type: "header",
@@ -66,40 +106,6 @@ const event = async ({ event, client, logger }) => {
                 text: "Add new role",
               },
               action_id: "addNewRole",
-            },
-          ],
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "header",
-          text: {
-            type: "plain_text",
-            text: "Actions",
-            emoji: true,
-          },
-        },
-        {
-          type: "actions",
-          elements: [
-            {
-              type: "button",
-              style: "primary",
-              text: {
-                type: "plain_text",
-                text: "Search items",
-              },
-              action_id: "searchItems",
-            },
-            {
-              type: "button",
-              style: "danger",
-              text: {
-                type: "plain_text",
-                text: "Manage your items",
-              },
-              action_id: "manageItems",
             },
           ],
         },
