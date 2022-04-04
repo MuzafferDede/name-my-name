@@ -1,14 +1,14 @@
 const Item = require("../models/item");
 
-const action = async ({ ack, action, logger }) => {
+const action = async ({ ack, body, action, client, logger }) => {
   await Item.findOne({ _id: action.selected_option.value })
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
     .populate({ path: "role", select: "name" })
     .populate({ path: "user", select: "slackId" })
     .exec(async (err, newItem) => {
-      await ack({
-        response_action: "update",
+      await client.views.push({
+        trigger_id: body.trigger_id,
         view: {
           type: "modal",
           title: {
