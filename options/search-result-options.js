@@ -10,6 +10,9 @@ const options = async ({ ack, payload, ...rest }) => {
     ],
   });
 
+  console.log(products);
+  console.log(payload);
+
   const productList = products.map((product) => {
     return {
       text: {
