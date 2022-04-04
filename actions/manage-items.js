@@ -20,7 +20,11 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .populate("items")
     .exec();
 
-  const blocks = (user.items || []).map((item) => {
+  await ack();
+
+  if (!user) return;
+
+  const blocks = user.items.map((item) => {
     return {
       type: "section",
       text: {
@@ -63,8 +67,6 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
           },
         },
       ];
-
-  await ack();
 
   if (action.action_id === "deleteItem") {
     await client.views.update({
