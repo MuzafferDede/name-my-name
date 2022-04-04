@@ -3,21 +3,20 @@ const Role = require("../models/role");
 const action = async ({ body, ack, client, logger }) => {
   await ack();
 
-  const roles = await Role.find()
-    .exec()
-    .map((role) => {
-      return {
-        text: {
-          type: "plain_text",
-          text: role.name,
-        },
-        value: role._id,
-      };
-    });
+  const roles = await Role.find();
 
-  const roleList = roles.length
-    ? roles
-    : [{ text: { type: "plain_text", text: "No roles found" } }];
+  let roleList = roles.map((role) => {
+    return {
+      text: {
+        type: "plain_text",
+        text: role.name,
+      },
+      value: role._id,
+    };
+  });
+
+  !roleList.length &&
+    roleList.push([{ text: { type: "plain_text", text: "No roles" } }]);
 
   const result = await client.views.open({
     trigger_id: body.trigger_id,
