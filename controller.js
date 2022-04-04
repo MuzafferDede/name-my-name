@@ -15,6 +15,7 @@ const handleNewItem = require("./handlers/handle-new-item.js");
 const handleNewProduct = require("./handlers/handle-new-product.js");
 const handleNewProject = require("./handlers/handle-new-project.js");
 const handleNewRole = require("./handlers/handle-new-role.js");
+const handleSearchItem = require("./handlers/handle-search-item.js");
 
 // options
 const productOptions = require("./options/product-options.js");
@@ -26,27 +27,20 @@ const controller = (app) => {
 
   //Actions
   app.action("addNewItem", addNewItem);
-
   app.action("addNewProduct", addNewProduct);
-
   app.action("addNewProject", addNewProject);
-
   app.action("addNewRole", addNewRole);
-
   app.action("productSelected", actProductSelected);
-
   app.action("manageItems", manageItems);
   app.action("deleteItem", manageItems);
   app.action("searchItems", searchItems);
 
   //Modals
   app.view("handleNewItem", handleNewItem);
-
   app.view("handleNewProduct", handleNewProduct);
-
   app.view("handleNewProject", handleNewProject);
-
   app.view("handleNewRole", handleNewRole);
+  app.view("handleSearchItem", handleSearchItem);
 
   //Options
   app.options("productSelected", productOptions);
