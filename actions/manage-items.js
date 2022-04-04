@@ -23,7 +23,9 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `*Item:*\n${item.name}`,
+        text: `*Item:*\n${item.name}\n ${item.product.name}/${
+          item.project.name
+        }/${item.role.name}/${item.name}/${item.tag || "(No Tag)"}`,
       },
       accessory: {
         action_id: "deleteItem",
