@@ -4,9 +4,9 @@ const options = async ({ ack, payload, ...rest }) => {
   const value = RegExp(payload.value, "i");
 
   const items = await Item.find()
+    .or([{ "product.name": { $regex: value } }])
     .populate("product")
-    .populate("project")
-    .or([{ "product.name": { $regex: value } }]);
+    .populate("project");
 
   console.log(items);
   const itemList = items.map((item) => {
