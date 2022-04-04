@@ -7,15 +7,13 @@ const options = async ({ ack, payload, ...rest }) => {
     .or([
       { name: { $regex: new RegExp(payload.value), $options: "i" } },
       {
-        "product.name": {
-          $regex: new RegExp(payload.value),
-          $options: "i",
+        product: {
+          name: { $regex: new RegExp(payload.value), $options: "i" },
         },
       },
       {
-        "project.name": {
-          $regex: new RegExp(payload.value),
-          $options: "i",
+        project: {
+          name: { $regex: new RegExp(payload.value), $options: "i" },
         },
       },
     ])
