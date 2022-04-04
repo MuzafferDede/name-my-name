@@ -2,7 +2,7 @@ const Project = require("../models/project");
 const Product = require("../models/product");
 const User = require("../models/user");
 
-const handler = async ({ ack, view, body, logger }) => {
+const handler = async ({ ack, view, client, body }) => {
   const projectProductSelected =
     view.state.values.product.productSelected.selected_option.value;
 

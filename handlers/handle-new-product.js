@@ -1,7 +1,7 @@
 const Product = require("../models/product");
 const User = require("../models/user");
 
-const handler = async ({ ack, say, view, client, body, logger }) => {
+const handler = async ({ ack, view, client, body }) => {
   const value = view.state.values.product.productNameDefined.value;
 
   const user = await User.findOneAndUpdate(

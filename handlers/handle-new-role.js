@@ -1,7 +1,7 @@
 const Role = require("../models/role");
 const User = require("../models/user");
 
-const handler = async ({ ack, view, body, logger }) => {
+const handler = async ({ ack, view, client, body, logger }) => {
   const value = view.state.values.role.roleNameDefined.value;
 
   const user = await User.findOneAndUpdate(

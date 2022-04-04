@@ -1,7 +1,7 @@
 const Item = require("../models/item");
 const User = require("../models/user");
 
-const handler = async ({ ack, body, client, view, logger }) => {
+const handler = async ({ ack, body, client, view }) => {
   const state = view.state.values;
 
   const user = await User.findOneAndUpdate(

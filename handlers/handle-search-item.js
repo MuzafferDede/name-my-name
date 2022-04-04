@@ -1,6 +1,6 @@
 const Item = require("../models/item");
 
-const handler = async ({ ack, action, logger }) => {
+const handler = async ({ ack, action }) => {
   await Item.findOne({ _id: action.value })
     .populate({ path: "product", select: "name" })
     .populate({ path: "project", select: "name" })
