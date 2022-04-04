@@ -4,11 +4,12 @@ const options = async ({ ack, payload, ...rest }) => {
   const value = RegExp(payload.value, "i");
 
   const items = await Item.find({ name: { $regex: value } })
-    .populate("product")
-    .populate("project")
-    .populate("role")
+    .populate({ path: "product", select: "name" })
+    .populate({ path: "project", select: "name" })
+    .populate({ path: "role", select: "name" })
     .exec();
 
+  console.log(items);
   const itemList = items.map((item) => {
     return {
       text: {
