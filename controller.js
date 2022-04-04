@@ -18,6 +18,7 @@ const handleNewRole = require("./handlers/handle-new-role.js");
 
 // options
 const productOptions = require("./options/product-options.js");
+const searchResultOptions = require("./options/search-result-options.js");
 
 const controller = (app) => {
   //Events
@@ -49,6 +50,7 @@ const controller = (app) => {
 
   //Options
   app.options("productSelected", productOptions);
+  app.options("searchResultOptions", searchResultOptions);
 };
 
 module.exports = controller;

@@ -17,7 +17,7 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
           dispatch_action: true,
           element: {
             type: "external_select",
-            action_id: "searchKeyword",
+            action_id: "searchResultOptions",
             placeholder: {
               type: "plain_text",
               text: "Search for an item",
