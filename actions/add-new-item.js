@@ -15,8 +15,17 @@ const action = async ({ body, ack, client, logger }) => {
     };
   });
 
-  !roleList.length &&
-    roleList.push([{ text: { type: "plain_text", text: "No roles" } }]);
+  if (!roleList.length) {
+    roleList = [
+      {
+        text: {
+          type: "plain_text",
+          text: "No roles found",
+        },
+        value: "",
+      },
+    ];
+  }
 
   console.log(roleList);
   const result = await client.views.open({
