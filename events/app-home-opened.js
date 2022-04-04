@@ -42,7 +42,7 @@ const event = async ({ event, client, logger }) => {
           type: "header",
           text: {
             type: "plain_text",
-            text: "Actions",
+            text: "Management",
             emoji: true,
           },
         },
@@ -76,7 +76,7 @@ const event = async ({ event, client, logger }) => {
           type: "header",
           text: {
             type: "plain_text",
-            text: "Products/Projects/Roles",
+            text: "Administration",
             emoji: true,
           },
         },
