@@ -1,4 +1,3 @@
-const Product = require("../models/product");
 const Project = require("../models/project");
 
 const action = async ({ ack, body, action, client, ...rest }) => {
@@ -40,7 +39,7 @@ const action = async ({ ack, body, action, client, ...rest }) => {
     return block;
   });
 
-  const result = await client.views.update({
+  await client.views.update({
     view_id: body.view.id,
     view: {
       title: body.view.title,

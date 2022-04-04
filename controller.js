@@ -8,6 +8,7 @@ const addNewProject = require("./actions/add-new-project.js");
 const addNewRole = require("./actions/add-new-role.js");
 const manageItems = require("./actions/manage-items.js");
 const actProductSelected = require("./actions/act-product-selected.js");
+const searchItems = require("./actions/search-items.js");
 
 // handlers
 const handleNewItem = require("./handlers/handle-new-item.js");
@@ -35,6 +36,7 @@ const controller = (app) => {
 
   app.action("manageItems", manageItems);
   app.action("deleteItem", manageItems);
+  app.action("searchItems", searchItems);
 
   //Modals
   app.view("handleNewItem", handleNewItem);
