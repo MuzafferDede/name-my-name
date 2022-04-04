@@ -9,13 +9,13 @@ const addNewRole = require("./actions/add-new-role.js");
 const manageItems = require("./actions/manage-items.js");
 const actProductSelected = require("./actions/act-product-selected.js");
 const searchItems = require("./actions/search-items.js");
+const searchResult = require("./actions/search-result.js");
 
 // handlers
 const handleNewItem = require("./handlers/handle-new-item.js");
 const handleNewProduct = require("./handlers/handle-new-product.js");
 const handleNewProject = require("./handlers/handle-new-project.js");
 const handleNewRole = require("./handlers/handle-new-role.js");
-const handleSearchItem = require("./handlers/handle-search-item.js");
 
 // options
 const productOptions = require("./options/product-options.js");
@@ -34,7 +34,7 @@ const controller = (app) => {
   app.action("manageItems", manageItems);
   app.action("deleteItem", manageItems);
   app.action("searchItems", searchItems);
-  app.action("search", handleSearchItem);
+  app.action("searchResult", searchResult);
 
   //Modals
   app.view("handleNewItem", handleNewItem);
