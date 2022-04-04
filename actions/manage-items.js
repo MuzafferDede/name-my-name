@@ -1,7 +1,6 @@
 const User = require("../models/user");
 
 const action = async ({ body, ack, client, action, logger, ...rest }) => {
-  console.log(rest);
   const user = await User.findOne({
     slackId: body.user.id,
   })
@@ -9,7 +8,14 @@ const action = async ({ body, ack, client, action, logger, ...rest }) => {
     .exec();
 
   if (!user) {
-    await ack();
+    await ack({
+      errors: [
+        {
+          name: "email_address",
+          error: "Sorry, this isn’t a valid email",
+        },
+      ],
+    });
     return;
   }
   await ack();
