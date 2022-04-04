@@ -6,7 +6,8 @@ const options = async ({ ack, payload, ...rest }) => {
   const items = await Item.find({ name: { $regex: value } })
     .populate("product")
     .populate("project")
-    .populate("role");
+    .populate("role")
+    .exec();
 
   const itemList = items.map((item) => {
     return {
