@@ -5,13 +5,12 @@ const options = async ({ ack, payload, ...rest }) => {
     $or: [
       {
         name: { $regex: new RegExp(payload.value), $options: "i" },
+      },
+      {
         tag: { $regex: new RegExp(payload.value), $options: "i" },
       },
     ],
   });
-
-  console.log(products);
-  console.log(payload);
 
   const productList = products.map((product) => {
     return {
